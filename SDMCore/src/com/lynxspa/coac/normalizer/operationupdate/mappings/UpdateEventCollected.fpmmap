@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.normalizer.adapters.NormalizableUpdateAdapter" outputBean="com.lynxspa.sdm.entities.events.CAEventCollected" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <inputField name="in.previousEventCollected" cardinal="0"/>
+  <field name="complete" type="java.lang.Boolean">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.or" code="6688162">
+      <inputField name="in.previousEventCollected.complete" cardinal="0"/>
+      <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.falseValue" code="31081196"/>
+    </function>
+  </field>
+  <field name="eventDetail" type="com.lynxspa.coac.entities.events.details.adapters.CAEventDetailAdapter">
+    <function name="com.lynxspa.coac.mappings.CoacFunctions.toCAEventDetail" code="10603835">
+      <inputField name="in.previousEventCollected.eventDetail" cardinal="0"/>
+    </function>
+  </field>
+  <field name="executionDate" type="java.util.Date">
+    <inputField name="in.previousEventCollected.eventDetail.executionDate" cardinal="0"/>
+  </field>
+  <field name="expirationDate" type="java.util.Date">
+    <inputField name="in.previousEventCollected.eventDetail.expirationDate" cardinal="0"/>
+  </field>
+  <field name="operationalDate" type="java.util.Date">
+    <inputField name="in.previousEventCollected.eventDetail.operationalDate" cardinal="0"/>
+  </field>
+  <field name="providerUpdated" type="java.lang.Boolean">
+    <constant value="true" type="java.lang.Boolean" cardinal="0"/>
+  </field>
+  <field name="subscriptionDate" type="java.util.Date">
+    <inputField name="in.previousEventCollected.eventDetail.subscriptionDate" cardinal="0"/>
+  </field>
+</mn:mapping-element>

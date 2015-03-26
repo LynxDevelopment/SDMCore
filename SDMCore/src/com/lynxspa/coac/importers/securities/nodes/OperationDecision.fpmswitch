@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<switch:fpm-switch-config xmlns:switch="http://www.lynxit.com/fpm/config/switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config fpm-switch-config.xsd">
+  <switch:type>com.lynxspa.sdm.importers.securities.beans.SecurityBean</switch:type>
+  <switch:enableDefault>false</switch:enableDefault>
+  <switch:language>JAVA</switch:language>
+  <switch:exits>
+    <switch:exit id="insertOrUpdate">
+      <switch:condition>return ((com.lynxspa.sdm.importers.securities.beans.SecurityBean.ActionsToDo.INSERT_OR_UPDATE.equals(message.getAction()))||(com.lynxspa.sdm.importers.securities.beans.SecurityBean.ActionsToDo.UPDATE.equals(message.getAction())));</switch:condition>
+      <switch:description></switch:description>
+    </switch:exit>
+    <switch:exit id="delete">
+      <switch:condition>return com.lynxspa.sdm.importers.securities.beans.SecurityBean.ActionsToDo.DELETE.equals(message.getAction());</switch:condition>
+      <switch:description></switch:description>
+    </switch:exit>
+  </switch:exits>
+</switch:fpm-switch-config>

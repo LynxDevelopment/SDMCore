@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="input" x="-172" y="161" width="32" height="32"/>
+  <business-node id="Event Type" x="920" y="149" width="130" height="100"/>
+  <business-node id="HibernateStandardCommit" x="1716" y="149" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="-49" y="149" width="130" height="100"/>
+  <business-node id="LogCoacException" x="148" y="276" width="130" height="100"/>
+  <business-node id="Operation" x="547" y="149" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="366" y="33" width="130" height="100"/>
+  <business-node id="Provider" x="741" y="149" width="130" height="100"/>
+  <business-node id="Read" x="148" y="149" width="130" height="100"/>
+  <business-node id="Rollback" x="741" y="276" width="130" height="100"/>
+  <business-node id="Security" x="1123" y="149" width="130" height="100"/>
+  <business-node id="ToPNFA" x="550" y="276" width="130" height="100"/>
+  <business-node id="Update" x="1514" y="149" width="130" height="100"/>
+  <business-node id="toNRMP" x="1318" y="149" width="130" height="100"/>
+  <connection id="/business process/Provider/out/business process/Event Type/in"/>
+  <connection id="/business process/Event Type/out/business process/Security/in"/>
+  <connection id="/business process/Update/out/business process/HibernateStandardCommit/in"/>
+  <connection id="/business process/input/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/Read/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/Operation/in"/>
+  <connection id="/business process/Operation/out/business process/Provider/in"/>
+  <connection id="/business process/Operation/exception/business process/Rollback/exc"/>
+  <connection id="/business process/Read/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/PatchedIteratorNode/exception/business process/ToPNFA/exc"/>
+  <connection id="/business process/Security/out/business process/toNRMP/in"/>
+  <connection id="/business process/toNRMP/out/business process/Update/in"/>
+</fpm-process-layout>

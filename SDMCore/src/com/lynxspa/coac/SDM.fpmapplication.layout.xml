@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <resource id="HibernateResource" x="87" y="392" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="85" y="251" width="130" height="100"/>
+  <sub-application id="CorporateActionsApplication" x="193" y="108" width="476" height="100"/>
+  <connection id="/application/HibernateResource/resource/application/HibernateStatelessResource/resource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsApplication/hibernateResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionsApplication/hibernateStatelessResource"/>
+</fpm-application-layout>

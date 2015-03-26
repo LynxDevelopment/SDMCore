@@ -1,0 +1,134 @@
+START-OF-FILE
+PROGRAMNAME=getdata
+DATEFORMAT=yyyymmdd
+START-OF-FIELDS
+ID_BB_UNIQUE
+ID_BB_COMPANY
+ID_BB_SECURITY
+TICKER
+EXCH_CODE
+MARKET_SECTOR_DES
+CRNCY
+CNTRY_ISSUE_ISO
+SECURITY_TYP
+ID_ISIN
+LONG_COMP_NAME
+DVD_CRNCY
+DVD_DECLARED_DT
+DVD_EX_DT
+EQY_DVD_EX_FLAG
+DVD_FREQ
+DVD_PAY_DT
+DVD_RECORD_DT
+EQY_DVD_SH_12M_NET
+DVD_SH_LAST
+DVD_TYP_LAST
+LAST_DPS_GROSS
+EQY_PRIM_EXCH
+EQY_PRIM_EXCH_SHRT
+EQY_SPLIT_DT
+EQY_SPLIT_RATIO
+FUND_12B_FEE
+FUND_DEFERRED_LOAD
+FUND_EXPENSE_RATIO
+FUND_FRONT_END_LOAD
+FUND_INCEPT_DT
+FUND_INCOME_RATIO
+FUND_INVEST_ADVISOR
+FUND_IRA_INVEST
+FUND_MGR
+FUND_MGR_FEE
+FUND_MGR_START_DT
+FUND_MIN_INVEST
+FUND_PHONE
+FUND_TURNOVER
+ID_BB_PARENT_CO
+ID_BB_PRIM_SECURITY_FLAG
+INDUSTRY_GROUP
+INDUSTRY_SECTOR
+INDUSTRY_SUBGROUP
+MARKET_STATUS
+MAX_REDEMP_FEE
+NAME
+PARENT_COMP_NAME
+FUND_ASSET_ALLOC_CORP
+FUND_ASSET_ALLOC_CASH_OTHER
+FUND_ASSET_ALLOC_GOVT
+FUND_ASSET_ALLOC_EQUITY
+POST_REDENOM_CRNCY
+POST_EURO_ID_ISIN
+PRE_REDENOM_CRNCY
+PRE_EURO_ID_ISIN
+REDENOM_DT
+REDENOM_METHOD
+REDENOM_ROUND_METHOD
+REL_INDEX
+FUND_OBJECTIVE_LONG
+TRANSFER_AGENT
+FUND_RTG_CLASS_FOCUS
+FUND_MKT_CAP_FOCUS
+FUND_STRATEGY
+FUND_MGMT_STYLE
+FUND_TYP
+FUND_DOMICILE_TYP
+FUND_GEO_FOCUS
+FUND_ASSET_CLASS_FOCUS
+FUND_MATURITY_BAND_FOCUS
+ID_CUSIP
+ID_SEDOL1
+ID_LOCAL
+PX_TRADE_LOT_SIZE
+ID_BELGIUM
+ID_COMMON
+ID_DUTCH
+ID_FRENCH
+ID_VALOREN
+ID_WERTPAPIER
+CNTRY_OF_INCORPORATION
+CNTRY_OF_DOMICILE
+ID_APIR
+ID_SEDOL_FMQ1
+ID_SEDOL_FMQ2
+ID_SEDOL2
+SEDOL1_COUNTRY_ISO
+SEDOL2_COUNTRY_ISO
+ID_MIC_PRIM_EXCH
+ID_MIC_LOCAL_EXCH
+FUND_MANAGEMENT_CO
+SECURITY_TYP2
+FD_INITIAL_VAL
+FUND_INDUSTRY_FOCUS
+FUND_CLOSED_NEW_INV
+INDUSTRY_SUBGROUP_NUM
+FUND_ASSET_ALLOC_MUNI
+FUND_ASSET_ALLOC_MTGE
+FUND_ASSET_ALLOC_PFD
+FUND_PORT_DT
+FUND_OPEN_SHR_CLASS
+FUND_OPEN_PYMNT_SHR
+FUND_CUSTODIAN_LONG
+FUND_ADMIN_LONG
+FUND_EURO_DIRECT_UCITS
+MIN_SUBSEQUENT_INVEST
+MGR_COUNTRY_NAME
+MGR_STATE_NAME
+MGR_CITY_NAME
+FUND_LOCK_UP
+END-OF-FIELDS
+
+TIMESTARTED=Thu Oct  9 22:19:08 BST 2008
+START-OF-DATA
+GERVAFD GR Equity|0|112|EQ0018593900060000|185939|60000|GERVAFD|GR|Equity|EUR|DE|Open-End Fund|DE0008481136|Gerling Vario Fonds|EUR|20080307|20080307|N|Annual|20080311|20080307|.790|.790004|Income|.79| | | |N.A.|N.A.|.000|.453|4.000|19940331|N.A.| |0|THOMAS PETHOFER|1.000|01/04|0|49-221-790-799-0|N.A.|7020052|Y|Asset Allocation Fund|Funds|Balanced|ACTV|.000|GERLING VARIO FONDS|AmpegaGerling Investment GmbH|57.758|3.591|.699|35.837|EUR|DE0008481136|DEM|DE0008481136|20000103|Price Conversion|to nearest 0.01 euro|DAX|Balanced|SEB AG| | |Balanced| |Open-End Fund|Domestic|Germany|Asset Allocation| |N.A.|B15HKD5|N.A.| |N.A.|015125659|N.A.|N.A.|N.A.|848113|DE|DE|N.A.|B01PR02|N.A.|N.A.|DE|N.A.|N.A.| |AmpegaGerling Investment GmbH/Germany|Mutual Fund|50.000|N.A.|Unknown|888|2.114|.000|.000|20080829|N.A|Income|SEB AG| |Y|0|Germany| |Koeln|N.A.|
+NVC     GR Equity|0|112|EQ0023997100060001|239971|60001|NVC|GR|Equity|EUR|DE|Closed-End Fund|CH0007036830|New Venturetec Ltd/fund| | | |N|None| | | | | | |Berlin|GB| |N.A.|N.A.|N.A.|N.A.|N.A.|19980508|N.A.| |N.A.|PETER FRIEDLI|N.A.| |N.A.|+41 1 283 2900|N.A.|1717064|N|Closed-end Funds|Financial|Closed-end Funds|ACTV|N.A.|NEW VENTURETEC LTD-BR|New Venturetec Ltd/Switzerland|N.A.|N.A.|N.A.|N.A.|EUR|CH0007036830|DEM|CH0007036830|19990101|Price Conversion|to nearest 0.01 euro|DAX|Sector Fund-Undefined Equity|N.A.| |N.A.| |Sector Funds|Closed-End Fund|Domestic|Global|Equity| |N.A.|5906761|N.A.|1|N.A.|008004854|N.A.|N.A.|000703683|909499|CH|CH|N.A.|N.A.|N.A.|N.A.|DE|N.A.|XBER| |Friedli Corporate Finance Ag|Mutual Fund|N.A.|N.A.|Unknown|155|N.A.|N.A.|N.A.| |N.A|N.A| | |N|N.A.|United States|Maryland|Baltimore|N.A.|
+VERCOUP GR Equity|0|112|EQ0014733400060000|147334|60000|VERCOUP|GR|Equity|EUR|DE|Open-End Fund|DE0009763219|Veritas - VERI-COUPONS Fonds|EUR|20080128|20080128|N|Annual|20080128|20080128|.930|.93|Income|.93| | | |N.A.|N.A.|N.A.|.760|N.A.|19920217|N.A.| |N.A.| |N.A.| |500|49-69-97-57-43-0|N.A.|1093912|Y|Debt Fund|Funds|Government/Corporate|ACTV|.000|VERI-COUPONS FONDS|Veritas SG Investment Trust Gm|N.A.|N.A.|N.A.|N.A.|EUR|DE0009763219|DEM|DE0009763219|19990101|Price Conversion|to nearest 0.01 euro|DAX|Government/Corporate|Societe Generale SA/Frankfurt|N.A.| |Government/Corporate|Total Return|Open-End Fund|Domestic|European Region|Debt|N.A.|N.A.|N.A.|N.A.| |N.A.|008365547|N.A.|924108|N.A.|976321|DE|DE|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.| |Veritas SG Investment Trust GmbH/Germany|Mutual Fund|N.A.|N.A.|Unknown|839|N.A.|N.A.|N.A.|20030630|N.A|Income|Societe Generale SA/Frankfurt| |Y|N.A.|Germany| |Frankfurt|N.A.|
+DEKASCH GR Equity|0|112|EQ0734904600060000|7349046|60000|DEKASCH|GR|Equity|EUR|DE|Open-End Fund|DE0007019366|DekaSystem-Chance|EUR|20080102|20080102|N|Annual|20080102|20080102|.559|.5594|Accumulation|.5594| | | |N.A.|N.A.|.000|N.A.|3.500|20010702|N.A.| |N.A.| |1.800| |N.A.|49-69-7147-0|N.A.|207912|Y|Asset Allocation Fund|Funds|Balanced|ACTV|.000|DEKASYSTEM-CHANCE|Deka Investment GmbH/Germany|N.A.|N.A.|N.A.|N.A.|EUR|N.A.|EUR|N.A.|N.A.|No Conversion|to nearest 0.01 euro|DAX|Balanced|DekaBank Deutsche Girozentrale| | |Balanced| |Open-End Fund|Domestic|Global|Asset Allocation| |N.A.|N.A.|N.A.| |N.A.|N.A.|N.A.|N.A.|N.A.|701936|DE|DE|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.| |Deka Investment GmbH/Germany|Mutual Fund|40.000|N.A.|Unknown|888|N.A.|N.A.|N.A.| |N.A|Accumulation|DekaBank Deutsche Girozentrale| |Y|N.A.|Germany| |Frankfurt|N.A.|
+DESPAEU GR Equity|0|112|EQ0023521000060000|235210|60000|DESPAEU|GR|Equity|EUR|DE|Open-End Fund|DE0009809566|Deka-ImmobilienEuropa|EUR|20080103|20080107|N|Annual|20080107|20080107|1.900|1.9|Income|1.9|Hamburg|GH| |N.A.|N.A.|N.A.|.660|N.A.|19970120|N.A.| |N.A.|JENS SCHNEIDER|N.A.| |10000|49-69-7147-0|N.A.|7420377|Y|Real Estate Fund|Funds|Real Estate|ACTV|.000|DEKA-IMMOBILIENEUROPA|DekaImmobilien Invest GmbH|N.A.|N.A.|N.A.|N.A.|EUR|DE0009809566|DEM|DE0009809566|19990101|Price Conversion|to nearest 0.01 euro|DAX|Real Estate|DekaBank Deutsche Girozentrale| | | | |Open-End Fund|Domestic|European Region|Real Estate| |N.A.|7434066|N.A.| |N.A.|008391637|N.A.|N.A.|N.A.|980956|DE|DE|N.A.|N.A.|N.A.|N.A.|DE|N.A.|XHAM| |Deka Immobilien Investment GmbH|Mutual Fund|85.000|N.A.|Unknown|912|N.A.|N.A.|N.A.| |N.A|Income|DekaBank Deutsche Girozentrale| |Y|N.A.|Germany| |Frankfurt|N.A.|
+TOP25SX GR Equity|0|112|EQ0000000006989031|15200083|60000|TOP25SX|GR|Equity|EUR|DE|Open-End Fund|DE0005152540|Top 25 S| | | |N|None| | | | | | | | | |N.A.|N.A.|N.A.|N.A.|N.A.|20080924|N.A.|FPM Frankfurt Performance Mana|N.A.| |N.A.| |N.A.|49-1803-10111011|N.A.|207915|Y|Equity Fund|Funds|Region Fund-European|ACTV|N.A.|TOP 25 S|DWS Investment GmbH/Germany|N.A.|N.A.|N.A.|N.A.|EUR|N.A.|EUR|N.A.|N.A.|No Conversion|to nearest 0.01 euro|DAX|Region Fund-European|N.A.| |Multi-cap| |Geographically Focused|Open-End Fund|Domestic|European Region|Equity| |N.A.|N.A.|N.A.| |N.A.|N.A.|N.A.|N.A.|N.A.|515254|DE|DE|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.| |DWS Investment GmbH/Germany|Mutual Fund|100.000|N.A.|No|799|N.A.|N.A.|N.A.| |EUR dist|Income| | |N|N.A.|Germany| |Frankfurt am Main|N.A.|
+NORDAKK GR Equity|0|112|EQ0014731500060000|147315|60000|NORDAKK|GR|Equity|EUR|DE|Open-End Fund|DE0008485368|NORDINVEST - NORDAKKU|EUR|20071001|20071001|N|Annual|20071001|20071001| |.927724|Accumulation|.92772| | | |N.A.|N.A.|.000|1.240|5.000|19940103|N.A.| |N.A.| |1.000| |50|49-40-374773-100|N.A.|207941|Y|Equity Fund|Funds|Region Fund-Euro|ACTV|.000|NORDINVEST NORDAKKU|NORDINVEST Norddeutsche Invest|.000|16.096|.000|83.904|EUR|DE0008485368|DEM|DE0008485368|19990101|Price Conversion|to nearest 0.01 euro|DAX|Region Fund-Euro Countries|Bayerische Hypo- und Vereinsbank AG/Hamburg| |N.A.| |Geographically Focused|Open-End Fund|Domestic|Euro Countries|Equity| |N.A.|B15HLJ8|N.A.| |N.A.|011720811|N.A.|N.A.|N.A.|848536|DE|DE|N.A.|B01P1H7|N.A.|N.A.|DE|N.A.|N.A.| |NORDINVEST Norddeutsche Investment GmbH/Germany|Mutual Fund|63.000|N.A.|Unknown|931|.000|.000|.000|20080331|N.A|Accumulation|Bayerische Hypo- und Vereinsbank AG| |Y|N.A.|Germany| |Hamburg|N.A.|
+ADIGAAD GR Equity|0|112|EQ0038238000060000|382380|60000|ADIGAAD|GR|Equity|EUR|DE|Open-End Fund|DE0009786962|AS-AktivDynamik|EUR|20080701|20080701|N|Annual|20080701|20080701|1.202|1.2023|Accumulation|1.2023| | | |N.A.|N.A.|.000|1.260|N.A.|19981015|N.A.| |N.A.|HENNING KELCH|1.150| |N.A.|49-89-46268-525|N.A.|7876922|Y|Asset Allocation Fund|Funds|Balanced|ACTV|.000|AS-AKTIVDYNAMIK|Cominvest Asset Management Gmb|12.905|.008|3.874|82.500|EUR|DE0009786962|DEM|DE0009786962|19990101|Price Conversion|to nearest 0.01 euro|DAX|Balanced|Commerzbank AG| | |Balanced| |Open-End Fund|Domestic|European Region|Asset Allocation| |N.A.|4577395|N.A.| |N.A.|011106684|N.A.|N.A.|N.A.|978696|DE|DE|N.A.|4577395|N.A.|N.A.| |N.A.|N.A.| |Cominvest Asset Management GmbH|Mutual Fund|N.A.|N.A.|Unknown|888|.714|.000|.000|20080731|N.A|Accumulation|Commerzbank AG| |Y|N.A.|Germany| |Frankfurt|N.A.|
+AMGALIT GR Equity|0|112|EQ0000000003837264|13041184|60000|AMGALIT|GR|Equity|EUR|DE|Open-End Fund|DE000A0KFCM7|GALIPLAN Vier Jahreszeiten AMI| | | |N|None| | | | | | | | | |N.A.|N.A.|.000|N.A.|N.A.|20070803|N.A.|GALIPLAN Financial Services Gm|N.A.|MAX LENZENHUBER|N.A.|8/03/07|500|49-221-790-799-0|N.A.|7020052|Y|Asset Allocation Fund|Funds|Balanced|ACTV|.000|GALIPLAN VIER JAHRESZT AMI-T|AmpegaGerling Investment GmbH|14.309|15.707|8.185|61.534|EUR|N.A.|EUR|N.A.|N.A.|No Conversion|to nearest 0.01 euro|DAX|Balanced|UBS Deutschland AG| | |Balanced| |Open-End Fund|Domestic|Global|Asset Allocation| |N.A.|N.A.|N.A.| |N.A.|031661480|N.A.|N.A.|N.A.|A0KFCM|DE|DE|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.| |AmpegaGerling Investment GmbH|Mutual Fund|100.000|N.A.|No|888|.265|.000|.000|20080829|T EUR acc|Accumulation|UBS Deutschland AG|AmpegaGerling Investment GmbH|N|N.A.|Germany| |Aachen|N.A.|
+MONWACH GR Equity|0|112|EQ0726299600060000|7262996|60000|MONWACH|GR|Equity|EUR|DE|Fund of Funds|DE0005321095|Monega - Monega Wachstum|EUR|20071001|20071001|N|Annual|20071001|20071001| |.283684|Accumulation|.28368| | | |N.A.|N.A.|N.A.|1.410|N.A.|20001016|N.A.| |N.A.| |N.A.| |2500|49-221-14506|N.A.|7027085|Y|Asset Allocation Fund|Funds|Flexible Portfolio|ACTV|.000|MONEGA WACHSTUM|Monega KAGmbH/Germany|23.738|12.579|18.642|42.705|EUR|N.A.|EUR|N.A.|N.A.|No Conversion|to nearest 0.01 euro|DAX|Flexible Portfolio|Sal Oppenheim Jr & Cie KGaA| | |Flexible Portfolio| |Fund of Funds|Domestic|Euro Countries|Asset Allocation| |N.A.|N.A.|N.A.| |N.A.|N.A.|N.A.|N.A.|N.A.|532109|DE|DE|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.| |Monega KAGmbH/Germany|Mutual Fund|47.220|N.A.|Unknown|891|2.258|.079|.000|20080731|N.A|Accumulation|Sal Oppenheim Jr & Cie KGaA| |N|50|Germany| |Cologne|N.A.|
+END-OF-DATA
+DATARECORDS=10
+TIMEFINISHED==Thu Oct  9 22:19:08 BST 2008
+END-OF-FILE

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="tempPathFiles" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxspa.coac.plannings.beans.ControlPlanningsBean" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.plannings.beans.PlanningBean" id="DeleteTempFiles1" type="com.lynxspa.coac.plannings.generatefileprocess.nodes.DeleteTempFiles">
+    <n:params>
+      <fileToDelete type="DYNAMIC" language="BEAN_SHELL">message.getPathTemplate()</fileToDelete>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.plannings.beans.PlanningBean" id="FindSecurityEventNode1" type="com.lynxspa.coac.plannings.generatefileprocess.nodes.FindSecurityEventNode">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statelessSession</resource>
+      <resourceFull type="REFERENCE">statefullSession</resourceFull>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="GenerateTemplateFile1"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.plannings.beans.PlanningBean" id="GenerateFileFromTemplate1" type="com.lynxspa.coac.plannings.generatefileprocess.nodes.GenerateFileFromTemplate">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <outputPathFile type="DYNAMIC" language="BEAN_SHELL">message.getOutputFile()</outputPathFile>
+      <overwrite type="DYNAMIC" language="BEAN_SHELL">message.isOverWrite()</overwrite>
+      <resource type="REFERENCE">statefullSession</resource>
+      <staticsClasses type="FIXED"></staticsClasses>
+      <staticsNames type="FIXED"></staticsNames>
+      <template type="DYNAMIC" language="BEAN_SHELL">message.getPathTemplate()</template>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="DeleteTempFiles1"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.plannings.beans.PlanningBean" id="GenerateTemplateFile1" type="com.lynxspa.coac.plannings.generatefileprocess.nodes.GenerateTemplateFile">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <templateExtension type="FIXED">ftl</templateExtension>
+      <templatePathFile type="REFERENCE">tempPathFiles</templatePathFile>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="GenerateFileFromTemplate1"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" I="java.lang.Object" T="com.lynxspa.entities.plannings.SPPlanningProcess" id="HibernateStandardRead" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardRead">
+    <n:params>
+      <entityClass type="FIXED">com.lynxspa.entities.plannings.SPPlanningProcess</entityClass>
+      <entityIdField type="FIXED"></entityIdField>
+      <notes type="FIXED"></notes>
+      <numResults type="FIXED">10</numResults>
+      <parameters type="FIXED">
+        <values>
+          <value type="DYNAMIC" language="BEAN_SHELL">message.getId()</value>
+          <value type="FIXED">false</value>
+        </values>
+      </parameters>
+      <query type="FIXED">from SPPlanningProcess where id=:par0 and auditor.deleted=:par1</query>
+      <readMode type="FIXED">CURSOR</readMode>
+      <readOnly type="FIXED">false</readOnly>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.entities.plannings.SPPlanningProcess" id="IteratorNode" type="com.lynxit.fpm.nodes.internal.IteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="MapPersecuritiesMap" mapping-definition-file="src/com/lynxspa/coac/plannings/maps/mapPlannings.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="FindSecurityEventNode1"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.entities.plannings.SPPlanningProcess" id="PatchedIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="MapPersecuritiesMap"/>
+  </n:business-node>
+</fpm:business-process>

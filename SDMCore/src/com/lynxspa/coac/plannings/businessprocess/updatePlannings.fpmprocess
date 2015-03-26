@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxspa.coac.plannings.beans.ControlPlanningsBean" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Commit" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardCommit">
+    <n:params>
+      <commitEvery type="FIXED">1</commitEvery>
+      <dataSource type="REFERENCE">statelessSession</dataSource>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="UpdateExecutionDate1" type="com.lynxspa.coac.plannings.nodes.UpdateExecutionDate">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statelessSession</resource>
+      <resourceFull type="REFERENCE">statefullSession</resourceFull>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Commit"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+</fpm:business-process>

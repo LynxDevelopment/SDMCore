@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.importers.EventMessageImportBean" outputBean="com.lynxspa.coac.importers.EventMessageImportBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <inputField name="in" cardinal="0"/>
+  <field name="message" type="com.lynxspa.coac.entities.events.messages.CAEventMessage">
+    <field name="announceDate" type="java.util.Date">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.parseSecureDate" code="22713511">
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="26850514">
+          <inputField name="in" cardinal="0"/>
+          <constant value="BDY:CPN:ANNOUNCE_DT" type="java.lang.String" cardinal="1"/>
+        </function>
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="5662866">
+          <inputField name="in" cardinal="0"/>
+          <constant value="MSG:DATEFORMAT" type="java.lang.String" cardinal="1"/>
+        </function>
+      </function>
+    </field>
+    <field name="effectiveDate" type="java.util.Date">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.parseSecureDate" code="30416607">
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="5294085">
+          <inputField name="in" cardinal="0"/>
+          <constant value="BDY:CPN:NXT_CPN_DT" type="java.lang.String" cardinal="1"/>
+        </function>
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="5662866">
+          <inputField name="in" cardinal="0"/>
+          <constant value="MSG:DATEFORMAT" type="java.lang.String" cardinal="1"/>
+        </function>
+      </function>
+    </field>
+    <field name="eventMessageReference" type="java.lang.String">
+      <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32498330">
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="17836593">
+          <inputField name="in" cardinal="0"/>
+          <constant value="STD:0" type="java.lang.String" cardinal="1"/>
+        </function>
+        <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="17164330">
+          <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32183681">
+            <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="29400333">
+              <inputField name="in" cardinal="0"/>
+              <constant value="HDR:0" type="java.lang.String" cardinal="1"/>
+            </function>
+            <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="25516534">
+              <inputField name="in" cardinal="0"/>
+              <constant value="BDY:CPN:NXT_CPN_DT" type="java.lang.String" cardinal="1"/>
+            </function>
+          </function>
+          <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="26516078">
+            <inputField name="in" cardinal="0"/>
+            <constant value="BDY:CPN:CPN" type="java.lang.String" cardinal="1"/>
+          </function>
+        </function>
+      </function>
+    </field>
+    <field name="eventReference" type="java.lang.String">
+      <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32498330">
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="17836593">
+          <inputField name="in" cardinal="0"/>
+          <constant value="STD:0" type="java.lang.String" cardinal="1"/>
+        </function>
+        <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="17164330">
+          <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32183681">
+            <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="29400333">
+              <inputField name="in" cardinal="0"/>
+              <constant value="HDR:0" type="java.lang.String" cardinal="1"/>
+            </function>
+            <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="25516534">
+              <inputField name="in" cardinal="0"/>
+              <constant value="BDY:CPN:NXT_CPN_DT" type="java.lang.String" cardinal="1"/>
+            </function>
+          </function>
+          <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="26516078">
+            <inputField name="in" cardinal="0"/>
+            <constant value="BDY:CPN:CPN" type="java.lang.String" cardinal="1"/>
+          </function>
+        </function>
+      </function>
+    </field>
+    <field name="messageId" type="java.lang.String">
+      <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="26516004">
+        <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32498330">
+          <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="17836593">
+            <inputField name="in" cardinal="0"/>
+            <constant value="STD:0" type="java.lang.String" cardinal="1"/>
+          </function>
+          <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="17164330">
+            <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32183681">
+              <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="29400333">
+                <inputField name="in" cardinal="0"/>
+                <constant value="HDR:0" type="java.lang.String" cardinal="1"/>
+              </function>
+              <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="25516534">
+                <inputField name="in" cardinal="0"/>
+                <constant value="BDY:CPN:NXT_CPN_DT" type="java.lang.String" cardinal="1"/>
+              </function>
+            </function>
+            <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="26516078">
+              <inputField name="in" cardinal="0"/>
+              <constant value="BDY:CPN:CPN" type="java.lang.String" cardinal="1"/>
+            </function>
+          </function>
+        </function>
+        <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="11300446">
+          <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="26318358">
+            <inputField name="in" cardinal="0"/>
+            <constant value="BDY:CPN:PAR_AMT" type="java.lang.String" cardinal="1"/>
+          </function>
+          <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="10696411">
+            <inputField name="in" cardinal="0"/>
+            <constant value="BDY:CPN:MATURITY" type="java.lang.String" cardinal="1"/>
+          </function>
+        </function>
+      </function>
+    </field>
+    <field name="previousEventMessageReference" type="java.lang.String">
+      <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32498330">
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="17836593">
+          <inputField name="in" cardinal="0"/>
+          <constant value="STD:0" type="java.lang.String" cardinal="1"/>
+        </function>
+        <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="17164330">
+          <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="32183681">
+            <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="29400333">
+              <inputField name="in" cardinal="0"/>
+              <constant value="HDR:0" type="java.lang.String" cardinal="1"/>
+            </function>
+            <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="25516534">
+              <inputField name="in" cardinal="0"/>
+              <constant value="BDY:CPN:NXT_CPN_DT" type="java.lang.String" cardinal="1"/>
+            </function>
+          </function>
+          <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="26516078">
+            <inputField name="in" cardinal="0"/>
+            <constant value="BDY:CPN:CPN" type="java.lang.String" cardinal="1"/>
+          </function>
+        </function>
+      </function>
+    </field>
+    <field name="securityName" type="java.lang.String">
+      <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="10697607">
+        <inputField name="in" cardinal="0"/>
+        <constant value="BDY:CPN:SECURITY_DES" type="java.lang.String" cardinal="1"/>
+      </function>
+    </field>
+  </field>
+</mn:mapping-element>

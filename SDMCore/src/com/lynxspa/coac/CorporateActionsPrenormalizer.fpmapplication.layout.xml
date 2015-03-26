@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="StandardEventProducer" x="28" y="69" width="130" height="100"/>
+  <resource id="HibernateResource" x="28" y="189" width="130" height="100"/>
+  <business-process id="ErrorHandler" x="561" y="91" width="148" height="108"/>
+  <business-process id="Prenormalize" x="266" y="69" width="160" height="108"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+  <connection id="/application/Prenormalize/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/Prenormalize/statefullSession"/>
+  <connection id="/application/StandardEventProducer/events/application/Prenormalize/input"/>
+</fpm-application-layout>

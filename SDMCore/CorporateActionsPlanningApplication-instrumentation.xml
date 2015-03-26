@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsPlanningApplication"> 
+    <event-producer id="StandardEventProducer"/>  
+    <business-process id="ControlExecutionPlanningProcess"> 
+      <node id="ForkNode"/>  
+      <node id="SwitchNode"/>  
+      <node id="ControlExecutionPlanning"/>  
+      <node id="HibernateStandardRead"/>  
+      <node id="LogPlanningException"/>  
+      <node id="IteratorNode"/>  
+      <node id="MappingNode"/>  
+      <business-process id="GenerateFileProcess"> 
+        <node id="GenerateFileFromTemplate1"/>  
+        <node id="DeleteTempFiles1"/>  
+        <node id="FindSecurityEventNode1"/>  
+        <node id="MapPersecuritiesMap"/>  
+        <node id="HibernateStandardRead"/>  
+        <node id="IteratorNode"/>  
+        <node id="GenerateTemplateFile1"/>  
+        <node id="PatchedIteratorNode"/> 
+      </business-process>  
+      <business-process id="ExecuteShellProcess"> 
+        <node id="ExecuteShellProcessOutputNode"/> 
+      </business-process>  
+      <business-process id="Update Plannings"> 
+        <node id="Commit"/>  
+        <node id="UpdateExecutionDate1"/> 
+      </business-process>  
+      <business-process id="FtpGetProcess"> 
+        <node id="MapPersecuritiesMap"/>  
+        <node id="FTP GET"/>  
+        <node id="HibernateStandardRead"/>  
+        <node id="IteratorNode"/>  
+        <node id="PatchedIteratorNode"/> 
+      </business-process>  
+      <business-process id="FtpPutProcess"> 
+        <node id="MapPersecuritiesMap"/>  
+        <node id="HibernateStandardRead"/>  
+        <node id="IteratorNode"/>  
+        <node id="FTP PUT"/>  
+        <node id="IteratorNode1"/> 
+      </business-process>  
+      <node id="PatchedIteratorNode"/> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="SecuritiesBloombergFileCreated" x="-366" y="106" width="32" height="32"/>
+  <business-node id="ActionToDo" x="616" y="95" width="130" height="100"/>
+  <business-node id="Commit" x="1508" y="143" width="130" height="102"/>
+  <business-node id="DeleteSecurityBean" x="822" y="164" width="130" height="100"/>
+  <business-node id="ForkNode" x="1270" y="95" width="130" height="100"/>
+  <business-node id="Format Validation" x="49" y="95" width="130" height="100"/>
+  <business-node id="InsertSecurityBean" x="823" y="18" width="130" height="100"/>
+  <business-node id="LiveCycle Validation" x="-124" y="95" width="130" height="100"/>
+  <business-node id="LogCoacException" x="619" y="247" width="130" height="100"/>
+  <business-node id="LogSecuritiesBloombergParserNode" x="821" y="311" width="130" height="100"/>
+  <business-node id="OpenFile" x="220" y="95" width="130" height="100"/>
+  <business-node id="Parse File" x="419" y="94" width="130" height="100"/>
+  <business-node id="Rollback" x="1240" y="322" width="130" height="102"/>
+  <business-node id="Set insertOrUpdate" x="1041" y="18" width="130" height="100"/>
+  <business-node id="set delete" x="1042" y="164" width="130" height="100"/>
+  <subprocess id="StoreSecurityProcess" x="1505" y="14" width="130" height="100"/>
+  <connection id="/business process/Parse File/out/business process/ActionToDo/in"/>
+  <connection id="/business process/ActionToDo/insert/business process/InsertSecurityBean/in"/>
+  <connection id="/business process/ActionToDo/delete/business process/DeleteSecurityBean/in"/>
+  <connection id="/business process/ActionToDo/default/business process/LogSecuritiesBloombergParserNode/in"/>
+  <connection id="/business process/ForkNode/two/business process/Commit/in"/>
+  <connection id="/business process/DeleteSecurityBean/out/business process/set delete/in"/>
+  <connection id="/business process/Set insertOrUpdate/out/business process/ForkNode/in"/>
+  <connection id="/business process/set delete/out/business process/ForkNode/in"/>
+  <connection id="/business process/ForkNode/one/business process/StoreSecurityProcess/importedBean"/>
+  <connection id="/business process/ForkNode/exception/business process/Rollback/exc"/>
+  <connection id="/business process/LiveCycle Validation/out/business process/Format Validation/in"/>
+  <connection id="/business process/Format Validation/out/business process/OpenFile/in"/>
+  <connection id="/business process/InsertSecurityBean/out/business process/Set insertOrUpdate/in"/>
+  <connection id="/business process/SecuritiesBloombergFileCreated/business process/LiveCycle Validation/in"/>
+  <connection id="/business process/Parse File/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/OpenFile/out/business process/Parse File/in"/>
+</fpm-process-layout>

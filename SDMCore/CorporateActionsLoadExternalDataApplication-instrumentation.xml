@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsLoadExternalDataApplication"> 
+    <event-producer id="Customers Load"/>  
+    <business-process id="LoadCustomersProcess"> 
+      <node id="LoadCustomers"/>  
+      <node id="ForkNode"/>  
+      <node id="LoadManagers"/>  
+      <node id="LoadMarkets"/>  
+      <node id="ForkNode1"/>  
+      <node id="LoadSecurities"/>  
+      <node id="ForkNode11"/>  
+      <node id="LoadProviderAccounts"/>  
+      <node id="ForkNode112"/>  
+      <node id="ForkNode111"/>  
+      <node id="LoadClientHoldings"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

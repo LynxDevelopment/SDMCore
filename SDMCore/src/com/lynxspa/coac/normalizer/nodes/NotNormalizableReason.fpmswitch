@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<switch:fpm-switch-config xmlns:switch="http://www.lynxit.com/fpm/config/switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config fpm-switch-config.xsd">
+  <switch:type>com.lynxspa.sdm.entities.events.messages.CAEventMessage</switch:type>
+  <switch:enableDefault>true</switch:enableDefault>
+  <switch:language>JAVA</switch:language>
+  <switch:exits>
+    <switch:exit id="VirtualSecurity">
+      <switch:condition>boolean reply=false;\n\nreply=(!message.isInCustomerPortfolio())&amp;&amp;(!(message.getNormalizedSecurity() instanceof com.lynxspa.entities.securities.SPSecurity));\n\nreturn reply;</switch:condition>
+      <switch:description>Is virtual security</switch:description>
+    </switch:exit>
+    <switch:exit id="NotInCustomerPortfolio">
+      <switch:condition>boolean reply=false;\n\nreply=(!message.isInCustomerPortfolio())&amp;&amp;((message.getNormalizedSecurity() instanceof com.lynxspa.entities.securities.SPSecurity));\n\nreturn reply;</switch:condition>
+      <switch:description>Security isn't in customer portfolio</switch:description>
+    </switch:exit>
+  </switch:exits>
+</switch:fpm-switch-config>

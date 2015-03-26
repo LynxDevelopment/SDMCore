@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="86" y="95" width="32" height="32"/>
+  <business-node id="ExecuteShellProcessOutputNode" x="227" y="84" width="130" height="100"/>
+  <connection id="/business process/input/business process/ExecuteShellProcessOutputNode/in"/>
+</fpm-process-layout>

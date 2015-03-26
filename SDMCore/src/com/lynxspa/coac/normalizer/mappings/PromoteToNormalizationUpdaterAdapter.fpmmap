@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" outputBean="com.lynxspa.coac.normalizer.beans.MessageNormalizeUpdaterBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <field name="eventCollected" type="com.lynxspa.coac.entities.events.CAEventCollected">
+    <inputField name="in.eventCollected" cardinal="0"/>
+  </field>
+  <field name="eventDetail" type="com.lynxspa.coac.entities.events.details.CAEventDetail">
+    <inputField name="in.eventDetail" cardinal="0"/>
+  </field>
+  <field name="eventDetailExtended" type="com.lynxspa.coac.entities.events.details.CAEventDetailExtended">
+    <inputField name="in.eventDetailExtended" cardinal="0"/>
+  </field>
+  <field name="message" type="com.lynxspa.coac.entities.events.messages.CAEventMessage">
+    <inputField name="in.message" cardinal="0"/>
+  </field>
+</mn:mapping-element>

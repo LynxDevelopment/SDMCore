@@ -1,0 +1,173 @@
+{1:F21CASBADADAXXX6496811169}{4:{177:0704260801}{451:0}}{1:F01CASBADADAXXX6496811169}{2:O5641822070425CRESCHZZA80A27391075080704260753N}{3:{108:101000980109}}{4:
+:16R:GENL
+:20C::CORP//VH00000000346016
+:20C::SEME//F520070425-01773
+:23G:REPL
+:22F::CAEV//SPLF
+:22F::CAMV//MAND
+:98C::PREP//20070425182205
+:25D::PROC//COMP
+:16R:LINK
+:13A::LINK//564
+:20C::PREV//F520070424-01704
+:16S:LINK
+:16S:GENL
+:16R:USECU
+:35B:ISIN ES0130625017
+SHS GRUPO EMPRES.ENCE
+:16R:FIA
+:12A::CLAS//SHS
+:11A::DENO//EUR
+:16S:FIA
+:16R:ACCTINFO
+:97A::SAFE//0835-0796413-65-003
+:93B::ELIG//UNIT/12544,
+:16S:ACCTINFO
+:16S:USECU
+:16R:CADETL
+:98A::XDTE//20070426
+:98A::MEET//20070330
+:98A::RDTE//20070425
+:16S:CADETL
+:16R:CAOPTN
+:13A::CAON//001
+:22F::CAOP//SECU
+:17B::DFLT//Y
+:92D::NEWO//5,/1,
+:16R:SECMOVE
+:22H::CRDB//DEBT
+:35B:ISIN ES0130625017
+SHS GRUPO EMPRESARIAL ENCE SA
+:98A::PAYD//20070426
+:16S:SECMOVE
+:16R:SECMOVE
+:22H::CRDB//CRED
+:35B:ISIN ES0130625512
+SHS GRUPO EMPRESARIAL ENCE SA
+:98A::PAYD//20070426
+:16S:SECMOVE
+:16S:CAOPTN
+-}{5:{MAC:A569BD8B}{CHK:6135CC44A04D}{DLM:}}{S:{SAC:}{COP:S}}                                                                                                                                                                                                                                                                                                                                                                                                                                    {1:F21CASBADADAXXX6496811171}{4:{177:0704260801}{451:0}}{1:F01CASBADADAXXX6496811171}{2:O5681828070425CRESCHZZA80A27391075750704260753N}{3:{108:101000983809}}{4:
+:16R:GENL
+:20C::CORP//VH00000000378128
+:20C::SEME//F520070425-01778
+:23G:NEWM
+:22F::CAEV//BONU
+:98C::PREP//20070425182828
+:16S:GENL
+:16R:USECU
+:97A::SAFE//0835-0796413-65-004
+:35B:ISIN FR0004038099
+SHS GFI INFORMATIQUE
+:93B::ELIG//UNIT/4000,
+:16S:USECU
+:16R:ADDINFO
+:70F::ADTX//The AGM on 11.5.2007 will have to decide about an allotment of
+option to existing sharehiolders.
+The company has decided to issue GFI INFORMATIQUE SA shareholder
+options. They will be allotted on the following terms:
+.
+Allotment:   1 option for every 5 GFI INFORMATIQUE SA shares held
+Ex-date:     open
+.
+Terms of the options
+ -------------------
+Option right:    1 option entitle the holder to subscribe for
+                 1 new share GFI INFORMATIQUE SA
+Exercise price:  EUR 8.00 per new GFI INFORMATIQUE SA
+Exercise period: 5 years
+.
+Best regards
+Corporate Actions
+:16S:ADDINFO
+-}{5:{MAC:D13461BD}{CHK:071007333771}{DLM:}}{S:{SAC:}{COP:S}}                                                                                                                                                                                                                                                                                                                                                                                                                                 {1:F21CASBADADAXXX6496811179}{4:{177:0704260801}{451:0}}{1:F01CASBADADAXXX6496811179}{2:O5681841070425CRESCHZZA80A27391076820704260753N}{3:{108:647578003}}{4:
+:16R:GENL
+:20C::CORP//VH00000000378254
+:20C::SEME//F520070425-01780
+:23G:NEWM
+:22F::CAEV//OTHR
+:98C::PREP//20070425184137
+:16S:GENL
+:16R:USECU
+:97A::SAFE//0835-0796413-65-003
+:35B:ISIN ES0178344117
+SHS TELE PIZZA
+:93B::ELIG//UNIT/8259,
+:16S:USECU
+:16R:ADDINFO
+:70F::ADTX//
+FOODCO PASTRIES SPAIN, S.L.U. and MEDIMOSAL, S.L.U. already own 96.8
+pct and have delisted the shares of TELE PIZZA SA from the stock
+exchange.
+The Board of Directors of TELEPIZZA has called an EGM to be held on
+on 21./22.05.2007 in order to propose a capital decrease to be
+executed through the redemption of the remaining 3.2 pct of the
+the shares TELEPIZZA at a price of EUR 3.21 per share.
+This amount you can only obtain, if the required attendance (personal
+or represented through the sending of the  attendance form  ) will be
+a minimum of 25 pct of the affected shares and the votes of these
+shares.
+.
+In case of giving some voting instructions please contact your
+account manager.
+.
+Corporate Actions Dept.
+:16S:ADDINFO
+-}{5:{MAC:853C6C00}{CHK:6D274125179C}{DLM:}}{S:{SAC:}{COP:S}}                                                                                                                                                                                                                                                                                       {1:F21CASBADADAXXX6496811191}{4:{177:0704260801}{451:0}}{1:F01CASBADADAXXX6496811191}{2:O5681904070425MGTCBEBEIECL02384152320704260753N}{4:
+:16R:GENL
+:20C::CORP//CA000006903047
+:20C::SEME//000006903047/001
+:23G:NEWM
+:22F::CAEV//MEET
+:98C::PREP//20070425185618
+:16S:GENL
+:16R:USECU
+:97A::SAFE//20023
+:35B:/XS/014095837
+FORTIS BANK - REMOTE ENL
+:16R:FIA
+:12A::CLAS/ECLR/STOCK
+:11A::DENO//EUR
+:16S:FIA
+:16S:USECU
+:16R:ADDINFO
+:70F::ADTX//
++------------------------------------+
++ CORPORATE ACTION ALARM BELL REPORT +
++------------------------------------+
+.
+EXERCISE SECURITY : /XS/014095837
+.
+CORPORATE ACTION NUMBER:      6903047
+CORPORATE ACTION DESCRIPTION: HOLDERS' MEETING
+                    ANNUAL GENERAL MEETING
+EUROCLEAR INSTRUCTION DEADLINE:       26 APR 2007 16.00.00
+.
+BY DEFAULT, EOC WILL TAKE NO ACTION
+.
+PLEASE REFER TO FOLLOWING CORPORATE ACTION NR
+INFORMATION ON ACTION TO BE TAKEN.
+EUROCLEAR CONTACT:                    EQUITIES 4245
+.
+UNINSTRUCTED BALANCE:                 UNIT/+37,918.00
+NOAC INSTRUCTIONS   :                 UNIT/+0.00
+TOTAL               :                 UNIT/+37,918.00
+.
++---------SECURITIES BALANCES:
+CLEARANCE:                            UNIT/+37,918.00
+LENDING:                              UNIT/+842.00
+FOR FURTHER DETAILS ON BALANCES, PLEASE REFER TO THE RELEVANT
+MESSAGES/REPORTS MT571/MT535/R30
+.
++---------PENDING SETTLEMENT INSTRUCTIONS: NO
+.
++---------PENDING CORPORATE ACTION INSTRUCTIONS: NO
+PLEASE NOTE THAT THIS REPORT REFLECTS CORPORATE ACTION
+INSTRUCTIONS WHICH APPEARED IN THE SYSTEM SHORTLY BEFORE THE
+REPORT PREPARATION TIME.
+FOR FURTHER DETAILS ON STATUS OF INSTRUCTIONS, PLEASE REFER TO THE
+RELEVANT MESSAGES/REPORTS MT567/R25/R50
+.
+NMSG/END
+:16S:ADDINFO
+-}{5:{MAC:72CF65E9}{CHK:A4E34D9E5EC3}{DLM:}}{S:{SAC:}{COP:S}}                                                                                                                                                                                                                   

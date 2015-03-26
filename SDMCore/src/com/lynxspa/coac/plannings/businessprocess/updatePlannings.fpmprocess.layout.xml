@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="68" y="42" width="32" height="32"/>
+  <business-node id="Commit" x="397" y="31" width="130" height="100"/>
+  <business-node id="UpdateExecutionDate1" x="201" y="31" width="130" height="100"/>
+  <connection id="/business process/UpdateExecutionDate1/out/business process/Commit/in"/>
+  <connection id="/business process/input/business process/UpdateExecutionDate1/in"/>
+</fpm-process-layout>

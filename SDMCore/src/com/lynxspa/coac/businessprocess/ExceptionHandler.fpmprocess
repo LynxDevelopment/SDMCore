@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="sessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="true" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.processevents.BusinessProcessExceptionEvent" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacErrorHandler" type="com.lynxspa.coac.nodes.logs.LogCoacErrorHandler">
+    <n:params>
+      <dataSource type="REFERENCE">sessionFactory</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:listens-to id="input"/>
+  </n:business-node>
+</fpm:business-process>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="inputBloombergCommitSize" type="Integer" dynamic="false" required="true">
+      <description>inputBloombergCommitSize</description>
+    </param-definition>
+    <param-definition name="inputBloombergCron" type="String" dynamic="false" required="true">
+      <description>inputBloombergCron</description>
+    </param-definition>
+    <param-definition name="inputBloombergDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputBloombergDirectory</description>
+    </param-definition>
+    <param-definition name="inputBloombergErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputBloombergErrorDirectory</description>
+    </param-definition>
+    <param-definition name="inputBloombergPattern" type="String" dynamic="false" required="true">
+      <description>inputBloombergPattern</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCommitSize" type="Integer" dynamic="false" required="true">
+      <description>inputBloombergPerSecCommitSize</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCron" type="String" dynamic="false" required="true">
+      <description>inputBloombergPerSecCron</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputBloombergPerSecDirectory</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputBloombergPerSecErrorDirectory</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecPattern" type="String" dynamic="false" required="true">
+      <description>inputBloombergPerSecPattern</description>
+    </param-definition>
+    <param-definition name="inputIberclearCommitSize" type="Integer" dynamic="false" required="true">
+      <description>inputIberclearCommitSize</description>
+    </param-definition>
+    <param-definition name="inputIberclearCron" type="String" dynamic="false" required="true">
+      <description>inputIberclearCron</description>
+    </param-definition>
+    <param-definition name="inputIberclearDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputIberclearDirectory</description>
+    </param-definition>
+    <param-definition name="inputIberclearErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputIberclearErrorDirectory</description>
+    </param-definition>
+    <param-definition name="inputIberclearPattern" type="String" dynamic="false" required="true">
+      <description>inputIberclearPattern</description>
+    </param-definition>
+    <param-definition name="inputInversisCommitSize" type="Integer" dynamic="false" required="true">
+      <description>inputInversisCommitSize</description>
+    </param-definition>
+    <param-definition name="inputInversisCron" type="String" dynamic="false" required="true">
+      <description>inputInversisCron</description>
+    </param-definition>
+    <param-definition name="inputInversisDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputInversisDirectory</description>
+    </param-definition>
+    <param-definition name="inputInversisErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputInversisErrorDirectory</description>
+    </param-definition>
+    <param-definition name="inputInversisPattern" type="String" dynamic="false" required="true">
+      <description>inputInversisPattern</description>
+    </param-definition>
+    <param-definition name="inputOfivalCommitSize" type="Integer" dynamic="false" required="true">
+      <description>inputOfivalCommitSize</description>
+    </param-definition>
+    <param-definition name="inputOfivalCron" type="String" dynamic="false" required="true">
+      <description>inputOfivalCron</description>
+    </param-definition>
+    <param-definition name="inputOfivalDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputOfivalDirectory</description>
+    </param-definition>
+    <param-definition name="inputOfivalErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputOfivalErrorDirectory</description>
+    </param-definition>
+    <param-definition name="inputOfivalPattern" type="String" dynamic="false" required="true">
+      <description>inputOfivalPattern</description>
+    </param-definition>
+    <param-definition name="inputSwiftCommitSize" type="Integer" dynamic="false" required="true">
+      <description>inputSwiftCommitSize</description>
+    </param-definition>
+    <param-definition name="inputSwiftCron" type="String" dynamic="false" required="true">
+      <description>inputSwiftCron</description>
+    </param-definition>
+    <param-definition name="inputSwiftDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputSwiftDirectory</description>
+    </param-definition>
+    <param-definition name="inputSwiftErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputSwiftErrorDirectory</description>
+    </param-definition>
+    <param-definition name="inputSwiftPattern" type="String" dynamic="false" required="true">
+      <description>inputSwiftPattern</description>
+    </param-definition>
+    <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+      <description>inputTimeout</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>locale</description>
+    </param-definition>
+    <fpm:events>
+      <fpm:event id="BloombergFileCreated">
+        <fpm:producer id="BloombergFileCreated" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">inputBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">inputBloombergDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">InputBloombergPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="BloombergPerSecurityCorporateFileCreated">
+        <fpm:producer id="BloombergPerSecurityCorporateFileCreated" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">inputBloombergPerSecCorporatesCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">inputBloombergPerSecCorporatesDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">InputBloombergPerSecCorporatesPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="BloombergPerSecurityFileCreated">
+        <fpm:producer id="BloombergPerSecurityFileCreated" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">inputBloombergPerSecCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">inputBloombergPerSecDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">InputBloombergPerSecPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="IberclearFileCreated">
+        <fpm:producer id="IberclearFileCreated" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">inputIberclearCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">inputIberclearDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">inputIberclearPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="InversisFileCreated">
+        <fpm:producer id="InversisFileCreated" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">inputInversisCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">inputInversisDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">inputInversisPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="OfivalFileCreated">
+        <fpm:producer id="OfivalFileCreated" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">inputOfivalCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">inputOfivalDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">InputOfivalPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="SwiftFileCreated">
+        <fpm:producer id="SwiftFileCreated" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">inputSwiftCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">inputSwiftDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">InputSwiftPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+    </fpm:events>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource type="REFERENCE">HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications/>
+    <fpm:business-processes>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/businessprocess/ExceptionHandler.fpmprocess" excludeFromBuild="" id="ErrorHandler" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">IMPORTERERRORHANDLER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to process="Import Swift" event-name="exc"/>
+          <fpm:listens-to process="Import Ofival" event-name="exc"/>
+          <fpm:listens-to process="Import Bloomberg" event-name="exc"/>
+          <fpm:listens-to process="ImportIberclear" event-name="exc"/>
+          <fpm:listens-to process="ImportInversisProcess" event-name="exc"/>
+          <fpm:listens-to process="Import Bloomberg PerSecurity" event-name="exc"/>
+          <fpm:listens-to process="ImportBloombergPersecCorporatesProcess" event-name="exc"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/bloomberg/businessprocess/ImportBloomberg.fpmprocess" excludeFromBuild="" id="Import Bloomberg" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <inputBloombergCommitSize type="REFERENCE">inputBloombergCommitSize</inputBloombergCommitSize>
+          <inputBloombergErrorDirectory type="REFERENCE">inputBloombergErrorDirectory</inputBloombergErrorDirectory>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">COACBLOOMBERGIMPORTER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="bloombergFileCreated">
+          <fpm:listens-to producer="BloombergFileCreated"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/bloomberg/businessprocess/ImportBloombergPerSecurity.fpmprocess" excludeFromBuild="" id="Import Bloomberg PerSecurity" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <inputBloombergPerSecCommitSize type="REFERENCE">inputBloombergPerSecCommitSize</inputBloombergPerSecCommitSize>
+          <inputBloombergPerSecErrorDirectory type="REFERENCE">inputBloombergPerSecErrorDirectory</inputBloombergPerSecErrorDirectory>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">COACBLOOMBERGPERSECIMP</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="bloombergFileCreated">
+          <fpm:listens-to producer="BloombergPerSecurityFileCreated"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/ofival/businessprocess/ImportOfival.fpmprocess" excludeFromBuild="" id="Import Ofival" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <inputOfivalCommitSize type="REFERENCE">inputOfivalCommitSize</inputOfivalCommitSize>
+          <inputOfivalErrorDirectory type="REFERENCE">inputOfivalErrorDirectory</inputOfivalErrorDirectory>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">COACOFIVALIMPORTER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="ofivalFileCreated">
+          <fpm:listens-to producer="OfivalFileCreated"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/swift/businessprocess/ImportSwift.fpmprocess" excludeFromBuild="" id="Import Swift" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <inputSwiftCommitSize type="REFERENCE">inputSwiftCommitSize</inputSwiftCommitSize>
+          <inputSwiftErrorDirectory type="REFERENCE">inputSwiftErrorDirectory</inputSwiftErrorDirectory>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">COACSWIFTIMPORTER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="swiftFileCreated">
+          <fpm:listens-to producer="SwiftFileCreated"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/bloomberg/businessprocess/ImportBloombergPersecCorporates.fpmprocess" excludeFromBuild="" id="ImportBloombergPersecCorporatesProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <inputBloombergPerSecCorporatesCommitSize type="REFERENCE">inputBloombergPerSecCorporatesCommitSize</inputBloombergPerSecCorporatesCommitSize>
+          <inputBloombergPerSecCorporatesErrorDirectory type="REFERENCE">inputBloombergPerSecCorporatesErrorDirectory</inputBloombergPerSecCorporatesErrorDirectory>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">COACBLOOMBERGPERSECCORPIMP</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="bloombergFileCreated">
+          <fpm:listens-to producer="BloombergPerSecurityCorporateFileCreated"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/iberclear/businessprocess/ImportIberclear.fpmprocess" excludeFromBuild="" id="ImportIberclear" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <inputIberclearCommitSize type="REFERENCE">inputIberclearCommitSize</inputIberclearCommitSize>
+          <inputIberclearErrorDirectory type="REFERENCE">inputIberclearErrorDirectory</inputIberclearErrorDirectory>
+          <inputTimeOut type="REFERENCE">inputTimeout</inputTimeOut>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">COACIBERCLEARIMPORTER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="iberclearFileCreated">
+          <fpm:listens-to producer="IberclearFileCreated"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/inversis/businesprocess/ImportInversis.fpmprocess" excludeFromBuild="" id="ImportInversisProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <inputInversisCommitSize type="REFERENCE">inputInversisCommitSize</inputInversisCommitSize>
+          <inputInversisErrorDirectory type="REFERENCE">inputInversisErrorDirectory</inputInversisErrorDirectory>
+          <inputTimeOut type="REFERENCE">inputTimeout</inputTimeOut>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">COACINVERSISIMPORTED</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="inversisFileCreated">
+          <fpm:listens-to producer="InversisFileCreated"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+    </fpm:business-processes>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

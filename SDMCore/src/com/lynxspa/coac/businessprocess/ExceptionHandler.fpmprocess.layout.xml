@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="input" x="85" y="125" width="32" height="32"/>
+  <business-node id="LogCoacErrorHandler" x="241" y="112" width="130" height="100"/>
+  <connection id="/business process/input/business process/LogCoacErrorHandler/in"/>
+</fpm-process-layout>

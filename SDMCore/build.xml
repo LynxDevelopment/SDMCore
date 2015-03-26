@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="CorporateActionsCore-CustomerCleanUp" default="cleanUp (usable)" basedir=".">
+
+	<!-- Environment options -->
+	<property name="jar.name" value="coac-customer"/>
+	<property name="dir.config.base" value="${basedir}/basic_conf"/>
+	<property name="dir.config" value="${basedir}/conf"/>
+	
+	<!-- Targets -->
+	<target name="cleanUp (usable)" depends="clean,deploy"/>
+	
+	<target name="deploy" description="Cleans customer customization">
+		<echo>Deploying develop enviroment</echo>
+		<property name="properties.file" value="${dir.config}/develop.properties"/>
+		<copy file="${dir.config}/hibernate.cfg.xml" tofile="${basedir}/hibernate.cfg.xml" filtering="true" overwrite="true">
+			<filterset begintoken="@" endtoken="@" filtersfile="${properties.file}" />
+		</copy>
+		<copy file="${dir.config}/log4j-configuration.xml" tofile="${basedir}/log4j-configuration.xml" filtering="true" overwrite="true">
+			<filterset begintoken="@" endtoken="@" filtersfile="${properties.file}" />
+		</copy>
+		<copy file="${dir.config}/fpm_params.properties" tofile="${basedir}/fpm_params.properties" filtering="true" overwrite="true"/>
+		<delete verbose="true">
+			<fileset dir="${basedir}/lib" includes="*.jar"/>
+		</delete>
+		<copy todir="${basedir}/lib">
+			<fileset file="conf/lib/*.jar"/>
+		</copy>
+		<echo>Develop enviroment deployed</echo>
+	</target>
+	
+	<target name="clean" description="Cleans customer customization">
+		<echo>Start</echo>
+		<echo>	Overwritting customer configs</echo>
+		<delete dir="${dir.config}"/>
+		<mkdir dir="${dir.config}"/>
+		<copy overwrite="true" todir="${dir.config}">
+			<fileset dir="${dir.config.base}"/>
+		</copy>
+		<echo>	Deleting customer jars</echo>
+		<echo>End</echo>
+	</target>
+</project>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPImportProcess.out.FTPImport" x="311" y="106"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getPath.0com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.fileName" x="198" y="221"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getExtension.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.fileName" x="209" y="363"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPExportProcess.out.FTPExport" x="314" y="65"/>
+  <node name="com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.fileName" x="469" y="258"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isExecuteShellProcess.out.executeShell" x="315" y="27"/>
+  <node name="com.lynxit.fpm.functionlibraries.StringFunctions.concat.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.fileName" x="327" y="309"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFileName.0com.lynxit.fpm.functionlibraries.StringFunctions.concat.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.fileName" x="203" y="300"/>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.auditor"/>
+    <expanded status="false" fqn="in.auditor.creationDate"/>
+    <expanded status="false" fqn="in.auditor.creationDate.date"/>
+    <expanded status="false" fqn="in.auditor.creationDate.day"/>
+    <expanded status="false" fqn="in.auditor.creationDate.hours"/>
+    <expanded status="false" fqn="in.auditor.creationDate.minutes"/>
+    <expanded status="false" fqn="in.auditor.creationDate.month"/>
+    <expanded status="false" fqn="in.auditor.creationDate.seconds"/>
+    <expanded status="false" fqn="in.auditor.creationDate.time"/>
+    <expanded status="false" fqn="in.auditor.creationDate.timezoneOffset"/>
+    <expanded status="false" fqn="in.auditor.creationDate.year"/>
+    <expanded status="false" fqn="in.auditor.creationUser"/>
+    <expanded status="false" fqn="in.auditor.deleted"/>
+    <expanded status="false" fqn="in.auditor.refId"/>
+    <expanded status="false" fqn="in.cron"/>
+    <expanded status="false" fqn="in.executionDate"/>
+    <expanded status="false" fqn="in.executionDate.date"/>
+    <expanded status="false" fqn="in.executionDate.day"/>
+    <expanded status="false" fqn="in.executionDate.hours"/>
+    <expanded status="false" fqn="in.executionDate.minutes"/>
+    <expanded status="false" fqn="in.executionDate.month"/>
+    <expanded status="false" fqn="in.executionDate.seconds"/>
+    <expanded status="false" fqn="in.executionDate.time"/>
+    <expanded status="false" fqn="in.executionDate.timezoneOffset"/>
+    <expanded status="false" fqn="in.executionDate.year"/>
+    <expanded status="false" fqn="in.id"/>
+    <expanded status="false" fqn="in.manual"/>
+    <expanded status="false" fqn="in.name"/>
+    <expanded status="true" fqn="in.process"/>
+    <expanded status="false" fqn="in.process.auditor"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate"/>
+    <expanded status="false" fqn="in.process.auditor.creationUser"/>
+    <expanded status="false" fqn="in.process.auditor.deleted"/>
+    <expanded status="false" fqn="in.process.auditor.refId"/>
+    <expanded status="false" fqn="in.process.description"/>
+    <expanded status="false" fqn="in.process.id"/>
+    <expanded status="false" fqn="in.process.version"/>
+    <expanded status="false" fqn="in.template"/>
+    <expanded status="false" fqn="in.template.$size"/>
+    <expanded status="false" fqn="in.templateString"/>
+    <expanded status="false" fqn="in.version"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.FTPExport"/>
+    <expanded status="false" fqn="out.FTPImport"/>
+    <expanded status="false" fqn="out.cronn"/>
+    <expanded status="false" fqn="out.executeShell"/>
+    <expanded status="false" fqn="out.fileName"/>
+    <expanded status="false" fqn="out.fileToPath"/>
+    <expanded status="false" fqn="out.id"/>
+    <expanded status="false" fqn="out.lastExecutionDate"/>
+    <expanded status="false" fqn="out.lastExecutionDate.date"/>
+    <expanded status="false" fqn="out.lastExecutionDate.day"/>
+    <expanded status="false" fqn="out.lastExecutionDate.hours"/>
+    <expanded status="false" fqn="out.lastExecutionDate.minutes"/>
+    <expanded status="false" fqn="out.lastExecutionDate.month"/>
+    <expanded status="false" fqn="out.lastExecutionDate.seconds"/>
+    <expanded status="false" fqn="out.lastExecutionDate.time"/>
+    <expanded status="false" fqn="out.lastExecutionDate.timezoneOffset"/>
+    <expanded status="false" fqn="out.lastExecutionDate.year"/>
+    <expanded status="false" fqn="out.manual"/>
+    <expanded status="false" fqn="out.name"/>
+  </target>
+</operations-layout>

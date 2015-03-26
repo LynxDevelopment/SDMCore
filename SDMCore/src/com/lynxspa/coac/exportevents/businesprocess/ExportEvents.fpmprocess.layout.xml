@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="45" y="138" width="32" height="32"/>
+  <business-node id="Commit" x="1184" y="127" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="168" y="127" width="130" height="100"/>
+  <business-node id="LogCoacException" x="310" y="316" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="565" y="127" width="130" height="100"/>
+  <business-node id="Read" x="368" y="127" width="130" height="100"/>
+  <business-node id="SENT_BO_KO" x="743" y="274" width="130" height="100"/>
+  <business-node id="SENT_BO_OK" x="778" y="127" width="130" height="100"/>
+  <business-node id="Update" x="980" y="127" width="130" height="100"/>
+  <connection id="/business process/Update/out/business process/Commit/in"/>
+  <connection id="/business process/input/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/Read/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/Read/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/SENT_BO_OK/in"/>
+  <connection id="/business process/PatchedIteratorNode/exception/business process/SENT_BO_KO/exc"/>
+  <connection id="/business process/SENT_BO_OK/out/business process/Update/in"/>
+</fpm-process-layout>

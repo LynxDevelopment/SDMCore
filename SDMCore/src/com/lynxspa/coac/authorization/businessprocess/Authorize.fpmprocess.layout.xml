@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="input" x="24" y="260" width="32" height="32"/>
+  <business-node id="CallAuthorizationProcessor" x="726" y="248" width="130" height="100"/>
+  <business-node id="Commit" x="1350" y="258" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="131" y="248" width="130" height="100"/>
+  <business-node id="LogCoacException" x="327" y="408" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="533" y="116" width="130" height="100"/>
+  <business-node id="Read" x="327" y="248" width="130" height="100"/>
+  <business-node id="Rollback" x="940" y="441" width="130" height="100"/>
+  <business-node id="ToAuthorized" x="940" y="322" width="130" height="100"/>
+  <business-node id="ToManualAuthorization" x="940" y="196" width="130" height="100"/>
+  <business-node id="ToManualAuthorizationException" x="724" y="408" width="130" height="100"/>
+  <business-node id="Update" x="1159" y="258" width="130" height="100"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/CallAuthorizationProcessor/in"/>
+  <connection id="/business process/CallAuthorizationProcessor/false/business process/ToManualAuthorization/in"/>
+  <connection id="/business process/CallAuthorizationProcessor/true/business process/ToAuthorized/in"/>
+  <connection id="/business process/CallAuthorizationProcessor/exception/business process/Rollback/exc"/>
+  <connection id="/business process/Update/out/business process/Commit/in"/>
+  <connection id="/business process/input/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/Read/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/Read/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/PatchedIteratorNode/exception/business process/ToManualAuthorizationException/exc"/>
+  <connection id="/business process/ToAuthorized/out/business process/Update/in"/>
+  <connection id="/business process/ToManualAuthorization/out/business process/Update/in"/>
+</fpm-process-layout>

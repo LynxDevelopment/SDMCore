@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<switch:fpm-switch-config xmlns:switch="http://www.lynxit.com/fpm/config/switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config fpm-switch-config.xsd">
+  <switch:type>com.lynxspa.coac.plannings.beans.ControlPlanningsBean</switch:type>
+  <switch:enableDefault>true</switch:enableDefault>
+  <switch:language>JAVA</switch:language>
+  <switch:exits>
+    <switch:exit id="Execute Shell">
+      <switch:condition>return (message.isExecuteShell());</switch:condition>
+      <switch:description>Process to execute a SHELL</switch:description>
+    </switch:exit>
+    <switch:exit id="ftpPut">
+      <switch:condition>return (message.isFTPExport());</switch:condition>
+      <switch:description>Process to execute an FTP PUT</switch:description>
+    </switch:exit>
+    <switch:exit id="ftpGet">
+      <switch:condition>return (message.isFTPImport());</switch:condition>
+      <switch:description>Process to execute an FTP GET</switch:description>
+    </switch:exit>
+  </switch:exits>
+</switch:fpm-switch-config>

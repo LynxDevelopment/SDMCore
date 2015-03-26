@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="SecuritiesOfivalFileCreated" x="-393" y="129" width="32" height="32"/>
+  <business-node id="Commit" x="954" y="198" width="130" height="100"/>
+  <business-node id="ForkNode" x="750" y="122" width="130" height="100"/>
+  <business-node id="Format Validation" x="22" y="122" width="130" height="100"/>
+  <business-node id="LiveCycle Validation" x="-151" y="122" width="130" height="100"/>
+  <business-node id="LogCoacException" x="571" y="252" width="130" height="100"/>
+  <business-node id="OpenFile" x="193" y="122" width="130" height="100"/>
+  <business-node id="Parse" x="365" y="122" width="130" height="100"/>
+  <business-node id="Rollback" x="953" y="328" width="130" height="100"/>
+  <business-node id="toSecurityBean" x="567" y="122" width="130" height="100"/>
+  <subprocess id="Save" x="954" y="44" width="130" height="100"/>
+  <connection id="/business process/ForkNode/two/business process/Commit/in"/>
+  <connection id="/business process/toSecurityBean/out/business process/ForkNode/in"/>
+  <connection id="/business process/ForkNode/one/business process/Save/importedBean"/>
+  <connection id="/business process/ForkNode/exception/business process/Rollback/exc"/>
+  <connection id="/business process/LiveCycle Validation/out/business process/Format Validation/in"/>
+  <connection id="/business process/Format Validation/out/business process/OpenFile/in"/>
+  <connection id="/business process/SecuritiesOfivalFileCreated/business process/LiveCycle Validation/in"/>
+  <connection id="/business process/Parse/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/OpenFile/out/business process/Parse/in"/>
+  <connection id="/business process/Parse/out/business process/toSecurityBean/in"/>
+</fpm-process-layout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.sdm.entities.events.messages.CAEventMessage" outputBean="com.lynxspa.coac.normalizer.beans.MessageNormalizeBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <field name="message" type="com.lynxspa.coac.entities.events.messages.CAEventMessage">
+    <inputField name="in" cardinal="0"/>
+  </field>
+</mn:mapping-element>

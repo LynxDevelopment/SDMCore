@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="maxResultsToLoad" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.Event" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Event Type" type="com.lynxspa.coac.prenormalizer.nodes.EventTypeNormalizer">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Security"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="HibernateStandardCommit" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardCommit">
+    <n:params>
+      <commitEvery type="FIXED">1</commitEvery>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="java.lang.Object" id="LiveCycleValidatorNode" type="com.lynxspa.coac.nodes.LiveCycleValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <requiredLiveCycle type="FIXED">PRENORMALIZE_IMPORT</requiredLiveCycle>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Read"/>
+    <n:exit-to label="exception" name="exception" toNode="LogCoacException"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacException" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED"></arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">PRENORMALIZATION_FAIL</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Operation" type="com.lynxspa.coac.prenormalizer.nodes.OperationNormalizer">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Provider"/>
+    <n:exit-to label="exception" name="exception" toNode="Rollback"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.sdm.entities.events.messages.CAEventMessage" id="PatchedIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Operation"/>
+    <n:exit-to label="exception" name="exception" toNode="ToPNFA"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Provider" type="com.lynxspa.coac.prenormalizer.nodes.ProviderNormalizer">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Event Type"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" I="java.lang.Object" T="com.lynxspa.sdm.entities.events.messages.CAEventMessage" id="Read" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardRead">
+    <n:params>
+      <entityClass type="FIXED">com.lynxspa.sdm.entities.events.messages.CAEventMessage</entityClass>
+      <entityIdField type="FIXED">id</entityIdField>
+      <notes type="FIXED"></notes>
+      <numResults type="REFERENCE">maxResultsToLoad</numResults>
+      <parameters type="FIXED">
+        <values>
+          <value type="FIXED">false</value>
+          <value type="FIXED">"PRSD"</value>
+        </values>
+      </parameters>
+      <query type="FIXED">from CAEventMessage where auditor.deleted = :par0 and operationStatus.state.id.code = :par1 order by senderTimestamp,id asc</query>
+      <readMode type="FIXED">CURSOR_IDENTIFIER</readMode>
+      <readOnly type="FIXED">false</readOnly>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Rollback" type="com.lynxspa.fpm.nodes.hibernate.ExceptionRollbackNode">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">false</stopExceptionHandling>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Security" type="com.lynxspa.coac.prenormalizer.nodes.SecurityNormalizer">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="toNRMP"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="ToPNFA" type="com.lynxspa.coac.nodes.workflow.EventMessageChangeStateExceptionNode">
+    <n:params>
+      <commit type="FIXED">true</commit>
+      <createLog type="FIXED">true</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">PNFA</state>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Update" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardUpdate">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <flush type="FIXED">true</flush>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="HibernateStandardCommit"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="toNRMP" type="com.lynxspa.coac.nodes.workflow.EventMessageChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">false</activeMessageTransition>
+      <createLog type="FIXED">false</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <message type="FIXED"></message>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">PNRM</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Update"/>
+  </n:business-node>
+</fpm:business-process>

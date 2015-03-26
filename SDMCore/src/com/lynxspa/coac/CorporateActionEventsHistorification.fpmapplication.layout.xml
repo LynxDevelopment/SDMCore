@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="event" x="60" y="0" width="130" height="100"/>
+  <resource id="HibernateResource" x="60" y="182" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="60" y="305" width="130" height="100"/>
+  <business-process id="ErrorHandler" x="767" y="67" width="143" height="108"/>
+  <business-process id="EventsHistorificationProcess" x="353" y="45" width="315" height="108"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+  <connection id="/application/EventsHistorificationProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/EventsHistorificationProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/EventsHistorificationProcess/statelessSessionFactory"/>
+  <connection id="/application/event/events/application/EventsHistorificationProcess/input"/>
+</fpm-application-layout>

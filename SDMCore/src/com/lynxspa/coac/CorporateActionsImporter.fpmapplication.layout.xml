@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="BloombergFileCreated" x="43" y="6" width="130" height="100"/>
+  <event-producer id="BloombergPerSecurityCorporateFileCreated" x="47" y="773" width="130" height="100"/>
+  <event-producer id="BloombergPerSecurityFileCreated" x="47" y="639" width="130" height="100"/>
+  <event-producer id="IberclearFileCreated" x="45" y="383" width="130" height="100"/>
+  <event-producer id="InversisFileCreated" x="47" y="508" width="130" height="100"/>
+  <event-producer id="OfivalFileCreated" x="42" y="132" width="130" height="100"/>
+  <event-producer id="SwiftFileCreated" x="44" y="256" width="130" height="100"/>
+  <resource id="HibernateResource" x="44" y="903" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="42" y="1033" width="130" height="100"/>
+  <business-process id="ErrorHandler" x="712" y="230" width="143" height="108"/>
+  <business-process id="Import Bloomberg" x="285" y="6" width="324" height="108"/>
+  <business-process id="Import Bloomberg PerSecurity" x="282" y="639" width="325" height="108"/>
+  <business-process id="Import Ofival" x="283" y="132" width="324" height="108"/>
+  <business-process id="Import Swift" x="286" y="256" width="324" height="108"/>
+  <business-process id="ImportBloombergPersecCorporatesProcess" x="280" y="773" width="330" height="100"/>
+  <business-process id="ImportIberclear" x="286" y="383" width="324" height="108"/>
+  <business-process id="ImportInversisProcess" x="290" y="513" width="324" height="108"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+  <connection id="/application/Import Swift/exc/application/ErrorHandler/input"/>
+  <connection id="/application/Import Ofival/exc/application/ErrorHandler/input"/>
+  <connection id="/application/Import Bloomberg/exc/application/ErrorHandler/input"/>
+  <connection id="/application/ImportIberclear/exc/application/ErrorHandler/input"/>
+  <connection id="/application/ImportInversisProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/Import Bloomberg PerSecurity/exc/application/ErrorHandler/input"/>
+  <connection id="/application/ImportBloombergPersecCorporatesProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/Import Bloomberg/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/Import Bloomberg/statelessSessionFactory"/>
+  <connection id="/application/BloombergFileCreated/events/application/Import Bloomberg/bloombergFileCreated"/>
+  <connection id="/application/HibernateResource/resource/application/Import Bloomberg PerSecurity/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/Import Bloomberg PerSecurity/statelessSessionFactory"/>
+  <connection id="/application/BloombergPerSecurityFileCreated/events/application/Import Bloomberg PerSecurity/bloombergFileCreated"/>
+  <connection id="/application/HibernateResource/resource/application/Import Ofival/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/Import Ofival/statelessSessionFactory"/>
+  <connection id="/application/OfivalFileCreated/events/application/Import Ofival/ofivalFileCreated"/>
+  <connection id="/application/HibernateResource/resource/application/Import Swift/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/Import Swift/statelessSessionFactory"/>
+  <connection id="/application/SwiftFileCreated/events/application/Import Swift/swiftFileCreated"/>
+  <connection id="/application/HibernateResource/resource/application/ImportBloombergPersecCorporatesProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/ImportBloombergPersecCorporatesProcess/statelessSessionFactory"/>
+  <connection id="/application/BloombergPerSecurityCorporateFileCreated/events/application/ImportBloombergPersecCorporatesProcess/bloombergFileCreated"/>
+  <connection id="/application/HibernateResource/resource/application/ImportIberclear/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/ImportIberclear/statelessSessionFactory"/>
+  <connection id="/application/IberclearFileCreated/events/application/ImportIberclear/iberclearFileCreated"/>
+  <connection id="/application/HibernateResource/resource/application/ImportInversisProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/ImportInversisProcess/statelessSessionFactory"/>
+  <connection id="/application/InversisFileCreated/events/application/ImportInversisProcess/inversisFileCreated"/>
+</fpm-application-layout>

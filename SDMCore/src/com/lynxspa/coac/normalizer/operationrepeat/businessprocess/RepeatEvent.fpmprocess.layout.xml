@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="normalizableBean" x="30" y="313" width="32" height="32"/>
+  <output id="normalizableOutputBean" x="1192" y="320" width="32" height="32"/>
+  <business-node id="DecisionNode" x="572" y="300" width="130" height="100"/>
+  <business-node id="FindPreviousEvent" x="376" y="300" width="130" height="100"/>
+  <business-node id="Promote to Updater" x="190" y="300" width="130" height="100"/>
+  <subprocess id="Process as new message" x="828" y="133" width="130" height="100"/>
+  <subprocess id="Process as update message" x="835" y="460" width="130" height="100"/>
+  <connection id="/business process/FindPreviousEvent/out/business process/DecisionNode/in"/>
+  <connection id="/business process/DecisionNode/true/business process/Process as new message/normalizableBean"/>
+  <connection id="/business process/DecisionNode/false/business process/Process as update message/normalizableBean"/>
+  <connection id="/business process/Promote to Updater/out/business process/FindPreviousEvent/in"/>
+  <connection id="/business process/normalizableBean/business process/Promote to Updater/in"/>
+  <connection id="/business process/Process as new message/normalizableOutputBean/business process/normalizableOutputBean"/>
+  <connection id="/business process/Process as update message/normalizableOutputBean/business process/normalizableOutputBean"/>
+</fpm-process-layout>

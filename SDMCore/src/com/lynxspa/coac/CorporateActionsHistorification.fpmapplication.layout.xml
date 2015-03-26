@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="Delete Logs Event" x="59" y="492" width="130" height="100"/>
+  <event-producer id="Events Historification Event" x="62" y="336" width="130" height="100"/>
+  <event-producer id="MessageHistorification event" x="58" y="13" width="130" height="100"/>
+  <event-producer id="SecurityPortfolio Historification Event" x="63" y="180" width="130" height="100"/>
+  <resource id="HibernateResource" x="61" y="645" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="61" y="768" width="130" height="100"/>
+  <business-process id="DeletingLogsProcess" x="345" y="492" width="320" height="102"/>
+  <business-process id="ErrorHandler" x="784" y="35" width="156" height="108"/>
+  <business-process id="EventsHistorificationProcess" x="339" y="336" width="319" height="108"/>
+  <business-process id="Message Historication Process" x="336" y="13" width="319" height="108"/>
+  <business-process id="SecurityPortfolio Historification Process" x="337" y="180" width="319" height="108"/>
+  <connection id="/application/HibernateResource/resource/application/DeletingLogsProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/DeletingLogsProcess/statelessSessionFactory"/>
+  <connection id="/application/Delete Logs Event/events/application/DeletingLogsProcess/input"/>
+  <connection id="/application/DeletingLogsProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+  <connection id="/application/Message Historication Process/exc/application/ErrorHandler/input"/>
+  <connection id="/application/SecurityPortfolio Historification Process/exc/application/ErrorHandler/input"/>
+  <connection id="/application/EventsHistorificationProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/EventsHistorificationProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/EventsHistorificationProcess/statelessSessionFactory"/>
+  <connection id="/application/Events Historification Event/events/application/EventsHistorificationProcess/input"/>
+  <connection id="/application/HibernateResource/resource/application/Message Historication Process/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/Message Historication Process/statelessSessionFactory"/>
+  <connection id="/application/MessageHistorification event/events/application/Message Historication Process/input"/>
+  <connection id="/application/HibernateResource/resource/application/SecurityPortfolio Historification Process/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/SecurityPortfolio Historification Process/statelessSessionFactory"/>
+  <connection id="/application/SecurityPortfolio Historification Event/events/application/SecurityPortfolio Historification Process/input"/>
+</fpm-application-layout>

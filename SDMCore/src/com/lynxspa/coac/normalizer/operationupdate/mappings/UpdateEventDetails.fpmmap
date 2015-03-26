@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.normalizer.adapters.NormalizableUpdateAdapter" outputBean="com.lynxspa.sdm.entities.events.details.CAEventDetail" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <function name="com.lynxspa.coac.mappings.CoacFunctions.toCAEventDetail" code="13258275">
+    <inputField name="in.previousEventCollected.eventDetail" cardinal="0"/>
+  </function>
+  <field name="dynamicTable" type="java.lang.Object">
+    <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureDynamicTable" code="25717973">
+      <inputField name="in.eventDetail.dynamicTable" cardinal="0"/>
+      <inputField name="in.previousEventCollected.eventDetail.dynamicTable" cardinal="1"/>
+    </function>
+  </field>
+  <field name="executionDate" type="java.util.Date">
+    <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureDate" code="20481334">
+      <inputField name="in.eventDetail.executionDate" cardinal="0"/>
+      <inputField name="in.previousEventCollected.eventDetail.executionDate" cardinal="1"/>
+    </function>
+  </field>
+  <field name="expirationDate" type="java.util.Date">
+    <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureDate" code="14280327">
+      <inputField name="in.eventDetail.expirationDate" cardinal="0"/>
+      <inputField name="in.previousEventCollected.eventDetail.expirationDate" cardinal="1"/>
+    </function>
+  </field>
+  <field name="operationalDate" type="java.util.Date">
+    <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureDate" code="4052007">
+      <inputField name="in.eventDetail.operationalDate" cardinal="0"/>
+      <inputField name="in.previousEventCollected.eventDetail.operationalDate" cardinal="1"/>
+    </function>
+  </field>
+  <field name="subscriptionDate" type="java.util.Date">
+    <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureDate" code="8395127">
+      <inputField name="in.eventDetail.subscriptionDate" cardinal="0"/>
+      <inputField name="in.previousEventCollected.eventDetail.subscriptionDate" cardinal="1"/>
+    </function>
+  </field>
+</mn:mapping-element>

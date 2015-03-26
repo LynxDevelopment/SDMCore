@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.auditor"/>
+    <expanded status="false" fqn="in.cron"/>
+    <expanded status="false" fqn="in.id"/>
+    <expanded status="false" fqn="in.persecurityExp"/>
+    <expanded status="false" fqn="in.template"/>
+    <expanded status="false" fqn="in.version"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.cronExpression"/>
+  </target>
+</operations-layout>

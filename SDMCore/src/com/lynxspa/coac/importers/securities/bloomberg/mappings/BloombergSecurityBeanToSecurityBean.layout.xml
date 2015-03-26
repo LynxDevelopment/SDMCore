@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <node name="com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.security.ticker" x="202" y="602"/>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.RCode"/>
+    <expanded status="false" fqn="in.bloombergId"/>
+    <expanded status="false" fqn="in.country"/>
+    <expanded status="false" fqn="in.crncy"/>
+    <expanded status="false" fqn="in.difInteresting"/>
+    <expanded status="false" fqn="in.exchName"/>
+    <expanded status="false" fqn="in.exchangeShrt"/>
+    <expanded status="false" fqn="in.exchangeShrtToFilter"/>
+    <expanded status="false" fqn="in.file"/>
+    <expanded status="false" fqn="in.financialAsset"/>
+    <expanded status="false" fqn="in.idCusip"/>
+    <expanded status="false" fqn="in.idIsin"/>
+    <expanded status="false" fqn="in.idPrimaryExchange"/>
+    <expanded status="false" fqn="in.idSedol1"/>
+    <expanded status="false" fqn="in.idSedol2"/>
+    <expanded status="false" fqn="in.industryGroup"/>
+    <expanded status="false" fqn="in.industrySector"/>
+    <expanded status="false" fqn="in.industrySubGroup"/>
+    <expanded status="false" fqn="in.name"/>
+    <expanded status="false" fqn="in.namePrimaryExchange"/>
+    <expanded status="false" fqn="in.optionalValues"/>
+    <expanded status="false" fqn="in.outInteresting"/>
+    <expanded status="false" fqn="in.position"/>
+    <expanded status="false" fqn="in.relIndex"/>
+    <expanded status="false" fqn="in.securityType"/>
+    <expanded status="false" fqn="in.ticker"/>
+    <expanded status="false" fqn="in.tickerToFilter"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.action"/>
+    <expanded status="false" fqn="out.financialAsset"/>
+    <expanded status="false" fqn="out.format"/>
+    <expanded status="false" fqn="out.originName"/>
+    <expanded status="false" fqn="out.originPosition"/>
+    <expanded status="false" fqn="out.secDetails"/>
+    <expanded status="true" fqn="out.security"/>
+    <expanded status="false" fqn="out.security.auditor"/>
+    <expanded status="false" fqn="out.security.country"/>
+    <expanded status="false" fqn="out.security.currency"/>
+    <expanded status="false" fqn="out.security.cusip"/>
+    <expanded status="false" fqn="out.security.customerId"/>
+    <expanded status="false" fqn="out.security.expirationDate"/>
+    <expanded status="false" fqn="out.security.id"/>
+    <expanded status="false" fqn="out.security.inCustomerPortfolio"/>
+    <expanded status="false" fqn="out.security.indGroup"/>
+    <expanded status="false" fqn="out.security.indSector"/>
+    <expanded status="false" fqn="out.security.indSubGroup"/>
+    <expanded status="false" fqn="out.security.infoProviderId1"/>
+    <expanded status="false" fqn="out.security.infoProviderId2"/>
+    <expanded status="false" fqn="out.security.infoProviderId3"/>
+    <expanded status="false" fqn="out.security.isin"/>
+    <expanded status="true" fqn="out.security.market"/>
+    <expanded status="false" fqn="out.security.market.auditor"/>
+    <expanded status="false" fqn="out.security.market.city"/>
+    <expanded status="false" fqn="out.security.market.country"/>
+    <expanded status="false" fqn="out.security.market.customerId"/>
+    <expanded status="false" fqn="out.security.market.id"/>
+    <expanded status="false" fqn="out.security.market.mic"/>
+    <expanded status="false" fqn="out.security.market.name"/>
+    <expanded status="false" fqn="out.security.market.ticker"/>
+    <expanded status="false" fqn="out.security.market.version"/>
+    <expanded status="false" fqn="out.security.name"/>
+    <expanded status="false" fqn="out.security.planification"/>
+    <expanded status="false" fqn="out.security.relIndex"/>
+    <expanded status="false" fqn="out.security.secFinancialAssets"/>
+    <expanded status="true" fqn="out.security.securityDetail"/>
+    <expanded status="false" fqn="out.security.securityDetail.auditor"/>
+    <expanded status="false" fqn="out.security.securityDetail.dynamicTable"/>
+    <expanded status="false" fqn="out.security.securityDetail.id"/>
+    <expanded status="false" fqn="out.security.securityDetail.version"/>
+    <expanded status="false" fqn="out.security.securityType"/>
+    <expanded status="false" fqn="out.security.sedol"/>
+    <expanded status="false" fqn="out.security.ticker"/>
+    <expanded status="false" fqn="out.security.version"/>
+  </target>
+</operations-layout>

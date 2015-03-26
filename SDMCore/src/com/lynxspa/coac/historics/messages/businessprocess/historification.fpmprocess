@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="historificationCommitSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="historificationCron" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="sessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="HistorificationMessagesNode" type="com.lynxspa.coac.historics.messages.nodes.HistorificationMessagesNode">
+    <n:params>
+      <historificationCommitSize type="REFERENCE">historificationCommitSize</historificationCommitSize>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">sessionFactory</resource>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:listens-to id="input"/>
+  </n:business-node>
+</fpm:business-process>

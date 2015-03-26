@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="maxResultsToLoad" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.Event" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Add EventCollected to Message" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/GetCAEventMessageFromNormalizableBean.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="To NORMALIZED"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="CAEventToQuestionMap" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/CAEventToQuestion.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="GenerateQuestionsEventProcessor"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Commit" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardCommit">
+    <n:params>
+      <commitEvery type="FIXED">1</commitEvery>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="CommitNotNormalizable" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardCommit">
+    <n:params>
+      <commitEvery type="FIXED">1</commitEvery>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" id="ForkNode1" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="Add EventCollected to Message"/>
+    <n:exit-to label="two" name="two" toNode="CAEventToQuestionMap"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="java.util.Iterator&lt;com.lynxspa.sdm.entities.events.answers.CAQuestions&gt;" id="ForkNode11" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="PatchedIteratorNode1"/>
+    <n:exit-to label="two" name="two" toNode="GenerateDefaultAnswer"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="GenerateDefaultAnswer" type="com.lynxspa.coac.normalizer.nodes.GenerateDefaultAnswer">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode11"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="GenerateQuestionsEventProcessor" type="com.lynxspa.coac.normalizer.nodes.GenerateQuestionsEventProcessor">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ForkNode11"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="java.lang.Object" id="LiveCycleValidatorNode" type="com.lynxspa.coac.nodes.LiveCycleValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <requiredLiveCycle type="FIXED">NORMALIZE_MESSAGES</requiredLiveCycle>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Read"/>
+    <n:exit-to label="exception" name="exception" toNode="LogCoacException"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacException" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED"></arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">NORMALIZATION_FAIL</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Message to Normalizable" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/CAEventMessageToMessageNormalizeBean.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="OperationDecisionSwitch"/>
+    <n:exit-to label="exception" name="exception" toNode="Rollback"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/nodes/OperationDecision.fpmswitch" id="OperationDecisionSwitch" type="com.lynxit.fpm.nodes.internal.SwitchNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="new" name="new" toProcess="NewProcess" inputName="normalizableBean"/>
+    <n:exit-to label="update" name="update" toProcess="UpdateProcess" inputName="normalizableBean"/>
+    <n:exit-to label="cancel" name="cancel" toProcess="CancelProcess" inputName="normalizableBean"/>
+    <n:exit-to label="repeat" name="repeat" toProcess="RepeatProcess" inputName="normalizableBean"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.sdm.entities.events.messages.CAEventMessage" id="PatchedIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="is Normalizable"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.sdm.entities.events.answers.CAQuestions" id="PatchedIteratorNode1" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Save"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.sdm.entities.events.answers.CAEventHoldingAnswer" id="PatchedIteratorNode11" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Save"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" I="java.lang.Object" T="com.lynxspa.sdm.entities.events.messages.CAEventMessage" id="Read" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardRead">
+    <n:params>
+      <entityClass type="FIXED">com.lynxspa.sdm.entities.events.messages.CAEventMessage</entityClass>
+      <entityIdField type="FIXED">id</entityIdField>
+      <notes type="FIXED"></notes>
+      <numResults type="REFERENCE">maxResultsToLoad</numResults>
+      <parameters type="FIXED">
+        <values>
+          <value type="FIXED">false</value>
+          <value type="FIXED">"PNRM"</value>
+        </values>
+      </parameters>
+      <query type="FIXED">from CAEventMessage where auditor.deleted=:par0 and operationStatus.state.id.code=:par1 order by senderTimestamp,id asc</query>
+      <readMode type="FIXED">CURSOR_IDENTIFIER</readMode>
+      <readOnly type="FIXED">false</readOnly>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Rollback" type="com.lynxspa.fpm.nodes.hibernate.ExceptionRollbackNode">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">false</stopExceptionHandling>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Save" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardSave">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <flush type="FIXED">true</flush>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Commit"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="To NORMALIZED" type="com.lynxspa.coac.nodes.workflow.EventMessageChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">false</activeMessageTransition>
+      <createLog type="FIXED">false</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <message type="FIXED"></message>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">NORM</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="UpdateMessage"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="To NORMFAIL" type="com.lynxspa.coac.nodes.workflow.EventMessageChangeStateExceptionNode">
+    <n:params>
+      <commit type="FIXED">true</commit>
+      <createLog type="FIXED">true</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">NRFA</state>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="To NOTNORMALIZABLE" type="com.lynxspa.coac.nodes.workflow.EventMessageChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">true</activeMessageTransition>
+      <createLog type="FIXED">false</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <message type="DYNAMIC" language="BEAN_SHELL">process.getContextAttribute("not.normalizable.reason")</message>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">NNRM</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="CommitNotNormalizable"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="UpdateMessage" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardUpdate">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <flush type="FIXED">true</flush>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Commit"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="is Normalizable" type="com.lynxspa.coac.normalizer.nodes.NormalizationValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="normalizable" name="normalizable" toNode="Message to Normalizable"/>
+    <n:exit-to label="notNormalizable" name="notNormalizable" toNode="To NOTNORMALIZABLE"/>
+    <n:exit-to label="exception" name="exception" toNode="To NORMFAIL"/>
+  </n:business-node>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/operationcancel/businessprocess/CancelEvent.fpmprocess" excludeFromBuild="" id="CancelProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <user type="FIXED">COACNORMALIZERCANCEL</user>
+    </n:params>
+    <n:exit-to label="normalizableOutputBean" name="normalizableOutputBean" toNode="ForkNode1"/>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/operationnew/businessprocess/NewEvent.fpmprocess" excludeFromBuild="" id="NewProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <user type="FIXED">COACNORMALIZERNEW</user>
+    </n:params>
+    <n:exit-to label="normalizableOutputBean" name="normalizableOutputBean" toNode="ForkNode1"/>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/operationrepeat/businessprocess/RepeatEvent.fpmprocess" excludeFromBuild="" id="RepeatProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <user type="FIXED">COACNORMALIZERREPEAT</user>
+    </n:params>
+    <n:exit-to label="normalizableOutputBean" name="normalizableOutputBean" toNode="ForkNode1"/>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/operationupdate/businessprocess/UpdateEvent.fpmprocess" excludeFromBuild="" id="UpdateProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <user type="FIXED">COACNORMALIZERUPDATE</user>
+    </n:params>
+    <n:exit-to label="normalizableOutputBean" name="normalizableOutputBean" toNode="ForkNode1"/>
+  </n:subprocess>
+</fpm:business-process>

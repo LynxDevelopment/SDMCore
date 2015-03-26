@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.lynxit.fpm.shell.fpmExportConfiguration">
+<stringAttribute key="FILE_ENCODING" value="ISO-8859-1"/>
+<booleanAttribute key="HTML_CONSOLE_ENABLED" value="false"/>
+<stringAttribute key="HTML_CONSOLE_NAME" value="htmlAgent"/>
+<intAttribute key="HTML_CONSOLE_PORT" value="8000"/>
+<intAttribute key="INITIAL_MEMORY" value="128"/>
+<intAttribute key="MAX_MEMORY" value="128"/>
+<stringAttribute key="MODEL_FILE" value="src/com/lynxspa/coac/CorporateActions.fpmapplication"/>
+<booleanAttribute key="REMOTE_CONTROL_ENABLED" value="false"/>
+<intAttribute key="REMOTE_CONTROL_PORT" value="65000"/>
+<booleanAttribute key="REMOTE_CONTROL_SSL" value="false"/>
+<stringAttribute key="applicationName" value="CorporateActionsCore"/>
+<stringAttribute key="destinationFolder" value="D:\develop\workspaceCOAC\CorporateActionsCore\versions"/>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="CorporateActionsCore"/>
+<booleanAttribute key="org.eclipse.jdt.launching.STOP_IN_MAIN" value="false"/>
+<listAttribute key="resourcesToExport">
+<listEntry value="input/securities/funds"/>
+<listEntry value="hibernate.cfg.xml"/>
+<listEntry value="logs"/>
+<listEntry value="input/coacs/inversis"/>
+<listEntry value="input/coacs/bloomberg/persecurity/corporates"/>
+<listEntry value="input/coacs/swift/error"/>
+<listEntry value="input/coacs"/>
+<listEntry value="input/coacs/bloomberg"/>
+<listEntry value="input/securities/bloomberg/funds"/>
+<listEntry value="input/securities/bloomberg/fixedrent"/>
+<listEntry value="input/coacs/ofival"/>
+<listEntry value="input/securities/funds/examples"/>
+<listEntry value=""/>
+<listEntry value="input/securities/bloomberg/europeanequity"/>
+<listEntry value="input"/>
+<listEntry value="log4j-configuration.xml"/>
+<listEntry value="input/coacs/ofival/error"/>
+<listEntry value="input/coacs/bloomberg/persecurity/coupons/error"/>
+<listEntry value="fpm_params.properties"/>
+<listEntry value="conf/develop.properties"/>
+<listEntry value="input/coacs/bloomberg/persecurity"/>
+<listEntry value="input/coacs/iberclear"/>
+<listEntry value="input/securities/funds/examples/equity_fund_euro_sample10.out"/>
+<listEntry value="input/securities/funds/examples/equity_fund_euro_sample10_delete.dif"/>
+<listEntry value="input/coacs/bloomberg/persecurity/error"/>
+<listEntry value="input/coacs/swift"/>
+<listEntry value="input/coacs/iberclear/error"/>
+<listEntry value="input/securities/bloomberg"/>
+<listEntry value="input/plannings/temp"/>
+<listEntry value="log4j.dtd"/>
+<listEntry value="input/coacs/inversis/error"/>
+<listEntry value="input/securities/bloomberg/noeuropeanequity"/>
+<listEntry value="input/securities/ofival"/>
+<listEntry value="input/coacs/bloomberg/persecurity/coupons"/>
+<listEntry value="input/securities"/>
+<listEntry value="input/coacs/bloomberg/error"/>
+<listEntry value="conf"/>
+<listEntry value="input/coacs/bloomberg/persecurity/corporates/error"/>
+<listEntry value="input/plannings"/>
+</listAttribute>
+</launchConfiguration>

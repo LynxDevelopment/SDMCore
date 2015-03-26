@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="eventsHistorificationCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="eventsHistorificationCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events>
+      <fpm:event id="event">
+        <fpm:producer id="event" type="com.lynxspa.fpm.events.StandardEventProducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <cronExpression type="REFERENCE">eventsHistorificationCron</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+    </fpm:events>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource type="REFERENCE">HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications/>
+    <fpm:business-processes>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/businessprocess/ExceptionHandler.fpmprocess" excludeFromBuild="" id="ErrorHandler" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">EVENTHISTORIFERRORHANDLER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to process="EventsHistorificationProcess" event-name="exc"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/historics/events/businessprocess/eventsHistorification.fpmprocess" excludeFromBuild="" id="EventsHistorificationProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <eventsHistorificationCommitSize type="REFERENCE">eventsHistorificationCommitSize</eventsHistorificationCommitSize>
+          <eventsHistorificationCron type="REFERENCE">eventsHistorificationCron</eventsHistorificationCron>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">EVENTSHISTORIFIER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to producer="event"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+    </fpm:business-processes>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

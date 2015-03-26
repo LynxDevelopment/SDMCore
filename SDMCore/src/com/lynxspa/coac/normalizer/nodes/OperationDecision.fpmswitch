@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<switch:fpm-switch-config xmlns:switch="http://www.lynxit.com/fpm/config/switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config fpm-switch-config.xsd">
+  <switch:type>com.lynxspa.coac.normalizer.adapters.NormalizableAdapter</switch:type>
+  <switch:enableDefault>false</switch:enableDefault>
+  <switch:language>JAVA</switch:language>
+  <switch:exits>
+    <switch:exit id="new">
+      <switch:condition>return ((com.lynxspa.sdm.dictionaries.CAOperation.NEW.getCode().equals(message.getMessage().getNormalizedOperation()))&amp;&amp;(!message.getMessage().isExtension()));</switch:condition>
+      <switch:description>New event</switch:description>
+    </switch:exit>
+    <switch:exit id="update">
+      <switch:condition>return ((com.lynxspa.sdm.dictionaries.CAOperation.UPDATE.getCode().equals(message.getMessage().getNormalizedOperation()))||(message.getMessage().isExtension()));</switch:condition>
+      <switch:description>Update event</switch:description>
+    </switch:exit>
+    <switch:exit id="cancel">
+      <switch:condition>return ((com.lynxspa.sdm.dictionaries.CAOperation.CANCELATION.getCode().equals(message.getMessage().getNormalizedOperation()))&amp;&amp;(!message.getMessage().isExtension()));</switch:condition>
+      <switch:description>Cancel event</switch:description>
+    </switch:exit>
+    <switch:exit id="repeat">
+      <switch:condition>return ((com.lynxspa.sdm.dictionaries.CAOperation.REPEAT.getCode().equals(message.getMessage().getNormalizedOperation()))&amp;&amp;(!message.getMessage().isExtension()));</switch:condition>
+      <switch:description>Repeat event</switch:description>
+    </switch:exit>
+  </switch:exits>
+</switch:fpm-switch-config>

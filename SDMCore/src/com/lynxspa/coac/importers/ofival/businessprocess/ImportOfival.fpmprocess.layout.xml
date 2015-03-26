@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="OfivalFileCreated" x="-181" y="437" width="32" height="32"/>
+  <business-node id="Commit" x="2653" y="400" width="130" height="100"/>
+  <business-node id="DuplicateImportsFilter" x="2163" y="400" width="130" height="100"/>
+  <business-node id="ExceptionRollbackNode" x="2654" y="540" width="130" height="100"/>
+  <business-node id="FilterMessages" x="859" y="425" width="130" height="100"/>
+  <business-node id="FormatValidatorNode" x="211" y="425" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="-4" y="425" width="130" height="100"/>
+  <business-node id="Log Ofival Import exception" x="865" y="557" width="130" height="100"/>
+  <business-node id="OfivalParserNode" x="673" y="425" width="130" height="100"/>
+  <business-node id="OfivalSwitchNode" x="1308" y="425" width="130" height="100"/>
+  <business-node id="OpenFile" x="446" y="425" width="130" height="100"/>
+  <business-node id="PreprocessAMP" x="1735" y="36" width="130" height="24"/>
+  <business-node id="PreprocessAMS" x="1735" y="959" width="130" height="8"/>
+  <business-node id="PreprocessCUP" x="1735" y="1043" width="130" height="8"/>
+  <business-node id="PreprocessCVC" x="1735" y="538" width="130" height="17"/>
+  <business-node id="PreprocessDAC" x="1735" y="120" width="130" height="13"/>
+  <business-node id="PreprocessDEV" x="1735" y="203" width="130" height="8"/>
+  <business-node id="PreprocessFUS" x="1735" y="707" width="130" height="8"/>
+  <business-node id="PreprocessFVL" x="1735" y="791" width="130" height="16"/>
+  <business-node id="PreprocessOPA" x="1735" y="370" width="130" height="26"/>
+  <business-node id="PreprocessOPV" x="1735" y="455" width="130" height="11"/>
+  <business-node id="PreprocessOfival" x="1050" y="425" width="130" height="100"/>
+  <business-node id="PreprocessRFJ" x="1735" y="875" width="130" height="8"/>
+  <business-node id="PreprocessSPL" x="1735" y="286" width="130" height="8"/>
+  <business-node id="PreprocessTHR" x="1735" y="622" width="130" height="8"/>
+  <subprocess id="SaveImportedMessageProcess" x="2355" y="400" width="130" height="100"/>
+  <connection id="/business process/SaveImportedMessageProcess/importedMessage/business process/Commit/in"/>
+  <connection id="/business process/OfivalSwitchNode/default/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessAMP/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessAMS/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessCUP/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessCVC/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessDAC/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessDEV/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessFUS/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessFVL/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessOPA/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessOPV/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessRFJ/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessSPL/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/PreprocessTHR/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/DuplicateImportsFilter/out/business process/SaveImportedMessageProcess/importedMessage"/>
+  <connection id="/business process/SaveImportedMessageProcess/exc/business process/ExceptionRollbackNode/exc"/>
+  <connection id="/business process/OfivalParserNode/out/business process/FilterMessages/in"/>
+  <connection id="/business process/FilterMessages/out/business process/PreprocessOfival/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/FormatValidatorNode/in"/>
+  <connection id="/business process/FormatValidatorNode/out/business process/OpenFile/in"/>
+  <connection id="/business process/OfivalFileCreated/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/OfivalParserNode/exception/business process/Log Ofival Import exception/exc"/>
+  <connection id="/business process/OpenFile/out/business process/OfivalParserNode/in"/>
+  <connection id="/business process/PreprocessOfival/out/business process/OfivalSwitchNode/in"/>
+  <connection id="/business process/OfivalSwitchNode/amp/business process/PreprocessAMP/in"/>
+  <connection id="/business process/OfivalSwitchNode/dac/business process/PreprocessDAC/in"/>
+  <connection id="/business process/OfivalSwitchNode/dev/business process/PreprocessDEV/in"/>
+  <connection id="/business process/OfivalSwitchNode/spl/business process/PreprocessSPL/in"/>
+  <connection id="/business process/OfivalSwitchNode/opa/business process/PreprocessOPA/in"/>
+  <connection id="/business process/OfivalSwitchNode/opv/business process/PreprocessOPV/in"/>
+  <connection id="/business process/OfivalSwitchNode/cvc/business process/PreprocessCVC/in"/>
+  <connection id="/business process/OfivalSwitchNode/thr/business process/PreprocessTHR/in"/>
+  <connection id="/business process/OfivalSwitchNode/fus/business process/PreprocessFUS/in"/>
+  <connection id="/business process/OfivalSwitchNode/fvl/business process/PreprocessFVL/in"/>
+  <connection id="/business process/OfivalSwitchNode/rfj/business process/PreprocessRFJ/in"/>
+  <connection id="/business process/OfivalSwitchNode/ams/business process/PreprocessAMS/in"/>
+  <connection id="/business process/OfivalSwitchNode/cup/business process/PreprocessCUP/in"/>
+</fpm-process-layout>

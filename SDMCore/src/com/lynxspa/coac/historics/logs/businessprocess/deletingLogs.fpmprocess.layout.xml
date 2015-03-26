@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="258" y="120" width="32" height="32"/>
+  <business-node id="HistorificationLogsNode" x="418" y="109" width="130" height="100"/>
+  <connection id="/business process/input/business process/HistorificationLogsNode/in"/>
+</fpm-process-layout>

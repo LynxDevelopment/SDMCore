@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="StandardEventProducer" x="97" y="89" width="130" height="100"/>
+  <resource id="HibernateResource" x="129" y="265" width="130" height="100"/>
+  <business-process id="ErrorHandler" x="695" y="111" width="143" height="108"/>
+  <business-process id="SendBackOfficeProcess" x="328" y="89" width="279" height="100"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+  <connection id="/application/SendBackOfficeProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/SendBackOfficeProcess/statefullSession"/>
+  <connection id="/application/StandardEventProducer/events/application/SendBackOfficeProcess/input"/>
+</fpm-application-layout>

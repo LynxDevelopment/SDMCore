@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="event" x="50" y="50" width="130" height="100"/>
+  <resource id="HibernateResource" x="50" y="339" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="50" y="462" width="130" height="100"/>
+  <business-process id="ErrorHandler" x="778" y="130" width="143" height="108"/>
+  <business-process id="LiveTimeEventsHistorifiedProcess" x="295" y="50" width="329" height="108"/>
+  <business-process id="LiveTimeMessagesHistorifiedProcess" x="295" y="198" width="329" height="108"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+  <connection id="/application/LiveTimeMessagesHistorifiedProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/LiveTimeEventsHistorifiedProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/LiveTimeEventsHistorifiedProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/LiveTimeEventsHistorifiedProcess/statelessSessionFactory"/>
+  <connection id="/application/event/events/application/LiveTimeEventsHistorifiedProcess/input"/>
+  <connection id="/application/HibernateResource/resource/application/LiveTimeMessagesHistorifiedProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/LiveTimeMessagesHistorifiedProcess/statelessSessionFactory"/>
+  <connection id="/application/event/events/application/LiveTimeMessagesHistorifiedProcess/input"/>
+</fpm-application-layout>

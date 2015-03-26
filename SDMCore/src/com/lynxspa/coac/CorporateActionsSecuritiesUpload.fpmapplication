@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>param2</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergCron" type="String" dynamic="false" required="true">
+      <description>param4</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergDebtInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergFundsInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergPattern" type="String" dynamic="false" required="true">
+      <description>param7</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergPatternDif" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergRVNoEuropeInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerCommitSize" type="Integer" dynamic="false" required="false">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerPattern" type="String" dynamic="false" required="true">
+      <description>param3</description>
+    </param-definition>
+    <param-definition name="securitiesUploadForceMarketInsert" type="Boolean" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsPatternDif" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events>
+      <fpm:event id="Bloomberg Base">
+        <fpm:producer id="Bloomberg Base" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Bloomberg Differences">
+        <fpm:producer id="Bloomberg Differences" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPatternDif</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Bloomberg Fondos">
+        <fpm:producer id="Bloomberg Fondos" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergFundsInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Bloomberg Fondos Diff">
+        <fpm:producer id="Bloomberg Fondos Diff" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergFundsInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPatternDif</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Bloomberg RF Diff">
+        <fpm:producer id="Bloomberg RF Diff" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergDebtInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPatternDif</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Bloomberg RV No Europea">
+        <fpm:producer id="Bloomberg RV No Europea" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergRVNoEuropeInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Bloomberg RVNE Diff">
+        <fpm:producer id="Bloomberg RVNE Diff" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergRVNoEuropeInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPatternDif</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Bloomberg Renta Fija">
+        <fpm:producer id="Bloomberg Renta Fija" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadBloombergCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadBloombergDebtInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadBloombergPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Customer">
+        <fpm:producer id="Customer" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadCustomerCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadCustomerInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadCustomerPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Funds Base">
+        <fpm:producer id="Funds Base" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadFundsCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadFundsInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadFundsPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Funds Differences">
+        <fpm:producer id="Funds Differences" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadFundsCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadFundsInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadFundsPatternDif</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Ofival Base">
+        <fpm:producer id="Ofival Base" type="com.lynxspa.fpm.events.StandardFileCreatedEventproducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <caseSensitivePattern type="FIXED">true</caseSensitivePattern>
+            <cronExpression type="REFERENCE">securitiesUploadOfivalCron</cronExpression>
+            <detectAlreadyExistentFiles type="FIXED">true</detectAlreadyExistentFiles>
+            <includeSubdirectories type="FIXED">false</includeSubdirectories>
+            <inputDirectory type="REFERENCE">securitiesUploadOfivalInputDirectory</inputDirectory>
+            <notes type="FIXED"></notes>
+            <pattern type="REFERENCE">securitiesUploadOfivalPattern</pattern>
+            <waitTimeout type="REFERENCE">inputTimeout</waitTimeout>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+    </fpm:events>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource type="REFERENCE">HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications/>
+    <fpm:business-processes>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/businessprocess/ExceptionHandler.fpmprocess" excludeFromBuild="" id="ErrorHandler" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">SECURITIESUPLOADERRORHANDLER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to process="SecurityUploadProcess" event-name="exc"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/importers/securities/businessprocess/SecurityUpload.fpmprocess" excludeFromBuild="" id="SecurityUploadProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <bloombergCommitSize type="REFERENCE">securitiesUploadBloombergCommitSize</bloombergCommitSize>
+          <bloombergDebtPath type="REFERENCE">securitiesUploadBloombergDebtInputDirectory</bloombergDebtPath>
+          <bloombergFundsPath type="REFERENCE">securitiesUploadBloombergFundsInputDirectory</bloombergFundsPath>
+          <bloombergPath type="REFERENCE">securitiesUploadBloombergInputDirectory</bloombergPath>
+          <bloombergRVNoEuroPath type="REFERENCE">securitiesUploadBloombergRVNoEuropeInputDirectory</bloombergRVNoEuroPath>
+          <customerCommitSize type="REFERENCE">securitiesUploadCustomerCommitSize</customerCommitSize>
+          <customerSecurityUploadPath type="REFERENCE">securitiesUploadCustomerInputDirectory</customerSecurityUploadPath>
+          <fundsCommitSize type="REFERENCE">securitiesUploadFundsCommitSize</fundsCommitSize>
+          <fundsPath type="REFERENCE">securitiesUploadFundsInputDirectory</fundsPath>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <ofivalCommitSize type="REFERENCE">securitiesUploadOfivalCommitSize</ofivalCommitSize>
+          <ofivalPath type="REFERENCE">securitiesUploadOfivalInputDirectory</ofivalPath>
+          <securitiesUploadForceMarketInsert type="REFERENCE">securitiesUploadForceMarketInsert</securitiesUploadForceMarketInsert>
+          <user type="FIXED">IMPORTUPLOAD</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="fileCreated">
+          <fpm:listens-to producer="Ofival Base"/>
+          <fpm:listens-to producer="Bloomberg Base"/>
+          <fpm:listens-to producer="Bloomberg Differences"/>
+          <fpm:listens-to producer="Funds Base"/>
+          <fpm:listens-to producer="Funds Differences"/>
+          <fpm:listens-to producer="Bloomberg RV No Europea"/>
+          <fpm:listens-to producer="Bloomberg Fondos"/>
+          <fpm:listens-to producer="Bloomberg Renta Fija"/>
+          <fpm:listens-to producer="Bloomberg RVNE Diff"/>
+          <fpm:listens-to producer="Bloomberg Fondos Diff"/>
+          <fpm:listens-to producer="Bloomberg RF Diff"/>
+          <fpm:listens-to producer="Customer"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+    </fpm:business-processes>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

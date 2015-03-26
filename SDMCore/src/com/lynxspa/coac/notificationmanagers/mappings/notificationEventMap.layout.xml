@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.auditor"/>
+    <expanded status="false" fqn="in.entityDeadLine"/>
+    <expanded status="false" fqn="in.eventType"/>
+    <expanded status="false" fqn="in.executionDate"/>
+    <expanded status="false" fqn="in.expirationDate"/>
+    <expanded status="false" fqn="in.groupedEvents"/>
+    <expanded status="false" fqn="in.id"/>
+    <expanded status="false" fqn="in.mandatory"/>
+    <expanded status="false" fqn="in.masterEvent"/>
+    <expanded status="false" fqn="in.operationStatus"/>
+    <expanded status="false" fqn="in.operationalDate"/>
+    <expanded status="false" fqn="in.providerCancelled"/>
+    <expanded status="false" fqn="in.providerUpdated"/>
+    <expanded status="false" fqn="in.security"/>
+    <expanded status="false" fqn="in.subscriptionDate"/>
+    <expanded status="false" fqn="in.version"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.email"/>
+    <expanded status="false" fqn="out.eventCalendar"/>
+    <expanded status="false" fqn="out.eventDate"/>
+    <expanded status="false" fqn="out.eventGroup"/>
+    <expanded status="false" fqn="out.multipart"/>
+    <expanded status="false" fqn="out.subject"/>
+  </target>
+</operations-layout>

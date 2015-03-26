@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.notificationmanagers.beans.NotificationEventBean" outputBean="com.lynxspa.sdm.entities.events.CAEventGroup" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <inputField name="in.eventGroup" cardinal="0"/>
+</mn:mapping-element>

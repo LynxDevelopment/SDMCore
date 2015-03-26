@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsImporter"> 
+    <event-producer id="BloombergFileCreated"/>  
+    <event-producer id="OfivalFileCreated"/>  
+    <event-producer id="SwiftFileCreated"/>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process>  
+    <business-process id="Import Bloomberg"> 
+      <node id="Preprocess"/>  
+      <node id="ImportValidator"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="Commit"/>  
+      <node id="FilterMessages"/>  
+      <node id="BloombergParserNode"/>  
+      <node id="Log Swift Import exception"/>  
+      <node id="DuplicateImportsFilter"/>  
+      <node id="OpenFile"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="ForkNode"/>  
+        <node id="GetMessageFields"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode1"/>  
+        <node id="ForeachField"/>  
+        <node id="PatchedCollectionIteratorNode"/> 
+      </business-process>  
+      <node id="FormatValidatorNode"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="Log Bloomberg Import exception"/> 
+    </business-process>  
+    <business-process id="Import Ofival"> 
+      <node id="PreprocessCVC"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="PreprocessCUP"/>  
+      <node id="PreprocessDEV"/>  
+      <node id="PreprocessOPA"/>  
+      <node id="Log Swift Import exception"/>  
+      <node id="PreprocessAMS"/>  
+      <node id="PreprocessFUS"/>  
+      <node id="PreprocessDAC"/>  
+      <node id="ImportValidator"/>  
+      <node id="OfivalParserNode"/>  
+      <node id="PreprocessTHR"/>  
+      <node id="PreprocessOPV"/>  
+      <node id="PreprocessFVL"/>  
+      <node id="PreprocessRFJ"/>  
+      <node id="Commit"/>  
+      <node id="OfivalSwitchNode"/>  
+      <node id="FilterMessages"/>  
+      <node id="PreprocessSPL"/>  
+      <node id="DuplicateImportsFilter"/>  
+      <node id="PreprocessOfival"/>  
+      <node id="OpenFile"/>  
+      <node id="PreprocessAMP"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="ForkNode"/>  
+        <node id="GetMessageFields"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode1"/>  
+        <node id="ForeachField"/>  
+        <node id="PatchedCollectionIteratorNode"/> 
+      </business-process>  
+      <node id="FormatValidatorNode"/>  
+      <node id="Log Ofival Import exception"/>  
+      <node id="LiveCycleValidatorNode"/> 
+    </business-process>  
+    <business-process id="Import Swift"> 
+      <node id="Preprocess566"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="Preprocess565"/>  
+      <node id="Log Swift Import exception"/>  
+      <node id="PreprocessSwift"/>  
+      <node id="Preprocess568"/>  
+      <node id="ImportValidator"/>  
+      <node id="SwiftSwitchNode"/>  
+      <node id="Commit"/>  
+      <node id="FilterMessages"/>  
+      <node id="DuplicateImportsFilter"/>  
+      <node id="Preprocess564"/>  
+      <node id="Preprocess567"/>  
+      <node id="SwiftParserNode"/>  
+      <node id="OpenFile"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="ForkNode"/>  
+        <node id="GetMessageFields"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode1"/>  
+        <node id="ForeachField"/>  
+        <node id="PatchedCollectionIteratorNode"/> 
+      </business-process>  
+      <node id="FormatValidatorNode"/>  
+      <node id="LiveCycleValidatorNode"/> 
+    </business-process>  
+    <event-producer id="IberclearFileCreated"/>  
+    <business-process id="ImportIberclear"> 
+      <node id="IberclearParserNode"/>  
+      <node id="LogCoacException"/>  
+      <node id="FormatValidatorNode"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="ImportFilter"/>  
+      <node id="OpenFile"/>  
+      <node id="Commit"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="DuplicateImportsFilter"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="ForeachField"/>  
+        <node id="GetMessageFields"/>  
+        <node id="ForkNode1"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode"/>  
+        <node id="PatchedCollectionIteratorNode"/> 
+      </business-process>  
+      <node id="MappingNode"/>  
+      <node id="Log Iberclear Import exception"/> 
+    </business-process>  
+    <event-producer id="InversisFileCreated"/>  
+    <business-process id="ImportInversisProcess"> 
+      <node id="InversisParserNode"/>  
+      <node id="Log Inversis Import exception"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="FormatValidatorNode"/>  
+      <node id="Commit"/>  
+      <node id="DuplicateImportsFilter"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="ImportFilter"/>  
+      <node id="MappingNode"/>  
+      <node id="OpenFile"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="ForkNode"/>  
+        <node id="GetMessageFields"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode1"/>  
+        <node id="ForeachField"/>  
+        <node id="PatchedCollectionIteratorNode"/> 
+      </business-process> 
+    </business-process>  
+    <event-producer id="BloombergPerSecurityFileCreated"/>  
+    <business-process id="ImportBloombergPerSecurityProcess"> 
+      <node id="Preprocess"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="FormatValidatorNode"/>  
+      <node id="Commit"/>  
+      <node id="FilterMessages"/>  
+      <node id="DuplicateImportsFilter"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="Log Bloomberg Import exception"/>  
+      <node id="OpenFile"/>  
+      <node id="BloombergPerSecParserNode"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="PatchedCollectionIteratorNode"/>  
+        <node id="ForkNode"/>  
+        <node id="GetMessageFields"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode1"/>  
+        <node id="ForeachField"/> 
+      </business-process> 
+    </business-process>  
+    <business-process id="Import Bloomberg PerSecurity"> 
+      <node id="Preprocess"/>  
+      <node id="EventTypeSwitch"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="FormatValidatorNode"/>  
+      <node id="Commit"/>  
+      <node id="FilterMessages"/>  
+      <node id="DuplicatesFilter"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="Parse"/>  
+      <node id="Log Bloomberg Import exception"/>  
+      <node id="OpenFile"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="PatchedCollectionIteratorNode"/>  
+        <node id="ForkNode"/>  
+        <node id="GetMessageFields"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode1"/>  
+        <node id="ForeachField"/> 
+      </business-process>  
+      <node id="PreprocessCPN"/> 
+    </business-process>  
+    <event-producer id="BloombergPerSecurityCorporateFileCreated"/>  
+    <business-process id="ImportBloombergPersecCorporatesProcess"> 
+      <node id="ExceptionRollbackNode"/>  
+      <node id="FormatValidatorNode"/>  
+      <node id="Commit"/>  
+      <node id="FilterMessages"/>  
+      <node id="BloombergParserNode"/>  
+      <node id="DuplicateImportsFilter"/>  
+      <node id="PreprocessPersecurityBloombergMap"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="Log Bloomberg Import exception"/>  
+      <node id="OpenFile"/>  
+      <business-process id="SaveImportedMessageProcess"> 
+        <node id="GetMessage"/>  
+        <node id="PatchedCollectionIteratorNode"/>  
+        <node id="ForkNode"/>  
+        <node id="GetMessageFields"/>  
+        <node id="LogCoacException"/>  
+        <node id="HibernateStandardSave"/>  
+        <node id="ForkNode1"/>  
+        <node id="ForeachField"/> 
+      </business-process> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

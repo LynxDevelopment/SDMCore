@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <resource id="HibernateResource" x="76" y="219" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="87" y="468" width="130" height="100"/>
+  <sub-application id="ImportBloombergFieldsApplication" x="768" y="30" width="175" height="115"/>
+  <sub-application id="ImportBloombergSecuritiesApplication" x="724" y="292" width="130" height="100"/>
+  <sub-application id="SDMNormalizerApplication" x="673" y="508" width="130" height="100"/>
+  <connection id="/application/HibernateResource/resource/application/HibernateStatelessResource/resource"/>
+  <connection id="/application/HibernateResource/resource/application/ImportBloombergFieldsApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/ImportBloombergSecuritiesApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/SDMNormalizerApplication/hibernateResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/ImportBloombergFieldsApplication/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/ImportBloombergSecuritiesApplication/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/SDMNormalizerApplication/hibernateStatelessResource"/>
+</fpm-application-layout>

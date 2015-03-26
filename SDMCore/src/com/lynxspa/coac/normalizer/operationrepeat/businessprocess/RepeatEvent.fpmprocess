@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param2</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" id="normalizableBean" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <fpm:output MESSAGE_TYPE="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" id="normalizableOutputBean" type="com.lynxit.fpm.BusinessProcessOutput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:output>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.coac.normalizer.adapters.NormalizableUpdateAdapter" id="DecisionNode" type="com.lynxit.fpm.nodes.internal.DecisionNode">
+    <n:params>
+      <condition type="DYNAMIC" language="BEAN_SHELL">(message.getPreviousEventCollected()==null)</condition>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="true" name="true" toProcess="Process as new message" inputName="normalizableBean"/>
+    <n:exit-to label="false" name="false" toProcess="Process as update message" inputName="normalizableBean"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="FindPreviousEvent" type="com.lynxspa.coac.normalizer.nodes.FindPreviousEventNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <onNotFoundFail type="FIXED">false</onNotFoundFail>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="DecisionNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Promote to Updater" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/PromoteToNormalizationUpdaterAdapter.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode&lt;com.lynxspa.coac.normalizer.adapters.NormalizableAdapter,com.lynxspa.coac.normalizer.beans.MessageNormalizeUpdaterBean&gt;">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="FindPreviousEvent"/>
+    <n:listens-to id="normalizableBean"/>
+  </n:business-node>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/operationnew/businessprocess/NewEvent.fpmprocess" excludeFromBuild="" id="Process as new message" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <user type="FIXED">COACNORMALIZERREPEATNEW</user>
+    </n:params>
+    <n:exit-to label="normalizableOutputBean" name="normalizableOutputBean" toNode="normalizableOutputBean"/>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/operationupdate/businessprocess/UpdateEvent.fpmprocess" excludeFromBuild="" id="Process as update message" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <user type="FIXED">COACNORMALIZERREPEATUPDATE</user>
+    </n:params>
+    <n:exit-to label="normalizableOutputBean" name="normalizableOutputBean" toNode="normalizableOutputBean"/>
+  </n:subprocess>
+</fpm:business-process>

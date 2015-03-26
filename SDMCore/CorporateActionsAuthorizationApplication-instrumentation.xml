@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsAuthorizationApplication"> 
+    <event-producer id="StandardEventProducer"/>  
+    <business-process id="AuthorizeProcess"> 
+      <node id="Rollback"/>  
+      <node id="LogCoacException"/>  
+      <node id="CallAuthorizationProcessor"/>  
+      <node id="ToAuthorized"/>  
+      <node id="Commit"/>  
+      <node id="Update"/>  
+      <node id="ToManualAuthorizationException"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="AuthorizationChangeStateNode"/>  
+      <node id="IteratorNode"/>  
+      <node id="Read"/>  
+      <node id="ToManualAuthorization"/>  
+      <node id="PatchedIteratorNode"/> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

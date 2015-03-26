@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <node name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureString.out.narrative" x="651" y="128"/>
+  <node name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureDynamicTable.out.dynamicTable" x="651" y="42"/>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="true" fqn="in.existentVersion"/>
+    <expanded status="false" fqn="in.existentVersion.auditor"/>
+    <expanded status="false" fqn="in.existentVersion.dynamicTable"/>
+    <expanded status="false" fqn="in.existentVersion.extensionName"/>
+    <expanded status="false" fqn="in.existentVersion.extensionNumber"/>
+    <expanded status="false" fqn="in.existentVersion.id"/>
+    <expanded status="false" fqn="in.existentVersion.mainDetail"/>
+    <expanded status="false" fqn="in.existentVersion.narrative"/>
+    <expanded status="false" fqn="in.existentVersion.version"/>
+    <expanded status="true" fqn="in.newVersion"/>
+    <expanded status="false" fqn="in.newVersion.auditor"/>
+    <expanded status="false" fqn="in.newVersion.dynamicTable"/>
+    <expanded status="false" fqn="in.newVersion.extensionName"/>
+    <expanded status="false" fqn="in.newVersion.extensionNumber"/>
+    <expanded status="false" fqn="in.newVersion.id"/>
+    <expanded status="false" fqn="in.newVersion.mainDetail"/>
+    <expanded status="false" fqn="in.newVersion.narrative"/>
+    <expanded status="false" fqn="in.newVersion.version"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.auditor"/>
+    <expanded status="false" fqn="out.dynamicTable"/>
+    <expanded status="false" fqn="out.extensionName"/>
+    <expanded status="false" fqn="out.extensionNumber"/>
+    <expanded status="false" fqn="out.id"/>
+    <expanded status="false" fqn="out.mainDetail"/>
+    <expanded status="false" fqn="out.narrative"/>
+    <expanded status="false" fqn="out.version"/>
+  </target>
+</operations-layout>

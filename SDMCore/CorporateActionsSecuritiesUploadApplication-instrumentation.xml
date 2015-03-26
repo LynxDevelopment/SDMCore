@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsSecuritiesUploadApplication"> 
+    <event-producer id="StandardFileCreatedEventproducer"/>  
+    <event-producer id="StandardFileCreatedEventproducer2"/>  
+    <business-process id="ImportSecuritiesBloombergProcessDifProcess"> 
+      <node id="ForkNode"/>  
+      <node id="ExceptionRollbackNode"/>  
+      <node id="LogCoacException"/>  
+      <node id="HibernateStandardCommit"/>  
+      <node id="SecuritiesBloombergParserNode"/>  
+      <node id="ImportFilterDifSwitch"/>  
+      <node id="OpenFile"/>  
+      <business-process id="StoreImportedMessageProcess"> 
+        <node id="SecuritySaveUpdate"/>  
+        <node id="LogCoacException"/>  
+        <node id="BeanEntityTransformer"/> 
+      </business-process>  
+      <business-process id="DeleteImportedMessageDifProcess"> 
+        <node id="LogCoacException"/>  
+        <node id="OutputNodeSupport"/> 
+      </business-process> 
+    </business-process>  
+    <business-process id="ImportSecuritiesBloombergProcess"> 
+      <node id="LiveCycle Validation"/>  
+      <node id="Rollback"/>  
+      <node id="ForkNode"/>  
+      <node id="Format Validation"/>  
+      <node id="Parse File"/>  
+      <node id="set delete"/>  
+      <node id="LogCoacException"/>  
+      <node id="InsertSecurityBean"/>  
+      <node id="Commit"/>  
+      <node id="DeleteSecurityBean"/>  
+      <node id="OpenFile"/>  
+      <node id="ActionToDo"/>  
+      <node id="Set insertOrUpdate"/>  
+      <business-process id="StoreSecurityProcess"> 
+        <node id="SecuritySaveUpdate"/>  
+        <node id="DecisionNode"/>  
+        <node id="LogCoacException"/>  
+        <node id="OutputNodeSupport"/>  
+        <node id="PrintBeanOutputNode"/>  
+        <node id="SwitchNode"/> 
+      </business-process>  
+      <node id="ForkNode1"/>  
+      <node id="PrintBeanOutputNode"/> 
+    </business-process>  
+    <event-producer id="Bloomberg Base"/>  
+    <event-producer id="Bloomberg Differences"/>  
+    <event-producer id="Ofival Base"/>  
+    <business-process id="BloombergSecuritiesUpload"> 
+      <node id="LiveCycle Validation"/>  
+      <node id="Rollback"/>  
+      <node id="ForkNode"/>  
+      <node id="Format Validation"/>  
+      <node id="Parse File"/>  
+      <node id="set delete"/>  
+      <node id="LogCoacException"/>  
+      <node id="InsertSecurityBean"/>  
+      <node id="Commit"/>  
+      <node id="DeleteSecurityBean"/>  
+      <node id="OpenFile"/>  
+      <node id="ActionToDo"/>  
+      <node id="Set insertOrUpdate"/>  
+      <business-process id="StoreSecurityProcess"> 
+        <node id="SecuritySaveUpdate"/>  
+        <node id="LogCoacException"/>  
+        <node id="SwitchNode"/>  
+        <node id="OutputNodeSupport"/>  
+        <node id="save"/>  
+        <node id="action decision"/>  
+        <node id="delete"/> 
+      </business-process> 
+    </business-process>  
+    <business-process id="OfivalSecuritiesUpload"> 
+      <node id="LiveCycle Validation"/>  
+      <node id="Rollback"/>  
+      <node id="Format Validation"/>  
+      <node id="ForkNode"/>  
+      <node id="LogCoacException"/>  
+      <node id="Commit"/>  
+      <node id="Parse"/>  
+      <node id="toSecurityBean"/>  
+      <node id="OpenFile"/>  
+      <business-process id="Save"> 
+        <node id="SecuritySaveUpdate"/>  
+        <node id="LogCoacException"/>  
+        <node id="SwitchNode"/>  
+        <node id="OutputNodeSupport"/>  
+        <node id="save"/>  
+        <node id="action decision"/>  
+        <node id="delete"/> 
+      </business-process> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process>  
+    <business-process id="SecurityUploadProcess"> 
+      <node id="LiveCycle Validation"/>  
+      <node id="SecurityFormatValidatorNode"/>  
+      <business-process id="OfivalSecuritiesUploadProcess"> 
+        <node id="LiveCycle Validation"/>  
+        <node id="Rollback"/>  
+        <node id="Format Validation"/>  
+        <node id="ForkNode"/>  
+        <node id="LogCoacException"/>  
+        <node id="Commit"/>  
+        <node id="Parse"/>  
+        <node id="toSecurityBean"/>  
+        <node id="OpenFile"/>  
+        <business-process id="Save"> 
+          <node id="save"/>  
+          <node id="action decision"/>  
+          <node id="LogCoacException"/>  
+          <node id="delete"/>  
+          <node id="LogCoacException1"/>  
+          <node id="ForkNode"/>  
+          <node id="VirtualSecurityReplacementNode"/> 
+        </business-process> 
+      </business-process>  
+      <business-process id="BloombergSecuritiesUploadProcess"> 
+        <node id="LiveCycle Validation"/>  
+        <node id="Rollback"/>  
+        <node id="ForkNode"/>  
+        <node id="Format Validation"/>  
+        <node id="Parse File"/>  
+        <node id="set delete"/>  
+        <node id="LogCoacException"/>  
+        <node id="InsertSecurityBean"/>  
+        <node id="Commit"/>  
+        <node id="DeleteSecurityBean"/>  
+        <node id="OpenFile"/>  
+        <node id="ActionToDo"/>  
+        <node id="Set insertOrUpdate"/>  
+        <business-process id="StoreSecurityProcess"> 
+          <node id="save"/>  
+          <node id="action decision"/>  
+          <node id="LogCoacException"/>  
+          <node id="delete"/>  
+          <node id="LogCoacException1"/>  
+          <node id="ForkNode"/>  
+          <node id="VirtualSecurityReplacementNode"/> 
+        </business-process>  
+        <node id="LogSecuritiesBloombergParserNode"/>  
+        <node id="ForkNode1"/>  
+        <node id="VirtualSecurityReplacementNode"/> 
+      </business-process>  
+      <business-process id="FundsSecuritiesUploadProcess"> 
+        <node id="LiveCycle Validation"/>  
+        <node id="Rollback"/>  
+        <node id="ForkNode"/>  
+        <node id="Format Validation"/>  
+        <node id="Parse File"/>  
+        <node id="set delete"/>  
+        <node id="LogCoacException"/>  
+        <node id="InsertSecurityBean"/>  
+        <node id="Commit"/>  
+        <node id="DeleteSecurityBean"/>  
+        <node id="OpenFile"/>  
+        <node id="ActionToDo"/>  
+        <node id="Set insertOrUpdate"/>  
+        <business-process id="StoreSecurityProcess"> 
+          <node id="save"/>  
+          <node id="action decision"/>  
+          <node id="LogCoacException"/>  
+          <node id="delete"/> 
+        </business-process>  
+        <node id="FundsSecurityBeanToSecurityBeanMap"/>  
+        <node id="FundsSecurityBeanToSecurityBeanMap1"/>  
+        <node id="Parse Fund File"/>  
+        <node id="ActionFundsDecisionSwitch"/>  
+        <node id="SecuritiesRentaFijaParserNode"/>  
+        <node id="ParserValidatorNode"/> 
+      </business-process>  
+      <business-process id="CustomerSecuritiesUploadProcess"> 
+        <node id="LiveCycle Validation"/>  
+        <node id="Rollback"/>  
+        <node id="ForkNode"/>  
+        <node id="LogCoacException"/>  
+        <node id="CustomerSecurityParser"/>  
+        <node id="Commit"/>  
+        <node id="OpenFile"/>  
+        <business-process id="StoreSecurityProcess"> 
+          <node id="save"/>  
+          <node id="action decision"/>  
+          <node id="LogCoacException"/>  
+          <node id="delete"/>  
+          <node id="ForkNode"/>  
+          <node id="VirtualSecurityReplacementNode"/> 
+        </business-process> 
+      </business-process>  
+      <node id="ForkNode"/>  
+      <node id="VirtualSecurityReplacementNode"/> 
+    </business-process>  
+    <event-producer id="Bloomberg Base1"/>  
+    <event-producer id="Funds Base"/>  
+    <event-producer id="Funds Base1"/>  
+    <event-producer id="Funds Differences"/>  
+    <event-producer id="Bloomberg Fondos"/>  
+    <event-producer id="Bloomberg RV No Europea"/>  
+    <event-producer id="Bloomberg Renta Fija"/>  
+    <event-producer id="Bloomberg Fondos Diff"/>  
+    <event-producer id="Bloomberg RF Diff"/>  
+    <event-producer id="Bloomberg RVNE Diff"/>  
+    <event-producer id="Customer"/> 
+  </application-domain> 
+</fpm-instrumentation>

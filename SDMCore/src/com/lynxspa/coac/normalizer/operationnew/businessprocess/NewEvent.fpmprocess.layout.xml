@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="normalizableBean" x="7" y="307" width="32" height="32"/>
+  <output id="normalizableOutputBean" x="1740" y="701" width="32" height="32"/>
+  <business-node id="CallCompleteAnalyzerProcessor" x="1295" y="430" width="130" height="100"/>
+  <business-node id="CallNormalizeProcessor" x="208" y="296" width="130" height="100"/>
+  <business-node id="CollectionIteratorNode" x="1083" y="180" width="130" height="100"/>
+  <business-node id="Context CAEventCollected" x="1752" y="496" width="130" height="100"/>
+  <business-node id="Context CAEventDetails" x="1495" y="100" width="130" height="100"/>
+  <business-node id="Foreach extension" x="1079" y="294" width="130" height="100"/>
+  <business-node id="ForkNode1" x="414" y="296" width="130" height="100"/>
+  <business-node id="ForkNode2" x="656" y="425" width="130" height="100"/>
+  <business-node id="ForkNode21" x="1496" y="430" width="130" height="100"/>
+  <business-node id="ForkNode3" x="876" y="576" width="130" height="100"/>
+  <business-node id="GetEventCollected" x="1079" y="430" width="130" height="100"/>
+  <business-node id="GetEventDetails" x="672" y="100" width="130" height="100"/>
+  <business-node id="GetEventDetailsExtended" x="876" y="294" width="130" height="100"/>
+  <business-node id="Save" x="1752" y="294" width="130" height="100"/>
+  <business-node id="SetEventDetail" x="1495" y="294" width="130" height="100"/>
+  <business-node id="ToCAEventDetailsExtended" x="1289" y="294" width="130" height="100"/>
+  <business-node id="return" x="1085" y="686" width="130" height="100"/>
+  <connection id="/business process/GetEventCollected/out/business process/CallCompleteAnalyzerProcessor/in"/>
+  <connection id="/business process/CallCompleteAnalyzerProcessor/out/business process/ForkNode21/in"/>
+  <connection id="/business process/normalizableBean/business process/CallNormalizeProcessor/in"/>
+  <connection id="/business process/CallNormalizeProcessor/out/business process/ForkNode1/in"/>
+  <connection id="/business process/GetEventDetailsExtended/out/business process/CollectionIteratorNode/in"/>
+  <connection id="/business process/CollectionIteratorNode/out/business process/ToCAEventDetailsExtended/in"/>
+  <connection id="/business process/ForkNode21/two/business process/Context CAEventCollected/in"/>
+  <connection id="/business process/GetEventDetails/out/business process/Context CAEventDetails/in"/>
+  <connection id="/business process/Context CAEventDetails/out/business process/Save/in"/>
+  <connection id="/business process/ForkNode1/one/business process/GetEventDetails/in"/>
+  <connection id="/business process/ForkNode1/two/business process/ForkNode2/in"/>
+  <connection id="/business process/ForkNode2/one/business process/GetEventDetailsExtended/in"/>
+  <connection id="/business process/ForkNode2/two/business process/ForkNode3/in"/>
+  <connection id="/business process/ForkNode21/one/business process/Save/in"/>
+  <connection id="/business process/ForkNode3/one/business process/GetEventCollected/in"/>
+  <connection id="/business process/ForkNode3/two/business process/return/in"/>
+  <connection id="/business process/SetEventDetail/out/business process/Save/in"/>
+  <connection id="/business process/ToCAEventDetailsExtended/out/business process/SetEventDetail/in"/>
+  <connection id="/business process/return/out/business process/normalizableOutputBean"/>
+</fpm-process-layout>

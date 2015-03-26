@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.importers.EventMessageImportBean" outputBean="com.lynxspa.coac.importers.EventMessageImportBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <inputField name="in" cardinal="0"/>
+  <field name="message" type="com.lynxspa.sdm.entities.events.messages.CAEventMessage">
+    <field name="eventType" type="java.lang.String">
+      <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="3505692">
+        <inputField name="in" cardinal="0"/>
+        <constant value="STD:0" type="java.lang.String" cardinal="1"/>
+      </function>
+    </field>
+    <field name="messageType" type="com.lynxspa.sdm.entities.events.messages.formats.CAMessageType">
+      <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getMessageType" code="24910864">
+        <constant value="HibernateResource" type="java.lang.String" cardinal="0"/>
+        <constant value="BLOOMBERG" type="com.lynxspa.sdm.dictionaries.formats.CAFormat" cardinal="1"/>
+        <inputField name="in.messageType" cardinal="2"/>
+      </function>
+    </field>
+    <field name="operation" type="java.lang.String">
+      <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="7189748">
+        <inputField name="in" cardinal="0"/>
+        <constant value="STD:1" type="java.lang.String" cardinal="1"/>
+      </function>
+    </field>
+    <field name="operationStatus" type="com.lynxspa.entities.application.flow.operations.OperationStatus">
+      <field name="state" type="com.lynxspa.entities.application.flow.State">
+        <function name="com.lynxspa.coac.mappings.CoacFunctions.getEventMessageInitialState" code="20066925">
+          <constant value="HibernateResource" type="java.lang.String" cardinal="0"/>
+          <constant value="PRSD" type="com.lynxspa.sdm.dictionaries.flows.states.CAStatesEVENTMESSAGEFlow" cardinal="1"/>
+        </function>
+      </field>
+    </field>
+    <field name="originId" type="java.lang.String">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.getHash" code="8263789">
+        <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="30477902">
+          <function name="com.lynxspa.fpm.functions.FPMFunctions.getContextStringParam" code="26706284">
+            <constant value="fileName" type="java.lang.String" cardinal="0"/>
+          </function>
+          <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="1121104">
+            <function name="com.lynxit.fpm.functionlibraries.TimeFunctions.now" code="3333567"/>
+          </function>
+        </function>
+      </function>
+    </field>
+    <field name="originName" type="java.lang.String">
+      <function name="com.lynxspa.fpm.functions.FPMFunctions.getContextStringParam" code="26706284">
+        <constant value="fileName" type="java.lang.String" cardinal="0"/>
+      </function>
+    </field>
+    <field name="originType" type="java.lang.String">
+      <constant value="File" type="java.lang.String" cardinal="0"/>
+    </field>
+    <field name="security" type="java.lang.String">
+      <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="32802935">
+        <inputField name="in" cardinal="0"/>
+        <constant value="HDR:0" type="java.lang.String" cardinal="1"/>
+      </function>
+    </field>
+    <field name="securityType" type="java.lang.String">
+      <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="17508170">
+        <inputField name="in" cardinal="0"/>
+        <constant value="MSG:SECID" type="java.lang.String" cardinal="1"/>
+      </function>
+    </field>
+    <field name="sender" type="java.lang.String">
+      <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getMessageFormatId" code="22921768">
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getMessageType" code="24910864">
+          <constant value="HibernateResource" type="java.lang.String" cardinal="0"/>
+          <constant value="BLOOMBERG" type="com.lynxspa.sdm.dictionaries.formats.CAFormat" cardinal="1"/>
+          <inputField name="in.messageType" cardinal="2"/>
+        </function>
+      </function>
+    </field>
+    <field name="senderTimestamp" type="java.util.Date">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.parseSecureLocalizedDate" code="12103375">
+        <function name="com.lynxspa.coac.importers.mappings.CoacImportFunctions.getImportMessageField" code="624837">
+          <inputField name="in" cardinal="0"/>
+          <constant value="MSG:STARTTIMESTAMP" type="java.lang.String" cardinal="1"/>
+        </function>
+        <constant value="EEE MMM dd HH:mm:ss zzz yyyy" type="java.lang.String" cardinal="1"/>
+        <constant value="en" type="java.lang.String" cardinal="2"/>
+      </function>
+    </field>
+  </field>
+</mn:mapping-element>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <node name="com.lynxspa.coac.normalizer.mappings.CoacNormalizerFunctions.getEventDetailFromContext.out.mainDetail" x="512" y="113"/>
+  <source>
+    <expanded status="false" fqn="in"/>
+    <expanded status="false" fqn="in.auditor"/>
+    <expanded status="false" fqn="in.dynamicTable"/>
+    <expanded status="false" fqn="in.extensionName"/>
+    <expanded status="false" fqn="in.extensionNumber"/>
+    <expanded status="false" fqn="in.id"/>
+    <expanded status="false" fqn="in.mainDetail"/>
+    <expanded status="false" fqn="in.narrative"/>
+    <expanded status="false" fqn="in.version"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.auditor"/>
+    <expanded status="false" fqn="out.auditor.creationDate"/>
+    <expanded status="false" fqn="out.auditor.creationUser"/>
+    <expanded status="false" fqn="out.auditor.deleted"/>
+    <expanded status="false" fqn="out.auditor.refId"/>
+    <expanded status="false" fqn="out.dynamicTable"/>
+    <expanded status="false" fqn="out.extensionName"/>
+    <expanded status="false" fqn="out.extensionNumber"/>
+    <expanded status="false" fqn="out.id"/>
+    <expanded status="false" fqn="out.mainDetail"/>
+    <expanded status="false" fqn="out.mainDetail.auditor"/>
+    <expanded status="false" fqn="out.mainDetail.dynamicTable"/>
+    <expanded status="false" fqn="out.mainDetail.executionDate"/>
+    <expanded status="false" fqn="out.mainDetail.expirationDate"/>
+    <expanded status="false" fqn="out.mainDetail.extensions"/>
+    <expanded status="false" fqn="out.mainDetail.id"/>
+    <expanded status="false" fqn="out.mainDetail.operationalDate"/>
+    <expanded status="false" fqn="out.mainDetail.subscriptionDate"/>
+    <expanded status="false" fqn="out.mainDetail.version"/>
+    <expanded status="false" fqn="out.narrative"/>
+    <expanded status="false" fqn="out.version"/>
+  </target>
+</operations-layout>

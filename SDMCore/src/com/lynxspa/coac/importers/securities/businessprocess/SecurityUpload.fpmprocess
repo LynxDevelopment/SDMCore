@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="bloombergCommitSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="bloombergDebtPath" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="bloombergFundsPath" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="bloombergPath" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="bloombergRVNoEuroPath" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="customerCommitSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="customerSecurityUploadPath" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="fundsCommitSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="fundsPath" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="ofivalCommitSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="ofivalPath" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="securitiesUploadForceMarketInsert" type="java.lang.Boolean" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="sessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.fileevents.FileEvent" id="FileCreated" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxit.fpm.events.fileevents.FileEvent" id="ForkNode" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="SecurityFormatValidatorNode"/>
+    <n:exit-to label="two" name="two" toNode="VirtualSecurityReplacementNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.fileevents.FileEvent" id="LiveCycle Validation" type="com.lynxspa.coac.nodes.LiveCycleValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <requiredLiveCycle type="FIXED">PRENORMALIZE_IMPORT</requiredLiveCycle>
+      <resource type="REFERENCE">sessionFactory</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ForkNode"/>
+    <n:listens-to id="FileCreated"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="SecurityFormatValidatorNode" type="com.lynxspa.coac.importers.securities.nodes.SecurityFormatValidatorNode">
+    <n:params>
+      <bloombergFilePath type="REFERENCE">bloombergPath</bloombergFilePath>
+      <bloombergFundsFilePath type="REFERENCE">bloombergFundsPath</bloombergFundsFilePath>
+      <bloombergRVNoEuroFilePath type="REFERENCE">bloombergRVNoEuroPath</bloombergRVNoEuroFilePath>
+      <bloombergRentaFijaFilePath type="REFERENCE">bloombergDebtPath</bloombergRentaFijaFilePath>
+      <customerFilePath type="REFERENCE">customerSecurityUploadPath</customerFilePath>
+      <fundsFilePath type="REFERENCE">fundsPath</fundsFilePath>
+      <notes type="FIXED"></notes>
+      <ofivalFilePath type="REFERENCE">ofivalPath</ofivalFilePath>
+      <resource type="REFERENCE">sessionFactory</resource>
+    </n:params>
+    <n:exit-to label="bloomberg" name="bloomberg" toProcess="BloombergSecuritiesUploadProcess" inputName="securitiesBloombergFileCreated"/>
+    <n:exit-to label="customer" name="customer" toProcess="CustomerSecuritiesUploadProcess" inputName="securitiesCustomerFileCreated"/>
+    <n:exit-to label="ofival" name="ofival" toProcess="OfivalSecuritiesUploadProcess" inputName="securitiesOfivalFileCreated"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="VirtualSecurityReplacementNode" type="com.lynxspa.coac.importers.securities.nodes.VirtualSecurityReplacementNode">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statelessSessionFactory</resource>
+      <stateFullResource type="REFERENCE">sessionFactory</stateFullResource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/importers/securities/bloomberg/businessprocess/BloombergSecuritiesUpload.fpmprocess" excludeFromBuild="" id="BloombergSecuritiesUploadProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <commitSize type="REFERENCE">bloombergCommitSize</commitSize>
+      <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <securitiesUploadForceMarketInsert type="REFERENCE">securitiesUploadForceMarketInsert</securitiesUploadForceMarketInsert>
+      <sessionFactory type="REFERENCE">sessionFactory</sessionFactory>
+      <statelessSessionFactory type="REFERENCE">statelessSessionFactory</statelessSessionFactory>
+      <user type="FIXED">IMPORTBLOOMBERGSECURITIES</user>
+    </n:params>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/importers/securities/customer/businessprocess/CustomerSecuritiesUpload.fpmprocess" excludeFromBuild="" id="CustomerSecuritiesUploadProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <commitSize type="REFERENCE">customerCommitSize</commitSize>
+      <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <securitiesUploadForceMarketInsert type="REFERENCE">securitiesUploadForceMarketInsert</securitiesUploadForceMarketInsert>
+      <sessionFactory type="REFERENCE">sessionFactory</sessionFactory>
+      <statelessSessionFactory type="REFERENCE">statelessSessionFactory</statelessSessionFactory>
+      <user type="FIXED">IMPORTCUSTOMERSECURITIES</user>
+    </n:params>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/importers/securities/ofival/businessprocess/OfivalSecuritiesUpload.fpmprocess" excludeFromBuild="" id="OfivalSecuritiesUploadProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <commitSize type="REFERENCE">ofivalCommitSize</commitSize>
+      <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <securitiesUploadForceMarketInsert type="REFERENCE">securitiesUploadForceMarketInsert</securitiesUploadForceMarketInsert>
+      <sessionFactory type="REFERENCE">sessionFactory</sessionFactory>
+      <statelessSessionFactory type="REFERENCE">statelessSessionFactory</statelessSessionFactory>
+      <user type="FIXED">IMPORTOFIVALSECURITIES</user>
+    </n:params>
+  </n:subprocess>
+</fpm:business-process>

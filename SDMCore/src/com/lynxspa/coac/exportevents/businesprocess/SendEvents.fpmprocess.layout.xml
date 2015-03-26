@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="20" y="74" width="32" height="32"/>
+  <business-node id="LiveCycleValidatorNode" x="141" y="63" width="130" height="100"/>
+  <business-node id="LogCoacException" x="338" y="190" width="130" height="100"/>
+  <business-node id="Read" x="335" y="63" width="130" height="100"/>
+  <connection id="/business process/input/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/Read/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/exception/business process/LogCoacException/exc"/>
+</fpm-process-layout>

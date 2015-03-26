@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.importers.securities.ofival.beans.OfivalSecurityBean" outputBean="com.lynxspa.sdm.importers.securities.beans.SecurityBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <field name="action" type="com.lynxspa.sdm.importers.securities.beans.SecurityBean$ActionsToDo">
+    <constant value="UPDATE" type="com.lynxspa.sdm.importers.securities.beans.SecurityBean$ActionsToDo" cardinal="0"/>
+  </field>
+  <field name="format" type="java.lang.String">
+    <constant value="OFIVAL" type="java.lang.String" cardinal="0"/>
+  </field>
+  <field name="originName" type="java.lang.String">
+    <inputField name="in.file" cardinal="0"/>
+  </field>
+  <field name="originPosition" type="java.lang.Integer">
+    <inputField name="in.position" cardinal="0"/>
+  </field>
+  <field name="security" type="com.lynxspa.entities.securities.SPSecurity">
+    <field name="infoProviderId1" type="java.lang.String">
+      <inputField name="in.codigoEmisora" cardinal="0"/>
+    </field>
+    <field name="isin" type="java.lang.String">
+      <inputField name="in.isin" cardinal="0"/>
+    </field>
+    <field name="name" type="java.lang.String">
+      <inputField name="in.name" cardinal="0"/>
+    </field>
+  </field>
+</mn:mapping-element>

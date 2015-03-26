@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<switch:fpm-switch-config xmlns:switch="http://www.lynxit.com/fpm/config/switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config fpm-switch-config.xsd">
+  <switch:type>com.lynxspa.coac.notificationmanagers.beans.NotificationEventBean</switch:type>
+  <switch:enableDefault>true</switch:enableDefault>
+  <switch:language>JAVA</switch:language>
+  <switch:exits>
+    <switch:exit id="true">
+      <switch:condition>boolean reply=false;\r\nreply = message.getEmailAddresses().length&gt;0;\r\n\r\nreturn reply;</switch:condition>
+      <switch:description></switch:description>
+    </switch:exit>
+  </switch:exits>
+</switch:fpm-switch-config>

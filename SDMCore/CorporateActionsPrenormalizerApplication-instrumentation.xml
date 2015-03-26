@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsPrenormalizerApplication"> 
+    <event-producer id="StandardEventProducer"/>  
+    <business-process id="Prenormalize"> 
+      <node id="HibernateStandardUpdate"/>  
+      <node id="OperationNormalizer"/>  
+      <node id="SecurityNormalizer"/>  
+      <node id="HibernateStandardRead"/>  
+      <node id="EventTypeNormalizer"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="IteratorNode"/>  
+      <node id="LogCoacException"/>  
+      <node id="Operation"/>  
+      <node id="Security"/>  
+      <node id="Iterate"/>  
+      <node id="Update"/>  
+      <node id="Read"/>  
+      <node id="Event Type"/>  
+      <node id="EventMessageChangeStateNode"/>  
+      <node id="EventMessageChangeStateExceptionNode"/>  
+      <node id="ForkNode"/>  
+      <node id="Provider"/>  
+      <node id="Rollback"/>  
+      <node id="ToPNFA"/>  
+      <node id="HibernateStandardCommit"/>  
+      <node id="toNRMP"/>  
+      <node id="PatchedIteratorNode"/> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

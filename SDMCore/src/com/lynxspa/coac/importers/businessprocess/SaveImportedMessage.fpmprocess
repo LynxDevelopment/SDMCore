@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="sessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxspa.coac.importers.EventMessageImportBean" id="ImportedMessage" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <fpm:output MESSAGE_TYPE="com.lynxspa.coac.importers.EventMessageImportBean" id="importedMessage" type="com.lynxit.fpm.BusinessProcessOutput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:output>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="java.lang.Object" id="ForeachField" type="com.lynxit.fpm.nodes.internal.CollectionIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.coac.importers.EventMessageImportBean" id="ForkNode" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="GetMessage"/>
+    <n:exit-to label="two" name="two" toNode="GetMessageFields"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.coac.importers.EventMessageImportBean" id="ForkNode1" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="ForkNode"/>
+    <n:exit-to label="two" name="two" toNode="importedMessage"/>
+    <n:exit-to label="exception" name="exception" toNode="LogCoacException"/>
+    <n:listens-to id="ImportedMessage"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="GetMessage" mapping-definition-file="src/com/lynxspa/coac/importers/mappings/GetEventMessageFromImport.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="HibernateStandardSave"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="GetMessageFields" mapping-definition-file="src/com/lynxspa/coac/importers/mappings/GetEventMessageFieldsFromImport.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedCollectionIteratorNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="HibernateStandardSave" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardSave">
+    <n:params>
+      <dataSource type="REFERENCE">sessionFactory</dataSource>
+      <flush type="FIXED">false</flush>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:output-connector name="out" ignore-unconnected="true"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacException" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED">
+        <values>
+          <value type="DYNAMIC" language="BEAN_SHELL">message.getMessage().getMessageType().getId().getFormat().getId()</value>
+          <value type="DYNAMIC" language="BEAN_SHELL">message.getMessage().getOriginName()</value>
+          <value type="DYNAMIC" language="BEAN_SHELL">message.getMessage().getOriginPosition()</value>
+        </values>
+      </arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">sessionFactory</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">IMPORT_SAVE_FAIL</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">false</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="java.lang.Object" id="PatchedCollectionIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedCollectionIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="HibernateStandardSave"/>
+  </n:business-node>
+</fpm:business-process>

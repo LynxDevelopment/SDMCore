@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsMasterRecordApplication"> 
+    <event-producer id="StandardEventProducer"/>  
+    <business-process id="BusinessProcess"> 
+      <node id="Rollback"/>  
+      <node id="ToManualMasterRecord"/>  
+      <node id="LogCoacException"/>  
+      <node id="ToNotAuthorized"/>  
+      <node id="Commit"/>  
+      <node id="Update"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="IteratorNode"/>  
+      <node id="SelectMR"/>  
+      <node id="Read"/>  
+      <node id="MasterRecordChangeStateNode"/>  
+      <node id="PatchedIteratorNode"/> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

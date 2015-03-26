@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="pageSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="sessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="ForkNode" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="LoadManagers"/>
+    <n:exit-to label="two" name="two" toNode="LoadCustomers"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="ForkNode1" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="ForkNode"/>
+    <n:exit-to label="two" name="two" toNode="ForkNode11"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="ForkNode11" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="ForkNode111"/>
+    <n:exit-to label="two" name="two" toNode="ForkNode112"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="ForkNode111" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="LoadMarkets"/>
+    <n:exit-to label="two" name="two" toNode="LoadSecurities"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="ForkNode112" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="LoadProviderAccounts"/>
+    <n:exit-to label="two" name="two" toNode="LoadClientHoldings"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="LoadClientHoldings" type="com.lynxspa.coac.loadauxtables.customers.nodes.LoadClientHoldings">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <pageSize type="REFERENCE">pageSize</pageSize>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="LoadCustomers" type="com.lynxspa.coac.loadauxtables.customers.nodes.LoadCustomers">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <pageSize type="REFERENCE">pageSize</pageSize>
+      <resource type="REFERENCE">sessionFactory</resource>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="LoadManagers" type="com.lynxspa.coac.loadauxtables.customers.nodes.LoadManagers">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <pageSize type="REFERENCE">pageSize</pageSize>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="LoadMarkets" type="com.lynxspa.coac.loadauxtables.customers.nodes.LoadMarkets">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <pageSize type="REFERENCE">pageSize</pageSize>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="LoadProviderAccounts" type="com.lynxspa.coac.loadauxtables.customers.nodes.LoadProviderAccounts">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <pageSize type="REFERENCE">pageSize</pageSize>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="LoadSecurities" type="com.lynxspa.coac.loadauxtables.customers.nodes.LoadSecurities">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <pageSize type="REFERENCE">pageSize</pageSize>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+</fpm:business-process>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" outputBean="com.lynxspa.sdm.entities.events.messages.CAEventMessage" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <inputField name="in.message" cardinal="0"/>
+  <field name="normalizedEvent" type="java.lang.Long">
+    <inputField name="in.eventCollected.id" cardinal="0"/>
+  </field>
+</mn:mapping-element>

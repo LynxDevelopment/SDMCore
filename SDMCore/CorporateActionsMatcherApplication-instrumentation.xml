@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsMatcherApplication"> 
+    <event-producer id="StandardEventProducer"/>  
+    <business-process id="BusinessProcess"> 
+      <node id="LogCoacException"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="Read"/>  
+      <node id="ToManualMatch"/>  
+      <node id="Match"/>  
+      <node id="LogException"/>  
+      <node id="Iterate"/>  
+      <node id="Commit"/>  
+      <node id="ToMatched"/>  
+      <node id="LiveCycleValidate"/>  
+      <node id="Rollback"/>  
+      <node id="ForkNode"/>  
+      <node id="Update"/>  
+      <node id="PatchedIteratorNode"/>  
+      <node id="HibernateStandardRead1"/> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

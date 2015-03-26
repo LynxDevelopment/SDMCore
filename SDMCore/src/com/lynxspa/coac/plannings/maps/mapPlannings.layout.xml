@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPServer.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpServer" x="196" y="457"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPPassive.out.FTPPassive" x="319" y="72"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpUser" x="432" y="494"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPBinary.out.FTPBinary" x="323" y="108"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpServer" x="312" y="452"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxy" x="431" y="336"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPort" x="429" y="295"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPExportProcess.out.FTPExport" x="319" y="3"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess.0com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpFile" x="0" y="389"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getExtension.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.outputFile" x="131" y="678"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpFile" x="312" y="172"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxyUser" x="312" y="415"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPPort.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPort" x="193" y="299"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isOverwrite.out.overWrite" x="131" y="552"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getPath.0com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.outputFile" x="128" y="591"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPort" x="311" y="292"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPath" x="429" y="255"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpFile" x="427" y="172"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxyUser" x="434" y="417"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPath" x="312" y="254"/>
+  <node name="com.lynxit.fpm.functionlibraries.StringFunctions.concat.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.outputFile" x="268" y="641"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPFile.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpFile" x="191" y="170"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpUser" x="311" y="492"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxy" x="311" y="332"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPImportProcess.out.FTPImport" x="320" y="40"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxyPassword" x="433" y="373"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPUser.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpUser" x="199" y="495"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPProxyUser.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxyUser" x="197" y="416"/>
+  <node name="com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.outputFile" x="402" y="596"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxyPassword" x="313" y="374"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPPassword.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPassword" x="190" y="215"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFileName.0com.lynxit.fpm.functionlibraries.StringFunctions.concat.1com.lynxit.fpm.functionlibraries.StringFunctions.concat.out.outputFile" x="129" y="634"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPPath.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPath" x="188" y="253"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpServer" x="433" y="456"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPProxyPassword.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxyPassword" x="195" y="376"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPassword" x="309" y="211"/>
+  <node name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPProxy.1com.lynxspa.fpm.functions.ObjectFunctions.condition.0com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpProxy" x="193" y="338"/>
+  <node name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf.out.ftpPassword" x="429" y="213"/>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.auditor"/>
+    <expanded status="false" fqn="in.auditor.creationDate"/>
+    <expanded status="false" fqn="in.auditor.creationDate.date"/>
+    <expanded status="false" fqn="in.auditor.creationDate.day"/>
+    <expanded status="false" fqn="in.auditor.creationDate.hours"/>
+    <expanded status="false" fqn="in.auditor.creationDate.minutes"/>
+    <expanded status="false" fqn="in.auditor.creationDate.month"/>
+    <expanded status="false" fqn="in.auditor.creationDate.seconds"/>
+    <expanded status="false" fqn="in.auditor.creationDate.time"/>
+    <expanded status="false" fqn="in.auditor.creationDate.timezoneOffset"/>
+    <expanded status="false" fqn="in.auditor.creationDate.year"/>
+    <expanded status="false" fqn="in.auditor.creationUser"/>
+    <expanded status="false" fqn="in.auditor.deleted"/>
+    <expanded status="false" fqn="in.auditor.refId"/>
+    <expanded status="false" fqn="in.cron"/>
+    <expanded status="false" fqn="in.executionDate"/>
+    <expanded status="false" fqn="in.executionDate.date"/>
+    <expanded status="false" fqn="in.executionDate.day"/>
+    <expanded status="false" fqn="in.executionDate.hours"/>
+    <expanded status="false" fqn="in.executionDate.minutes"/>
+    <expanded status="false" fqn="in.executionDate.month"/>
+    <expanded status="false" fqn="in.executionDate.seconds"/>
+    <expanded status="false" fqn="in.executionDate.time"/>
+    <expanded status="false" fqn="in.executionDate.timezoneOffset"/>
+    <expanded status="false" fqn="in.executionDate.year"/>
+    <expanded status="false" fqn="in.id"/>
+    <expanded status="false" fqn="in.manual"/>
+    <expanded status="false" fqn="in.name"/>
+    <expanded status="false" fqn="in.objectTemplate"/>
+    <expanded status="false" fqn="in.objectTemplate.$size"/>
+    <expanded status="true" fqn="in.process"/>
+    <expanded status="false" fqn="in.process.auditor"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.date"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.day"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.hours"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.minutes"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.month"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.seconds"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.time"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.timezoneOffset"/>
+    <expanded status="false" fqn="in.process.auditor.creationDate.year"/>
+    <expanded status="false" fqn="in.process.auditor.creationUser"/>
+    <expanded status="false" fqn="in.process.auditor.deleted"/>
+    <expanded status="false" fqn="in.process.auditor.refId"/>
+    <expanded status="false" fqn="in.process.description"/>
+    <expanded status="false" fqn="in.process.id"/>
+    <expanded status="false" fqn="in.process.version"/>
+    <expanded status="true" fqn="in.template"/>
+    <expanded status="false" fqn="in.template.$size"/>
+    <expanded status="false" fqn="in.templateBuffer"/>
+    <expanded status="false" fqn="in.templateBuffer.char"/>
+    <expanded status="false" fqn="in.templateBuffer.direct"/>
+    <expanded status="false" fqn="in.templateBuffer.double"/>
+    <expanded status="false" fqn="in.templateBuffer.float"/>
+    <expanded status="false" fqn="in.templateBuffer.int"/>
+    <expanded status="false" fqn="in.templateBuffer.long"/>
+    <expanded status="false" fqn="in.templateBuffer.readOnly"/>
+    <expanded status="false" fqn="in.templateBuffer.short"/>
+    <expanded status="false" fqn="in.templateString"/>
+    <expanded status="false" fqn="in.version"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.FTPBinary"/>
+    <expanded status="false" fqn="out.FTPExport"/>
+    <expanded status="false" fqn="out.FTPImport"/>
+    <expanded status="false" fqn="out.FTPPassive"/>
+    <expanded status="false" fqn="out.actualDate"/>
+    <expanded status="false" fqn="out.append"/>
+    <expanded status="false" fqn="out.cronExpression"/>
+    <expanded status="false" fqn="out.ftpFile"/>
+    <expanded status="false" fqn="out.ftpPassword"/>
+    <expanded status="false" fqn="out.ftpPath"/>
+    <expanded status="false" fqn="out.ftpPort"/>
+    <expanded status="false" fqn="out.ftpProxy"/>
+    <expanded status="false" fqn="out.ftpProxyPassword"/>
+    <expanded status="false" fqn="out.ftpProxyUser"/>
+    <expanded status="false" fqn="out.ftpServer"/>
+    <expanded status="false" fqn="out.ftpUser"/>
+    <expanded status="false" fqn="out.id"/>
+    <expanded status="false" fqn="out.listSecurities"/>
+    <expanded status="false" fqn="out.listSecurities.$size"/>
+    <expanded status="false" fqn="out.listSecuritiesAndMarkets"/>
+    <expanded status="false" fqn="out.listSecuritiesAndMarkets.$size"/>
+    <expanded status="false" fqn="out.listTickers"/>
+    <expanded status="false" fqn="out.listTickers.$size"/>
+    <expanded status="false" fqn="out.objectTemplate"/>
+    <expanded status="false" fqn="out.objectTemplate.$size"/>
+    <expanded status="false" fqn="out.outputFile"/>
+    <expanded status="false" fqn="out.outputFileName"/>
+    <expanded status="false" fqn="out.overWrite"/>
+    <expanded status="false" fqn="out.pathTemplate"/>
+    <expanded status="false" fqn="out.templateFile"/>
+    <expanded status="false" fqn="out.templateFile.$size"/>
+  </target>
+</operations-layout>

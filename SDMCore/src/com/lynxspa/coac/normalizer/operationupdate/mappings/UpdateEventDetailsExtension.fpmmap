@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.normalizer.operationupdate.beans.EventDetailExtensionUpdateBean" outputBean="com.lynxspa.sdm.entities.events.details.CAEventDetailExtended" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <inputField name="in.existentVersion" cardinal="0"/>
+  <field name="dynamicTable" type="java.lang.Object">
+    <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureDynamicTable" code="1455836">
+      <inputField name="in.newVersion.dynamicTable" cardinal="0"/>
+      <inputField name="in.existentVersion.dynamicTable" cardinal="1"/>
+    </function>
+  </field>
+  <field name="narrative" type="java.lang.String">
+    <function name="com.lynxspa.coac.normalizer.operationupdate.mappings.CoacNormalizeUpdateFunctions.getSecureString" code="2530425">
+      <inputField name="in.newVersion.narrative" cardinal="0"/>
+      <inputField name="in.existentVersion.narrative" cardinal="1"/>
+    </function>
+  </field>
+</mn:mapping-element>

@@ -1,0 +1,128 @@
+{1:F21CASBADADAXXX6494810324}{4:{177:0704250826}{451:0}}{1:F01CASBADADAXXX6494810324}{2:O5680244070425CRESCHZZA80A27390757930704250818N}{3:{108:1978127806}}{4:
+:16R:GENL
+:20C::CORP//VH00000000374773
+:20C::SEME//F504070425-00033
+:23G:REPL
+:22F::CAEV//DRIP
+:98C::PREP//20070425010819
+:16R:LINK
+:13A::LINK//564
+:20C::PREV//F520070423-00459
+:16S:LINK
+:16S:GENL
+:16R:USECU
+:97A::SAFE//0835-0796413-65-004
+:35B:ISIN GB0031215220
+SHS CARNIVAL
+:16R:FIA
+:12A::CLAS//SHS
+:11A::DENO//USD
+:16S:FIA
+:93B::ELIG//UNIT/930,
+:16S:USECU
+:16R:ADDINFO
+:70F::ADTX//CARNIVAL PLC
+Cash/Stock dividend
+.------------------
+.
+The shareholders of this company can receive the
+dividend payable on 08.06.2007 as follows:
+.
+A) Cash dividend:
+USD 0.35 per share, paid in GBP
+.
+B) Stock dividend:
+reinvestment of the cash dividend upon payment,
+less an administration charge of 0.5  and a stamp
+duty of 0.5
+.
+Fractions (parts of a share)
+Fractions will be rounded down to the next whole
+share without compensation.
+.
+Turnover tax:
+The turnover tax (in case of the stock dividend)
+has to be paid by the shareholder.
+.
+Ex-date:
+16.05.2007
+.
+Record date:
+18.05.2007
+.
+Note:
+We will be unable to protect shares which are not
+registered in our nominee's name at the record
+date. Therefore, such holders will receive the
+dividend in cash.
+.
+Price of the share:
+GBP 24.55 on 23.04.2007 in LONDON
+.
+The new shares will be available on 22.06.2007 at
+the earliest.
+.
+Your instructions must reach us by 14.05.2007,
+12.00 CET, advising us of the action to be taken.
+:16S:ADDINFO
+-}{5:{MAC:D3CB4FDB}{CHK:BD88F9CD0328}{DLM:}}{S:{SAC:}{COP:S}}                                                                                                                                                                                                                                                                                                                                                                                                {1:F21CASBADADAXXX6494810330}{4:{177:0704250826}{451:0}}{1:F01CASBADADAXXX6494810330}{2:O5660327070425PARBFRPPAXXX71635699920704250818N}{3:{108:VRA669115AEXI000}}{4:
+:16R:GENL
+:20C::CORP//A10506663
+:20C::SEME//20070425000022
+:23G:NEWM
+:22F::CAEV//DVCA
+:16S:GENL
+:16R:USECU
+:97A::SAFE//41329000010000743581Y
+:35B:ISIN US3696041033
+GENERAL ELECTRIC CO
+:93B::CONB//UNIT/180,
+:16S:USECU
+:16R:CADETL
+:98A::XDTE//20070227
+:98A::PAYD//20070425
+:92F::GRSS//USD0,28
+:92F::NETT//USD0,196
+:92A::TAXR//30,
+:16S:CADETL
+:16R:CACONF
+:13A::CAON//001
+:22F::CAOP//CASH
+:16R:CASHMOVE
+:22H::CRDB//CRED
+:97A::CASH//41329000010000743581Y
+:19B::PSTA//USD35,28
+:19B::GRSS//USD50,4
+:19B::NETT//USD35,28
+:19B::WITL//USD15,12
+:98A::POST//20070425
+:98A::VALU//20070425
+:16S:CASHMOVE
+:16S:CACONF
+:16R:ADDINFO
+:70E::ADTX//HALF-BASE TAXATION
+FOR FOREIGN SECURITIES
+:16S:ADDINFO
+-}{5:{MAC:96B14D2A}{CHK:1E766202D4A7}{DLM:}}{S:{SAC:}{COP:S}}                                                                            {1:F21CASBADADAXXX6494810331}{4:{177:0704250826}{451:0}}{1:F01CASBADADAXXX6494810331}{2:O5670328070425MGTCBEBEBECL56001523210704250818N}{4:
+:16R:GENL
+:20C::CORP//NONREF
+:20C::SEME//5329995
+:23G:INST
+:22F::CAEV//OTHR
+:98C::PREP//20070410081949
+:16R:LINK
+:20C::RELA//MORGAN
+:16S:LINK
+:16R:STAT
+:25D::IPRC//PACK
+:16S:STAT
+:16S:GENL
+:16R:CADETL
+:13A::CAON//UNS
+:22F::CAOP/ECLR/UKWN
+:97A::SAFE//20023
+:35B:ISIN XS0288470338
+//MORGAN STANLEY      ZCP     16/09
+/08 EUR
+:16S:CADETL
+-}{5:{MAC:934D04D1}{CHK:B9A698D6434C}{DLM:}}{S:{SAC:}{COP:S}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

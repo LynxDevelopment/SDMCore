@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <resource id="HibernateResource" x="10" y="10" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="18" y="155" width="130" height="100"/>
+  <sub-application id="CorporateActionNotificationManagerApplication" x="398" y="-1" width="305" height="100"/>
+  <sub-application id="CorporateActionsAuthorizationApplication" x="705" y="487" width="376" height="100"/>
+  <sub-application id="CorporateActionsExportEventsApplication" x="423" y="218" width="304" height="100"/>
+  <sub-application id="CorporateActionsHistorificationApplication" x="56" y="291" width="305" height="100"/>
+  <sub-application id="CorporateActionsImporter" x="774" y="619" width="356" height="100"/>
+  <sub-application id="CorporateActionsLifeTimeHistorifiedApplication" x="349" y="487" width="306" height="100"/>
+  <sub-application id="CorporateActionsLoadExternalDataApplication" x="743" y="5" width="301" height="100"/>
+  <sub-application id="CorporateActionsMasterRecordApplication" x="809" y="255" width="315" height="100"/>
+  <sub-application id="CorporateActionsMatcherApplication" x="415" y="115" width="289" height="100"/>
+  <sub-application id="CorporateActionsMonitorApplication" x="338" y="618" width="310" height="100"/>
+  <sub-application id="CorporateActionsNormalizerApplication" x="339" y="739" width="319" height="100"/>
+  <sub-application id="CorporateActionsPlanningApplication" x="825" y="354" width="297" height="100"/>
+  <sub-application id="CorporateActionsPrenormalizerApplication" x="485" y="341" width="274" height="100"/>
+  <sub-application id="CorporateActionsSecuritiesUploadApplication" x="800" y="138" width="289" height="100"/>
+  <connection id="/application/HibernateResource/resource/application/HibernateStatelessResource/resource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsAuthorizationApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsExportEventsApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsHistorificationApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsImporter/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsLifeTimeHistorifiedApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsMasterRecordApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsMatcherApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsMonitorApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsNormalizerApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsPlanningApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsPrenormalizerApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsSecuritiesUploadApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionsLoadExternalDataApplication/hibernateResource"/>
+  <connection id="/application/HibernateResource/resource/application/CorporateActionNotificationManagerApplication/hibernateResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionsHistorificationApplication/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionsImporter/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionsLifeTimeHistorifiedApplication/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionsPlanningApplication/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionsSecuritiesUploadApplication/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionsLoadExternalDataApplication/hibernateStatelessResource"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/CorporateActionNotificationManagerApplication/hibernateStatelessResource"/>
+</fpm-application-layout>

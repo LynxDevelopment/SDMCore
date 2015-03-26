@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="monitorCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events>
+      <fpm:event id="ScheduledEventProducer">
+        <fpm:producer id="ScheduledEventProducer" type="com.lynxit.fpm.events.scheduler.ScheduledEventProducer">
+          <fpm:params>
+            <cronExpression type="REFERENCE">monitorCron</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+    </fpm:events>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications/>
+    <fpm:business-processes>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/monitor/businessprocess/CacheCleaner.fpmprocess" excludeFromBuild="" id="CacheCleanerProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">MONITORERRORHANDLER</user>
+          <statefullSession>HibernateResource</statefullSession>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to producer="ScheduledEventProducer"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/businessprocess/ExceptionHandler.fpmprocess" excludeFromBuild="" id="ErrorHandler" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">MONITORERRORHANDLER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to process="CacheCleanerProcess" event-name="exc"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+    </fpm:business-processes>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="33" y="61" width="32" height="32"/>
+  <business-node id="EventGroupChangeStateExceptionNode" x="497" y="194" width="130" height="100"/>
+  <business-node id="EventGroupChangeStateNode" x="1629" y="129" width="130" height="100"/>
+  <business-node id="GenerateMessageBody" x="1231" y="50" width="130" height="100"/>
+  <business-node id="GetManagersEvent" x="689" y="50" width="130" height="100"/>
+  <business-node id="HibernateStandardRead" x="126" y="50" width="130" height="100"/>
+  <business-node id="LogCoacDebug" x="1053" y="205" width="130" height="100"/>
+  <business-node id="LogCoacException" x="232" y="213" width="130" height="100"/>
+  <business-node id="MappingNode" x="497" y="50" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="300" y="50" width="130" height="100"/>
+  <business-node id="SendNotificationEvent" x="1411" y="50" width="130" height="100"/>
+  <business-node id="SwitchNode" x="874" y="50" width="130" height="100"/>
+  <business-node id="ToEvent" x="1254" y="205" width="130" height="100"/>
+  <business-node id="setCalendarEvent" x="1045" y="50" width="130" height="100"/>
+  <connection id="/business process/PatchedIteratorNode/exception/business process/EventGroupChangeStateExceptionNode/exc"/>
+  <connection id="/business process/SendNotificationEvent/out/business process/EventGroupChangeStateNode/in"/>
+  <connection id="/business process/ToEvent/out/business process/EventGroupChangeStateNode/in"/>
+  <connection id="/business process/setCalendarEvent/out/business process/GenerateMessageBody/in"/>
+  <connection id="/business process/GenerateMessageBody/out/business process/SendNotificationEvent/in"/>
+  <connection id="/business process/MappingNode/out/business process/GetManagersEvent/in"/>
+  <connection id="/business process/GetManagersEvent/out/business process/SwitchNode/in"/>
+  <connection id="/business process/input/business process/HibernateStandardRead/in"/>
+  <connection id="/business process/HibernateStandardRead/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/HibernateStandardRead/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/SwitchNode/default/business process/LogCoacDebug/in"/>
+  <connection id="/business process/LogCoacDebug/out/business process/ToEvent/in"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/MappingNode/in"/>
+  <connection id="/business process/SwitchNode/true/business process/setCalendarEvent/in"/>
+</fpm-process-layout>

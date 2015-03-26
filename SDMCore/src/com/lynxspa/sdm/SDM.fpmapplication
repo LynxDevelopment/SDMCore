@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="inputBloombergFieldsCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergFieldsDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergFieldsPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergSecuritiesCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergSecuritiesDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergSecuritiesPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events/>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource>HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications>
+      <fpm:sub-application definition-file="src/com/lynxspa/sdm/importers/ImportBloombergFields.fpmapplication" id="ImportBloombergFieldsApplication" type="com.lynxit.fpm.ApplicationDomain">
+        <fpm:params>
+          <inputBloombergFieldsCronn type="REFERENCE">inputBloombergFieldsCronn</inputBloombergFieldsCronn>
+          <inputBloombergFieldsDirectory type="REFERENCE">inputBloombergFieldsDirectory</inputBloombergFieldsDirectory>
+          <inputBloombergFieldsPattern type="REFERENCE">inputBloombergFieldsPattern</inputBloombergFieldsPattern>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">IMPORTBLOOMBERGFIELDS</user>
+          <hibernateResource>HibernateResource</hibernateResource>
+          <hibernateStatelessResource>HibernateStatelessResource</hibernateStatelessResource>
+        </fpm:params>
+      </fpm:sub-application>
+      <fpm:sub-application definition-file="src/com/lynxspa/sdm/importers/ImportBloombergSecurities.fpmapplication" id="ImportBloombergSecuritiesApplication" type="com.lynxit.fpm.ApplicationDomain">
+        <fpm:params>
+          <inputBloombergSecuritiesCronn type="REFERENCE">inputBloombergSecuritiesCronn</inputBloombergSecuritiesCronn>
+          <inputBloombergSecuritiesDirectory type="REFERENCE">inputBloombergSecuritiesDirectory</inputBloombergSecuritiesDirectory>
+          <inputBloombergSecuritiesPattern type="REFERENCE">inputBloombergSecuritiesPattern</inputBloombergSecuritiesPattern>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">IMPORTBLOOMBERGSECURITIES</user>
+          <hibernateResource>HibernateResource</hibernateResource>
+          <hibernateStatelessResource>HibernateStatelessResource</hibernateStatelessResource>
+        </fpm:params>
+      </fpm:sub-application>
+      <fpm:sub-application definition-file="src/com/lynxspa/sdm/normalizer/SDMNormalizer.fpmapplication" id="SDMNormalizerApplication" type="com.lynxit.fpm.ApplicationDomain">
+        <fpm:params>
+          <inputBloombergFieldsCronn type="REFERENCE">inputBloombergFieldsCronn</inputBloombergFieldsCronn>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">SDMNORMALIZER</user>
+          <hibernateResource>HibernateResource</hibernateResource>
+          <hibernateStatelessResource>HibernateStatelessResource</hibernateStatelessResource>
+        </fpm:params>
+      </fpm:sub-application>
+    </fpm:sub-applications>
+    <fpm:business-processes/>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="input" x="20" y="46" width="32" height="32"/>
+  <business-node id="Commit" x="1347" y="35" width="130" height="100"/>
+  <business-node id="HibernateStandardRead1" x="342" y="289" width="130" height="100"/>
+  <business-node id="LiveCycleValidate" x="118" y="35" width="130" height="100"/>
+  <business-node id="LogException" x="334" y="173" width="130" height="100"/>
+  <business-node id="Match" x="744" y="35" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="544" y="160" width="130" height="100"/>
+  <business-node id="Rollback" x="954" y="173" width="130" height="100"/>
+  <business-node id="ToManualMatch" x="744" y="173" width="130" height="100"/>
+  <business-node id="ToMatched" x="954" y="35" width="130" height="100"/>
+  <business-node id="Update" x="1156" y="35" width="130" height="100"/>
+  <connection id="/business process/Update/out/business process/Commit/in"/>
+  <connection id="/business process/LiveCycleValidate/out/business process/HibernateStandardRead1/in"/>
+  <connection id="/business process/HibernateStandardRead1/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/input/business process/LiveCycleValidate/in"/>
+  <connection id="/business process/LiveCycleValidate/exception/business process/LogException/exc"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/Match/in"/>
+  <connection id="/business process/Match/out/business process/ToMatched/in"/>
+  <connection id="/business process/Match/exception/business process/Rollback/exc"/>
+  <connection id="/business process/PatchedIteratorNode/exception/business process/ToManualMatch/exc"/>
+  <connection id="/business process/ToMatched/out/business process/Update/in"/>
+</fpm-process-layout>

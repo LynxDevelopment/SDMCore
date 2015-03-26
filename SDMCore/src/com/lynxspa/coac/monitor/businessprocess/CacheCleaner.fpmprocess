@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param2</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.Event" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="ClearCache" type="com.lynxspa.coac.monitor.nodes.ClearCacheNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ReportCacheClean"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="GetClearCacheFlag" type="com.lynxspa.coac.monitor.nodes.GetConfigValueNode">
+    <n:params>
+      <configuration type="FIXED">CLEARCACHE</configuration>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="MustBeCleaned"/>
+    <n:exit-to label="exception" name="exception" toNode="LogCoacException"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacException" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED"></arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">MONITOR_CLEARCACHE_ERROR</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="java.lang.Object" id="MustBeCleaned" type="com.lynxit.fpm.nodes.internal.DecisionNode">
+    <n:params>
+      <condition type="DYNAMIC" language="BEAN_SHELL">java.lang.Boolean.valueOf(message)</condition>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="true" name="true" toNode="ClearCache"/>
+    <n:output-connector name="false" ignore-unconnected="true"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="ReportCacheClean" type="com.lynxspa.coac.monitor.nodes.ChangeConfigValueNode">
+    <n:params>
+      <configuration type="FIXED">CLEARCACHE</configuration>
+      <inNewTransaction type="FIXED">false</inNewTransaction>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="FIXED">CORE</user>
+      <value type="FIXED">false</value>
+    </n:params>
+    <n:output-connector name="out" ignore-unconnected="true"/>
+  </n:business-node>
+</fpm:business-process>

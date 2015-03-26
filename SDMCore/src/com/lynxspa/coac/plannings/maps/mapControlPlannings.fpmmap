@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.entities.plannings.SPPlanningProcess" outputBean="com.lynxspa.coac.plannings.beans.ControlPlanningsBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <field name="FTPExport" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPExportProcess" code="22413595">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+  <field name="FTPImport" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPImportProcess" code="13290952">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+  <field name="cronn" type="java.lang.String">
+    <inputField name="in.cron" cardinal="0"/>
+  </field>
+  <field name="executeShell" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isExecuteShellProcess" code="24823160">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+  <field name="fileName" type="java.lang.String">
+    <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="22375837">
+      <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getPath" code="6252794">
+        <inputField name="in" cardinal="0"/>
+      </function>
+      <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="31994028">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFileName" code="15316913">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getExtension" code="7496379">
+          <inputField name="in" cardinal="0"/>
+        </function>
+      </function>
+    </function>
+  </field>
+  <field name="id" type="java.lang.Long">
+    <inputField name="in.id" cardinal="0"/>
+  </field>
+  <field name="lastExecutionDate" type="java.util.Date">
+    <inputField name="in.executionDate" cardinal="0"/>
+  </field>
+  <field name="manual" type="java.lang.Boolean">
+    <inputField name="in.manual" cardinal="0"/>
+  </field>
+  <field name="name" type="java.lang.String">
+    <inputField name="in.name" cardinal="0"/>
+  </field>
+</mn:mapping-element>

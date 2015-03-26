@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="normalizableBean" x="-361" y="212" width="32" height="32"/>
+  <output id="normalizableOutputBean" x="1655" y="740" width="32" height="32"/>
+  <business-node id="CallCompleteAnalyzerProcessor" x="2058" y="303" width="130" height="100"/>
+  <business-node id="CallNormalizeProcessor" x="549" y="198" width="130" height="100"/>
+  <business-node id="CastNode" x="746" y="198" width="130" height="100"/>
+  <business-node id="DecisionNode" x="352" y="286" width="130" height="100"/>
+  <business-node id="FindPreviousEventNode" x="180" y="286" width="130" height="100"/>
+  <business-node id="ForkNode" x="927" y="198" width="130" height="100"/>
+  <business-node id="ForkNode1" x="1183" y="324" width="130" height="100"/>
+  <business-node id="ForkNode2" x="1438" y="483" width="130" height="100"/>
+  <business-node id="ForkNode3" x="1647" y="426" width="130" height="100"/>
+  <business-node id="Get Authorized Group" x="2058" y="584" width="130" height="100"/>
+  <business-node id="Get MR Group" x="2058" y="458" width="130" height="100"/>
+  <business-node id="Get Sent Event" x="2058" y="710" width="130" height="100"/>
+  <business-node id="ManualMapDetailExtensionUpdateToCAEventDetailExtended" x="1828" y="173" width="239" height="98"/>
+  <business-node id="ManualMapNormalizableUpdateAdapterToCAEventDetail" x="1595" y="-40" width="226" height="101"/>
+  <business-node id="NormalizationUpdateExtensionsIteratorNode" x="1436" y="175" width="130" height="100"/>
+  <business-node id="Promote to Updater" x="-4" y="286" width="130" height="100"/>
+  <business-node id="Save" x="1650" y="277" width="130" height="100"/>
+  <business-node id="SwitchNode" x="-165" y="201" width="130" height="100"/>
+  <business-node id="To RepeatSendAsCancel" x="2278" y="710" width="130" height="100"/>
+  <business-node id="To RollbackAuthorization" x="2278" y="584" width="130" height="100"/>
+  <business-node id="To RollbackMasterRecord" x="2278" y="458" width="130" height="100"/>
+  <business-node id="Update" x="2602" y="251" width="130" height="100"/>
+  <business-node id="Update EventCollected" x="1834" y="303" width="130" height="100"/>
+  <business-node id="Update EventDetail" x="1327" y="-48" width="130" height="100"/>
+  <business-node id="Update EventDetailExtensions" x="1647" y="77" width="130" height="100"/>
+  <business-node id="UpdateEffects" x="1832" y="562" width="130" height="100"/>
+  <subprocess id="Process as new message" x="554" y="411" width="130" height="100"/>
+  <connection id="/business process/Update EventCollected/out/business process/CallCompleteAnalyzerProcessor/in"/>
+  <connection id="/business process/CallCompleteAnalyzerProcessor/out/business process/Update/in"/>
+  <connection id="/business process/DecisionNode/true/business process/CallNormalizeProcessor/in"/>
+  <connection id="/business process/SwitchNode/yes/business process/CallNormalizeProcessor/in"/>
+  <connection id="/business process/CallNormalizeProcessor/out/business process/CastNode/in"/>
+  <connection id="/business process/CastNode/out/business process/ForkNode/in"/>
+  <connection id="/business process/FindPreviousEventNode/out/business process/DecisionNode/in"/>
+  <connection id="/business process/DecisionNode/false/business process/Process as new message/normalizableBean"/>
+  <connection id="/business process/Promote to Updater/out/business process/FindPreviousEventNode/in"/>
+  <connection id="/business process/ForkNode/one/business process/ManualMapNormalizableUpdateAdapterToCAEventDetail/in"/>
+  <connection id="/business process/ForkNode/two/business process/ForkNode1/in"/>
+  <connection id="/business process/ForkNode1/one/business process/NormalizationUpdateExtensionsIteratorNode/in"/>
+  <connection id="/business process/ForkNode1/two/business process/ForkNode2/in"/>
+  <connection id="/business process/ForkNode2/one/business process/ForkNode3/in"/>
+  <connection id="/business process/ForkNode2/two/business process/normalizableOutputBean"/>
+  <connection id="/business process/ForkNode3/one/business process/Update EventCollected/in"/>
+  <connection id="/business process/ForkNode3/two/business process/UpdateEffects/in"/>
+  <connection id="/business process/UpdateEffects/aUTHORIZED/business process/Get Authorized Group/in"/>
+  <connection id="/business process/Get Authorized Group/out/business process/To RollbackAuthorization/in"/>
+  <connection id="/business process/UpdateEffects/mASTERRECORD/business process/Get MR Group/in"/>
+  <connection id="/business process/Get MR Group/out/business process/To RollbackMasterRecord/in"/>
+  <connection id="/business process/UpdateEffects/sENDTOBACKOFFICE/business process/Get Sent Event/in"/>
+  <connection id="/business process/Get Sent Event/out/business process/To RepeatSendAsCancel/in"/>
+  <connection id="/business process/NormalizationUpdateExtensionsIteratorNode/existentExtension/business process/ManualMapDetailExtensionUpdateToCAEventDetailExtended/in"/>
+  <connection id="/business process/ManualMapDetailExtensionUpdateToCAEventDetailExtended/out/business process/Update/in"/>
+  <connection id="/business process/ManualMapNormalizableUpdateAdapterToCAEventDetail/out/business process/Update/in"/>
+  <connection id="/business process/NormalizationUpdateExtensionsIteratorNode/newExtension/business process/Save/in"/>
+  <connection id="/business process/SwitchNode/no/business process/Promote to Updater/in"/>
+  <connection id="/business process/normalizableBean/business process/SwitchNode/in"/>
+  <connection id="/business process/To RepeatSendAsCancel/out/business process/Update/in"/>
+  <connection id="/business process/To RollbackAuthorization/out/business process/Update/in"/>
+  <connection id="/business process/To RollbackMasterRecord/out/business process/Update/in"/>
+  <connection id="/business process/Process as new message/normalizableOutputBean/business process/normalizableOutputBean"/>
+</fpm-process-layout>

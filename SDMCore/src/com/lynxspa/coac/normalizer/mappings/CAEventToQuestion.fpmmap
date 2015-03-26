@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" outputBean="com.lynxspa.coac.normalizer.beans.CAQuestionBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <field name="event" type="com.lynxspa.coac.entities.events.CAEventCollected">
+    <inputField name="in.eventCollected" cardinal="0"/>
+  </field>
+  <field name="mandatory" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.mappings.CoacFunctions.isMandatory" code="20668849">
+      <inputField name="in.eventDetail" cardinal="0"/>
+      <constant value="BOOLEAN1" type="java.lang.String" cardinal="1"/>
+    </function>
+  </field>
+  <field name="originalMessage" type="java.lang.String">
+    <inputField name="in.message.originalMessage" cardinal="0"/>
+  </field>
+</mn:mapping-element>

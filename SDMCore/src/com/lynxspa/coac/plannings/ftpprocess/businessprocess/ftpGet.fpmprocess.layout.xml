@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="65" y="111" width="32" height="32"/>
+  <business-node id="FTP GET" x="703" y="100" width="130" height="100"/>
+  <business-node id="HibernateStandardRead" x="174" y="100" width="130" height="100"/>
+  <business-node id="IteratorNode" x="355" y="100" width="130" height="100"/>
+  <business-node id="MapPersecuritiesMap" x="528" y="100" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="357" y="219" width="130" height="100"/>
+  <connection id="/business process/MapPersecuritiesMap/out/business process/FTP GET/in"/>
+  <connection id="/business process/input/business process/HibernateStandardRead/in"/>
+  <connection id="/business process/HibernateStandardRead/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/MapPersecuritiesMap/in"/>
+</fpm-process-layout>

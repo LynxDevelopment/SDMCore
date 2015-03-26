@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.emailAddresses"/>
+    <expanded status="false" fqn="in.eventCalendar"/>
+    <expanded status="false" fqn="in.eventDate"/>
+    <expanded status="false" fqn="in.eventGroup"/>
+    <expanded status="false" fqn="in.multipart"/>
+    <expanded status="false" fqn="in.subject"/>
+  </source>
+  <target>
+    <expanded status="false" fqn="out"/>
+  </target>
+</operations-layout>

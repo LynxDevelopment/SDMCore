@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <event-producer id="StandardEventProducer" x="22" y="22" width="130" height="100"/>
+  <resource id="HibernateResource" x="79" y="388" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="347" y="246" width="130" height="100"/>
+  <business-process id="SDMNormalizerProcessProcess" x="437" y="20" width="130" height="100"/>
+  <connection id="/application/HibernateResource/resource/application/SDMNormalizerProcessProcess/session"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/SDMNormalizerProcessProcess/sessionStateless"/>
+  <connection id="/application/StandardEventProducer/events/application/SDMNormalizerProcessProcess/normalizerEvent"/>
+  <connection id="/application/HibernateResource/resource/application/HibernateStatelessResource/resource"/>
+</fpm-application-layout>

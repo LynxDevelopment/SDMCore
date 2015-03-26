@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="inputBloombergFieldsCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="user" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events>
+      <fpm:event id="StandardEventProducer">
+        <fpm:producer id="StandardEventProducer" type="com.lynxspa.fpm.events.StandardEventProducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <cronExpression type="FIXED">0/30 * * * * ?</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+    </fpm:events>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource>HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications/>
+    <fpm:business-processes>
+      <fpm:business-process definition-file="src/com/lynxspa/sdm/normalizer/businessprocess/SDMNormalizerProcess.fpmprocess" excludeFromBuild="" id="SDMNormalizerProcessProcess" number-of-instances="1" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="REFERENCE">user</user>
+          <session>HibernateResource</session>
+          <sessionStateless>HibernateStatelessResource</sessionStateless>
+        </fpm:params>
+        <fpm:event-listener name="normalizerEvent">
+          <fpm:listens-to producer="StandardEventProducer"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+    </fpm:business-processes>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

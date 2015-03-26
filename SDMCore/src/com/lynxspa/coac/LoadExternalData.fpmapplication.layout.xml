@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="Customers Load" x="47" y="57" width="130" height="100"/>
+  <resource id="HibernateResource" x="55" y="274" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="55" y="397" width="130" height="100"/>
+  <business-process id="LoadCustomersProcess" x="320" y="56" width="322" height="100"/>
+  <connection id="/application/HibernateResource/resource/application/LoadCustomersProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/LoadCustomersProcess/statelessSessionFactory"/>
+  <connection id="/application/Customers Load/events/application/LoadCustomersProcess/input"/>
+</fpm-application-layout>

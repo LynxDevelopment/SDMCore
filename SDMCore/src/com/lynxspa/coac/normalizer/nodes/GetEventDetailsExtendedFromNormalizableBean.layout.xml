@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.eventDetail"/>
+    <expanded status="false" fqn="in.eventDetail.auditor"/>
+    <expanded status="false" fqn="in.eventDetail.dynamicTable"/>
+    <expanded status="false" fqn="in.eventDetail.executionDate"/>
+    <expanded status="false" fqn="in.eventDetail.expirationDate"/>
+    <expanded status="false" fqn="in.eventDetail.extensions"/>
+    <expanded status="false" fqn="in.eventDetail.id"/>
+    <expanded status="false" fqn="in.eventDetail.operationalDate"/>
+    <expanded status="false" fqn="in.eventDetail.subscriptionDate"/>
+    <expanded status="false" fqn="in.eventDetail.version"/>
+    <expanded status="false" fqn="in.eventDetailExtended"/>
+    <expanded status="false" fqn="in.eventDetailExtended.$size"/>
+    <expanded status="false" fqn="in.eventDetailExtended.auditor"/>
+    <expanded status="false" fqn="in.eventDetailExtended.dynamicTable"/>
+    <expanded status="false" fqn="in.eventDetailExtended.extensionName"/>
+    <expanded status="false" fqn="in.eventDetailExtended.extensionNumber"/>
+    <expanded status="false" fqn="in.eventDetailExtended.id"/>
+    <expanded status="false" fqn="in.eventDetailExtended.mainDetail"/>
+    <expanded status="false" fqn="in.eventDetailExtended.narrative"/>
+    <expanded status="false" fqn="in.eventDetailExtended.version"/>
+    <expanded status="false" fqn="in.message"/>
+    <expanded status="false" fqn="in.message.account"/>
+    <expanded status="false" fqn="in.message.amount"/>
+    <expanded status="false" fqn="in.message.announceDate"/>
+    <expanded status="false" fqn="in.message.auditor"/>
+    <expanded status="false" fqn="in.message.effectiveDate"/>
+    <expanded status="false" fqn="in.message.eventMessageReference"/>
+    <expanded status="false" fqn="in.message.eventProvider"/>
+    <expanded status="false" fqn="in.message.eventReference"/>
+    <expanded status="false" fqn="in.message.eventType"/>
+    <expanded status="false" fqn="in.message.extension"/>
+    <expanded status="false" fqn="in.message.extensionReference"/>
+    <expanded status="false" fqn="in.message.fields"/>
+    <expanded status="false" fqn="in.message.id"/>
+    <expanded status="false" fqn="in.message.messageId"/>
+    <expanded status="false" fqn="in.message.messageType"/>
+    <expanded status="false" fqn="in.message.normalizedEvent"/>
+    <expanded status="false" fqn="in.message.normalizedEventType"/>
+    <expanded status="false" fqn="in.message.normalizedOperation"/>
+    <expanded status="false" fqn="in.message.normalizedSecurity"/>
+    <expanded status="false" fqn="in.message.operation"/>
+    <expanded status="false" fqn="in.message.operationStatus"/>
+    <expanded status="false" fqn="in.message.originId"/>
+    <expanded status="false" fqn="in.message.originName"/>
+    <expanded status="false" fqn="in.message.originPosition"/>
+    <expanded status="false" fqn="in.message.originType"/>
+    <expanded status="false" fqn="in.message.originalMessage"/>
+    <expanded status="false" fqn="in.message.previousEventMessageReference"/>
+    <expanded status="false" fqn="in.message.receiver"/>
+    <expanded status="false" fqn="in.message.security"/>
+    <expanded status="false" fqn="in.message.securityName"/>
+    <expanded status="false" fqn="in.message.securityType"/>
+    <expanded status="false" fqn="in.message.sender"/>
+    <expanded status="false" fqn="in.message.version"/>
+  </source>
+  <target>
+    <expanded status="false" fqn="out"/>
+    <expanded status="false" fqn="out.$size"/>
+  </target>
+</operations-layout>

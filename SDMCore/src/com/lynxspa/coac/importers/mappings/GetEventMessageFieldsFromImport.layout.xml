@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <source>
+    <expanded status="true" fqn="in"/>
+    <expanded status="false" fqn="in.fields"/>
+    <expanded status="false" fqn="in.mappedFields"/>
+    <expanded status="false" fqn="in.message"/>
+  </source>
+  <target>
+    <expanded status="false" fqn="out"/>
+  </target>
+</operations-layout>

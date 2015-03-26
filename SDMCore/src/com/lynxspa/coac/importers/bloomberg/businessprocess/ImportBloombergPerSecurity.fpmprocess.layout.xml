@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="BloombergFileCreated" x="-200" y="211" width="32" height="32"/>
+  <business-node id="Commit" x="2124" y="202" width="130" height="100"/>
+  <business-node id="DuplicatesFilter" x="1618" y="319" width="130" height="100"/>
+  <business-node id="EventTypeSwitch" x="1200" y="203" width="130" height="100"/>
+  <business-node id="ExceptionRollbackNode" x="2124" y="332" width="130" height="100"/>
+  <business-node id="FilterMessages" x="844" y="202" width="130" height="100"/>
+  <business-node id="FormatValidatorNode" x="230" y="202" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="15" y="202" width="130" height="100"/>
+  <business-node id="Log Bloomberg Import exception" x="846" y="346" width="130" height="100"/>
+  <business-node id="OpenFile" x="431" y="202" width="130" height="100"/>
+  <business-node id="Parse" x="644" y="201" width="130" height="100"/>
+  <business-node id="Preprocess" x="1024" y="201" width="130" height="100"/>
+  <business-node id="PreprocessCPN" x="1382" y="145" width="130" height="100"/>
+  <subprocess id="SaveImportedMessageProcess" x="1825" y="202" width="130" height="100"/>
+  <connection id="/business process/SaveImportedMessageProcess/importedMessage/business process/Commit/in"/>
+  <connection id="/business process/PreprocessCPN/out/business process/DuplicatesFilter/in"/>
+  <connection id="/business process/EventTypeSwitch/default/business process/DuplicatesFilter/in"/>
+  <connection id="/business process/DuplicatesFilter/out/business process/SaveImportedMessageProcess/importedMessage"/>
+  <connection id="/business process/Preprocess/out/business process/EventTypeSwitch/in"/>
+  <connection id="/business process/EventTypeSwitch/cPN/business process/PreprocessCPN/in"/>
+  <connection id="/business process/SaveImportedMessageProcess/exc/business process/ExceptionRollbackNode/exc"/>
+  <connection id="/business process/Parse/out/business process/FilterMessages/in"/>
+  <connection id="/business process/FilterMessages/out/business process/Preprocess/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/FormatValidatorNode/in"/>
+  <connection id="/business process/FormatValidatorNode/out/business process/OpenFile/in"/>
+  <connection id="/business process/BloombergFileCreated/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/Parse/exception/business process/Log Bloomberg Import exception/exc"/>
+  <connection id="/business process/OpenFile/out/business process/Parse/in"/>
+</fpm-process-layout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="56" y="82" width="32" height="32"/>
+  <business-node id="SecurityPortfolioHistorificationNode" x="210" y="71" width="130" height="100"/>
+  <connection id="/business process/input/business process/SecurityPortfolioHistorificationNode/in"/>
+</fpm-process-layout>

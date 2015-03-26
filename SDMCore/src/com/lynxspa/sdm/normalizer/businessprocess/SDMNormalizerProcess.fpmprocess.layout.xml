@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="NormalizerEvent" x="66" y="38" width="32" height="32"/>
+  <business-node id="SDMNormalizer" x="330" y="70" width="130" height="100"/>
+  <connection id="/business process/NormalizerEvent/business process/SDMNormalizer/in"/>
+</fpm-process-layout>

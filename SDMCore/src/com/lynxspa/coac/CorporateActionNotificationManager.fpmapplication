@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="evenDuration" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="hourToBeginEven" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="maxResultsToLoad" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="notificationManagerEventCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="previosHoursForAlarm" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpFrom" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpHost" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpPassword" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpPort" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpUser" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="timeZone" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events>
+      <fpm:event id="StandardEventProducer">
+        <fpm:producer id="StandardEventProducer" type="com.lynxspa.fpm.events.StandardEventProducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <cronExpression type="REFERENCE">notificationManagerEventCron</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+    </fpm:events>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource type="REFERENCE">HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications/>
+    <fpm:business-processes>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/businessprocess/ExceptionHandler.fpmprocess" excludeFromBuild="" id="ErrorHandler" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">SENDTOBACKOFFICEERRORHANDLER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+        </fpm:params>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/notificationmanagers/businessprocess/SendNotificationManagers.fpmprocess" excludeFromBuild="" id="SendNotificationManagersProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <evenDuration type="REFERENCE">evenDuration</evenDuration>
+          <hourToBeginEven type="REFERENCE">hourToBeginEven</hourToBeginEven>
+          <locale type="REFERENCE">locale</locale>
+          <maxResultsToLoad type="REFERENCE">maxResultsToLoad</maxResultsToLoad>
+          <notes type="FIXED"></notes>
+          <previosHoursForAlarm type="REFERENCE">previosHoursForAlarm</previosHoursForAlarm>
+          <smtpFrom type="REFERENCE">smtpFrom</smtpFrom>
+          <smtpHost type="REFERENCE">smtpHost</smtpHost>
+          <smtpPassword type="REFERENCE">smtpPassword</smtpPassword>
+          <smtpPort type="REFERENCE">smtpPort</smtpPort>
+          <smtpUser type="REFERENCE">smtpUser</smtpUser>
+          <timeZone type="REFERENCE">timeZone</timeZone>
+          <user type="FIXED">NOTIFICATIONMANAGER</user>
+          <statefullSession>HibernateResource</statefullSession>
+          <statelessSession>HibernateStatelessResource</statelessSession>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to producer="StandardEventProducer"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+    </fpm:business-processes>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

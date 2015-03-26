@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="inputBloombergPerSecCorporatesCommitSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="inputBloombergPerSecCorporatesErrorDirectory" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="sessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.fileevents.FileEvent" id="BloombergFileCreated" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="BloombergParserNode" type="com.lynxspa.coac.importers.bloomberg.nodes.BloombergParserNode">
+    <n:params>
+      <errorExtension type="FIXED">error</errorExtension>
+      <errorPath type="REFERENCE">inputBloombergPerSecCorporatesErrorDirectory</errorPath>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">sessionFactory</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="FilterMessages"/>
+    <n:exit-to label="exception" name="exception" toNode="Log Bloomberg Import exception"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Commit" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardCommit">
+    <n:params>
+      <commitEvery type="REFERENCE">inputBloombergPerSecCorporatesCommitSize</commitEvery>
+      <dataSource type="REFERENCE">statelessSessionFactory</dataSource>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.importers.EventMessageImportBean" id="DuplicateImportsFilter" type="com.lynxspa.coac.importers.nodes.DuplicateImportFilter">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statelessSessionFactory</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toProcess="SaveImportedMessageProcess" inputName="importedMessage"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="ExceptionRollbackNode" type="com.lynxspa.fpm.nodes.hibernate.ExceptionRollbackNode">
+    <n:params>
+      <dataSource type="REFERENCE">statelessSessionFactory</dataSource>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">false</stopExceptionHandling>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.importers.EventMessageImportBean" id="FilterMessages" type="com.lynxspa.coac.importers.nodes.ImportFilter">
+    <n:params>
+      <acceptedMessages type="FIXED">
+        <values>
+          <value type="FIXED">Corp/Pfd</value>
+        </values>
+      </acceptedMessages>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PreprocessPersecurityBloombergMap"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.fileevents.FileEvent" id="FormatValidatorNode" type="com.lynxspa.coac.nodes.FormatValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">sessionFactory</resource>
+      <rrequiredFormat type="FIXED">BLOOMBERG</rrequiredFormat>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="OpenFile"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.fileevents.FileEvent" id="LiveCycleValidatorNode" type="com.lynxspa.coac.nodes.LiveCycleValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <requiredLiveCycle type="FIXED">IMPORT_MESSAGES</requiredLiveCycle>
+      <resource type="REFERENCE">sessionFactory</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="FormatValidatorNode"/>
+    <n:listens-to id="BloombergFileCreated"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Log Bloomberg Import exception" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED">
+        <values>
+          <value type="FIXED">"Bloomberg"</value>
+          <value type="DYNAMIC" language="BEAN_SHELL">process.getContextAttribute("fileName")</value>
+          <value type="DYNAMIC" language="BEAN_SHELL">process.getContextAttribute("ParserNode.position");</value>
+        </values>
+      </arguments>
+      <commitInNewTransaction type="FIXED">false</commitInNewTransaction>
+      <dataSource type="REFERENCE">sessionFactory</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">IMPORT_FAIL</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="OpenFile" type="com.lynxit.fpm.nodes.file.SingleFileEventReaderNode">
+    <n:params>
+      <commitAction type="FIXED">RENAME</commitAction>
+      <committedFileSuffix type="FIXED">done</committedFileSuffix>
+      <committedFilesDirectory type="FIXED">done</committedFilesDirectory>
+      <createDestinationFolders type="FIXED">false</createDestinationFolders>
+      <notes type="FIXED"></notes>
+      <rollbackAction type="FIXED">RENAME</rollbackAction>
+      <rollbackedFileSuffix type="FIXED">error</rollbackedFileSuffix>
+      <rollbackedFilesDirectory type="FIXED">error</rollbackedFilesDirectory>
+      <temporaryFileSuffix type="FIXED">tmp</temporaryFileSuffix>
+      <timeoutOnFileLock type="REFERENCE">inputTimeout</timeoutOnFileLock>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="BloombergParserNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="PreprocessPersecurityBloombergMap" mapping-definition-file="src/com/lynxspa/coac/importers/bloomberg/mappings/preprocessPersecurityBloomberg.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="DuplicateImportsFilter"/>
+  </n:business-node>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/importers/businessprocess/SaveImportedMessage.fpmprocess" excludeFromBuild="" id="SaveImportedMessageProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <sessionFactory type="REFERENCE">statelessSessionFactory</sessionFactory>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="exc" name="exc" toNode="ExceptionRollbackNode"/>
+    <n:exit-to label="importedMessage" name="importedMessage" toNode="Commit"/>
+  </n:subprocess>
+</fpm:business-process>

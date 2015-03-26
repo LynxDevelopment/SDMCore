@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="FileCreated" x="78" y="240" width="32" height="32"/>
+  <business-node id="ForkNode" x="404" y="228" width="130" height="100"/>
+  <business-node id="LiveCycle Validation" x="242" y="229" width="130" height="100"/>
+  <business-node id="SecurityFormatValidatorNode" x="584" y="104" width="130" height="100"/>
+  <business-node id="VirtualSecurityReplacementNode" x="614" y="351" width="130" height="100"/>
+  <subprocess id="BloombergSecuritiesUploadProcess" x="807" y="21" width="288" height="100"/>
+  <subprocess id="CustomerSecuritiesUploadProcess" x="808" y="139" width="284" height="100"/>
+  <subprocess id="OfivalSecuritiesUploadProcess" x="811" y="258" width="288" height="100"/>
+  <connection id="/business process/LiveCycle Validation/out/business process/ForkNode/in"/>
+  <connection id="/business process/ForkNode/one/business process/SecurityFormatValidatorNode/in"/>
+  <connection id="/business process/ForkNode/two/business process/VirtualSecurityReplacementNode/in"/>
+  <connection id="/business process/FileCreated/business process/LiveCycle Validation/in"/>
+  <connection id="/business process/SecurityFormatValidatorNode/bloomberg/business process/BloombergSecuritiesUploadProcess/securitiesBloombergFileCreated"/>
+  <connection id="/business process/SecurityFormatValidatorNode/customer/business process/CustomerSecuritiesUploadProcess/securitiesCustomerFileCreated"/>
+  <connection id="/business process/SecurityFormatValidatorNode/ofival/business process/OfivalSecuritiesUploadProcess/securitiesOfivalFileCreated"/>
+</fpm-process-layout>

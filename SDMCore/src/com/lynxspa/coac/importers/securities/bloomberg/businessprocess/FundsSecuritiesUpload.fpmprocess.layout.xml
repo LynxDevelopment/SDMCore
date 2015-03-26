@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="SecuritiesFundsFileCreated" x="-366" y="106" width="32" height="32"/>
+  <business-node id="ActionFundsDecisionSwitch" x="794" y="101" width="130" height="100"/>
+  <business-node id="Commit" x="1701" y="142" width="130" height="102"/>
+  <business-node id="ForkNode" x="1466" y="103" width="130" height="100"/>
+  <business-node id="Format Validation" x="49" y="95" width="130" height="100"/>
+  <business-node id="FundsSecurityBeanToSecurityBeanMap" x="1016" y="32" width="130" height="100"/>
+  <business-node id="FundsSecurityBeanToSecurityBeanMap1" x="1017" y="177" width="130" height="100"/>
+  <business-node id="LiveCycle Validation" x="-124" y="95" width="130" height="100"/>
+  <business-node id="LogCoacException" x="593" y="403" width="130" height="100"/>
+  <business-node id="OpenFile" x="220" y="95" width="130" height="100"/>
+  <business-node id="Parse Fund File" x="588" y="31" width="130" height="100"/>
+  <business-node id="ParserValidatorNode" x="414" y="95" width="130" height="100"/>
+  <business-node id="Rollback" x="1701" y="265" width="130" height="102"/>
+  <business-node id="SecuritiesRentaFijaParserNode" x="594" y="189" width="130" height="100"/>
+  <business-node id="Set insertOrUpdate" x="1234" y="33" width="130" height="100"/>
+  <business-node id="set delete" x="1234" y="179" width="130" height="100"/>
+  <subprocess id="StoreSecurityProcess" x="1701" y="22" width="130" height="100"/>
+  <connection id="/business process/Parse Fund File/out/business process/ActionFundsDecisionSwitch/in"/>
+  <connection id="/business process/SecuritiesRentaFijaParserNode/out/business process/ActionFundsDecisionSwitch/in"/>
+  <connection id="/business process/ActionFundsDecisionSwitch/insert/business process/FundsSecurityBeanToSecurityBeanMap/in"/>
+  <connection id="/business process/ActionFundsDecisionSwitch/delete/business process/FundsSecurityBeanToSecurityBeanMap1/in"/>
+  <connection id="/business process/ForkNode/two/business process/Commit/in"/>
+  <connection id="/business process/Set insertOrUpdate/out/business process/ForkNode/in"/>
+  <connection id="/business process/set delete/out/business process/ForkNode/in"/>
+  <connection id="/business process/ForkNode/one/business process/StoreSecurityProcess/importedBean"/>
+  <connection id="/business process/ForkNode/exception/business process/Rollback/exc"/>
+  <connection id="/business process/LiveCycle Validation/out/business process/Format Validation/in"/>
+  <connection id="/business process/Format Validation/out/business process/OpenFile/in"/>
+  <connection id="/business process/FundsSecurityBeanToSecurityBeanMap/out/business process/Set insertOrUpdate/in"/>
+  <connection id="/business process/FundsSecurityBeanToSecurityBeanMap1/out/business process/set delete/in"/>
+  <connection id="/business process/SecuritiesFundsFileCreated/business process/LiveCycle Validation/in"/>
+  <connection id="/business process/ParserValidatorNode/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/OpenFile/out/business process/ParserValidatorNode/in"/>
+  <connection id="/business process/ParserValidatorNode/others/business process/Parse Fund File/in"/>
+  <connection id="/business process/ParserValidatorNode/rentaFija/business process/SecuritiesRentaFijaParserNode/in"/>
+</fpm-process-layout>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.entities.plannings.SPPlanningProcess" outputBean="com.lynxspa.coac.plannings.beans.PlanningBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <field name="FTPBinary" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPBinary" code="19420173">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+  <field name="FTPExport" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPExportProcess" code="20216317">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+  <field name="FTPImport" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPImportProcess" code="21851445">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+  <field name="FTPPassive" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPPassive" code="26225587">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+  <field name="cronExpression" type="java.lang.String">
+    <inputField name="in.cron" cardinal="0"/>
+  </field>
+  <field name="ftpFile" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="22513253">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="22840749">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPFile" code="22721828">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpPassword" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="13771318">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="8889079">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPPassword" code="22156004">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpPath" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="6835689">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="3421456">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPPath" code="28531044">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpPort" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="30575990">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="5812535">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPPort" code="13453573">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpProxy" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="18688667">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="5381789">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPProxy" code="10535489">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpProxyPassword" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="23803313">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="6663637">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPProxyPassword" code="8960147">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpProxyUser" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="5767797">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="30162187">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPProxyUser" code="12412032">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpServer" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="1103743">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="11018088">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPServer" code="22089572">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="ftpUser" type="java.lang.String">
+    <function name="com.lynxspa.fpm.functions.ObjectFunctions.stringValueOf" code="27112135">
+      <function name="com.lynxspa.fpm.functions.ObjectFunctions.condition" code="250600">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isFTPProcess" code="11503925">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFTPUser" code="30776498">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <constant value="null" type="java.lang.Object" cardinal="2"/>
+      </function>
+    </function>
+  </field>
+  <field name="id" type="java.lang.Long">
+    <inputField name="in.id" cardinal="0"/>
+  </field>
+  <field name="objectTemplate" type="java.lang.Byte">
+    <inputField name="in.objectTemplate" cardinal="0"/>
+  </field>
+  <field name="outputFile" type="java.lang.String">
+    <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="7082486">
+      <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getPath" code="23695346">
+        <inputField name="in" cardinal="0"/>
+      </function>
+      <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="16259478">
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFileName" code="22265711">
+          <inputField name="in" cardinal="0"/>
+        </function>
+        <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getExtension" code="15389450">
+          <inputField name="in" cardinal="0"/>
+        </function>
+      </function>
+    </function>
+  </field>
+  <field name="outputFileName" type="java.lang.String">
+    <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="16259478">
+      <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getFileName" code="22265711">
+        <inputField name="in" cardinal="0"/>
+      </function>
+      <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.getExtension" code="15389450">
+        <inputField name="in" cardinal="0"/>
+      </function>
+    </function>
+  </field>
+  <field name="overWrite" type="java.lang.Boolean">
+    <function name="com.lynxspa.coac.plannings.maps.PlanningsFunctions.isOverwrite" code="3714885">
+      <inputField name="in" cardinal="0"/>
+    </function>
+  </field>
+</mn:mapping-element>

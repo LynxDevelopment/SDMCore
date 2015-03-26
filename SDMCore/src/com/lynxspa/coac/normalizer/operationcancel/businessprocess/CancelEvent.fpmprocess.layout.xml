@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="normalizableBean" x="-49" y="385" width="32" height="32"/>
+  <output id="normalizableOutputBean" x="731" y="608" width="32" height="32"/>
+  <business-node id="Cancel Event" x="1288" y="1" width="130" height="100"/>
+  <business-node id="FindPreviousEvent" x="296" y="373" width="130" height="100"/>
+  <business-node id="ForkNode" x="492" y="373" width="130" height="100"/>
+  <business-node id="ForkNode1" x="752" y="150" width="130" height="100"/>
+  <business-node id="Get Authorized Group" x="1202" y="304" width="130" height="100"/>
+  <business-node id="Get MR Group" x="1202" y="178" width="130" height="100"/>
+  <business-node id="Get Sent Event" x="1202" y="430" width="130" height="100"/>
+  <business-node id="Promote to Updater" x="113" y="373" width="130" height="100"/>
+  <business-node id="SwitchNode" x="959" y="281" width="130" height="100"/>
+  <business-node id="To RepeatSendAsCancel" x="1422" y="430" width="130" height="100"/>
+  <business-node id="To RollbackAuthorization" x="1422" y="304" width="130" height="100"/>
+  <business-node id="To RollbackMasterRecord" x="1422" y="178" width="130" height="100"/>
+  <business-node id="Update" x="1666" y="165" width="130" height="100"/>
+  <connection id="/business process/ForkNode1/one/business process/Cancel Event/in"/>
+  <connection id="/business process/Cancel Event/out/business process/Update/in"/>
+  <connection id="/business process/Promote to Updater/out/business process/FindPreviousEvent/in"/>
+  <connection id="/business process/FindPreviousEvent/out/business process/ForkNode/in"/>
+  <connection id="/business process/ForkNode/one/business process/ForkNode1/in"/>
+  <connection id="/business process/ForkNode/two/business process/normalizableOutputBean"/>
+  <connection id="/business process/ForkNode1/two/business process/SwitchNode/in"/>
+  <connection id="/business process/SwitchNode/aUTHORIZED/business process/Get Authorized Group/in"/>
+  <connection id="/business process/Get Authorized Group/out/business process/To RollbackAuthorization/in"/>
+  <connection id="/business process/SwitchNode/mASTERRECORD/business process/Get MR Group/in"/>
+  <connection id="/business process/Get MR Group/out/business process/To RollbackMasterRecord/in"/>
+  <connection id="/business process/SwitchNode/sENDTOBACKOFFICE/business process/Get Sent Event/in"/>
+  <connection id="/business process/Get Sent Event/out/business process/To RepeatSendAsCancel/in"/>
+  <connection id="/business process/normalizableBean/business process/Promote to Updater/in"/>
+  <connection id="/business process/To RepeatSendAsCancel/out/business process/Update/in"/>
+  <connection id="/business process/To RollbackAuthorization/out/business process/Update/in"/>
+  <connection id="/business process/To RollbackMasterRecord/out/business process/Update/in"/>
+</fpm-process-layout>

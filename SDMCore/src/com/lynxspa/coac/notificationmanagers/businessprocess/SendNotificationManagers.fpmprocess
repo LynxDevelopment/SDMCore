@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="evenDuration" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="hourToBeginEven" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="maxResultsToLoad" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="previosHoursForAlarm" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="smtpFrom" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="smtpHost" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="smtpPassword" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="smtpPort" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="smtpUser" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="timeZone" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.Event" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="EventGroupChangeStateExceptionNode" type="com.lynxspa.coac.nodes.workflow.EventGroupChangeStateExceptionNode">
+    <n:params>
+      <commit type="FIXED">false</commit>
+      <createLog type="FIXED">true</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">SUSC</state>
+      <stopExceptionHandling type="FIXED">false</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="EventGroupChangeStateNode" type="com.lynxspa.coac.nodes.workflow.EventGroupChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">false</activeMessageTransition>
+      <createLog type="FIXED">false</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <message type="FIXED"></message>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">SUSC</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="GenerateMessageBody" type="com.lynxspa.coac.notificationmanagers.nodes.GenerateMessageBody">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="SendNotificationEvent"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="GetManagersEvent" type="com.lynxspa.coac.notificationmanagers.nodes.GetManagersEvent">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resourceStateless type="REFERENCE">statelessSession</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="SwitchNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" I="java.lang.Object" T="com.lynxspa.sdm.entities.events.CAEventGroup" id="HibernateStandardRead" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardRead">
+    <n:params>
+      <entityClass type="FIXED">com.lynxspa.sdm.entities.events.CAEventGroup</entityClass>
+      <entityIdField type="FIXED">id</entityIdField>
+      <notes type="FIXED"></notes>
+      <numResults type="REFERENCE">maxResultsToLoad</numResults>
+      <parameters type="FIXED">
+        <values>
+          <value type="FIXED">false</value>
+          <value type="FIXED">"AUTH"</value>
+          <value type="FIXED">0l</value>
+        </values>
+      </parameters>
+      <query type="FIXED">from CAEventGroup where auditor.deleted=:par0 and operationStatus.state.id.code=:par1 and auditor.refId=:par2</query>
+      <readMode type="FIXED">CURSOR_IDENTIFIER</readMode>
+      <readOnly type="FIXED">false</readOnly>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode"/>
+    <n:exit-to label="exception" name="exception" toNode="LogCoacException"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.notificationmanagers.beans.NotificationEventBean" id="LogCoacDebug" type="com.lynxspa.coac.nodes.logs.LogCoacDebug">
+    <n:params>
+      <arguments type="FIXED">
+        <values>
+          <value type="DYNAMIC" language="BEAN_SHELL">message.getEventGroup().getMasterEvent().getId()</value>
+        </values>
+      </arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statelessSession</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">NOTIFICATION_NOT_NECESARY</log>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ToEvent"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacException" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED"></arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">NOTIFICATION_MANAGER_ERROR</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="MappingNode" mapping-definition-file="src/com/lynxspa/coac/notificationmanagers/mappings/NotificationEvent.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="GetManagersEvent"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.sdm.entities.events.CAEventGroup" id="PatchedIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="MappingNode"/>
+    <n:exit-to label="exception" name="exception" toNode="EventGroupChangeStateExceptionNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="SendNotificationEvent" type="com.lynxspa.coac.notificationmanagers.nodes.SendNotificationEvent">
+    <n:params>
+      <message_from_ad type="REFERENCE">smtpFrom</message_from_ad>
+      <notes type="FIXED"></notes>
+      <smtp_host type="REFERENCE">smtpHost</smtp_host>
+      <smtp_password type="REFERENCE">smtpPassword</smtp_password>
+      <smtp_port type="REFERENCE">smtpPort</smtp_port>
+      <smtp_user type="REFERENCE">smtpUser</smtp_user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="EventGroupChangeStateNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/notificationmanagers/nodes/IsNotificable.fpmswitch" id="SwitchNode" type="com.lynxit.fpm.nodes.internal.SwitchNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="true" name="true" toNode="setCalendarEvent"/>
+    <n:exit-to label="default" name="default" toNode="LogCoacDebug"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="ToEvent" mapping-definition-file="src/com/lynxspa/coac/notificationmanagers/mappings/ToEvent.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="EventGroupChangeStateNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="setCalendarEvent" type="com.lynxspa.coac.notificationmanagers.nodes.setCalendarEvent">
+    <n:params>
+      <evenDuration type="REFERENCE">evenDuration</evenDuration>
+      <hourToBeginEven type="REFERENCE">hourToBeginEven</hourToBeginEven>
+      <notes type="FIXED"></notes>
+      <previosHoursForAlarm type="REFERENCE">previosHoursForAlarm</previosHoursForAlarm>
+      <timeZone type="REFERENCE">timeZone</timeZone>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="GenerateMessageBody"/>
+  </n:business-node>
+</fpm:business-process>

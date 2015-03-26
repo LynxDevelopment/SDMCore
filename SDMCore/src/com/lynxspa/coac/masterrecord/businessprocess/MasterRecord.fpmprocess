@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="entityDeadLineDays" type="java.lang.Integer" dynamic="false" required="false">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="selectSize" type="java.lang.Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.Event" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Commit" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardCommit">
+    <n:params>
+      <commitEvery type="FIXED">1</commitEvery>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="java.lang.Object" id="LiveCycleValidatorNode" type="com.lynxspa.coac.nodes.LiveCycleValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <requiredLiveCycle type="FIXED">MASTER_RECORD</requiredLiveCycle>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Read"/>
+    <n:exit-to label="exception" name="exception" toNode="LogCoacException"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacException" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED"></arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">MASTERRECORD_FAIL</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="MasterRecordChangeStateNode" type="com.lynxspa.coac.masterrecord.nodes.MasterRecordChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">false</activeMessageTransition>
+      <createLog type="FIXED">false</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">NAUT</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Update"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.sdm.entities.events.CAEventGroup" id="PatchedIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="SelectMR"/>
+    <n:exit-to label="exception" name="exception" toNode="ToManualMasterRecord"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" I="java.lang.Object" T="com.lynxspa.sdm.entities.events.CAEventGroup" id="Read" type="com.lynxspa.coac.nodes.EventStandardRead">
+    <n:params>
+      <entityClass type="FIXED">com.lynxspa.sdm.entities.events.CAEventGroup</entityClass>
+      <entityIdField type="FIXED">id</entityIdField>
+      <notes type="FIXED"></notes>
+      <numResults type="REFERENCE">selectSize</numResults>
+      <operationalDateTimeMarginParam type="FIXED">MASTERRECORDOPERATIONALDATE</operationalDateTimeMarginParam>
+      <parameters type="FIXED">
+        <values>
+          <value type="FIXED">false</value>
+          <value type="FIXED">0l</value>
+          <value type="FIXED">"PMRS"</value>
+        </values>
+      </parameters>
+      <query type="FIXED">from CAEventGroup where auditor.deleted=:par0 and auditor.refId=:par1 and operationStatus.state.id.code=:par2 and operationalDate&lt;:operationalDate order by executionDate,id asc</query>
+      <readMode type="FIXED">CURSOR_IDENTIFIER</readMode>
+      <readOnly type="FIXED">false</readOnly>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Rollback" type="com.lynxspa.fpm.nodes.hibernate.ExceptionRollbackNode">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">false</stopExceptionHandling>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="SelectMR" type="com.lynxspa.coac.masterrecord.nodes.CallMasterRecordProcessor">
+    <n:params>
+      <entityDeadLineDays type="REFERENCE">entityDeadLineDays</entityDeadLineDays>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="MasterRecordChangeStateNode"/>
+    <n:exit-to label="exception" name="exception" toNode="Rollback"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="ToManualMasterRecord" type="com.lynxspa.coac.nodes.workflow.EventGroupChangeStateExceptionNode">
+    <n:params>
+      <commit type="FIXED">true</commit>
+      <createLog type="FIXED">false</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">MMRS</state>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Update" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardUpdate">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <flush type="FIXED">true</flush>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Commit"/>
+  </n:business-node>
+</fpm:business-process>

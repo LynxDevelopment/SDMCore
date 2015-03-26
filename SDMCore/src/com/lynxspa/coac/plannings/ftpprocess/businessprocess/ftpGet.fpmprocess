@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxspa.coac.plannings.beans.ControlPlanningsBean" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="FTP GET" type="com.lynxspa.coac.plannings.ftpprocess.nodes.FTPResourceOutputNode">
+    <n:params>
+      <binary type="DYNAMIC" language="BEAN_SHELL">message.isFTPBinary()</binary>
+      <deleteFile type="FIXED">false</deleteFile>
+      <directory type="DYNAMIC" language="BEAN_SHELL">message.getFtpPath()</directory>
+      <fileName type="DYNAMIC" language="BEAN_SHELL">message.getOutputFileName()</fileName>
+      <ftpAction type="FIXED">GET</ftpAction>
+      <ftpFile type="DYNAMIC" language="BEAN_SHELL">message.getFtpFile()</ftpFile>
+      <ftpPort type="DYNAMIC" language="BEAN_SHELL">message.getFtpPort()</ftpPort>
+      <ftpProxy type="DYNAMIC" language="BEAN_SHELL">message.getFtpProxy()</ftpProxy>
+      <ftpProxyPassword type="DYNAMIC" language="BEAN_SHELL">message.getFtpProxyPassword()</ftpProxyPassword>
+      <ftpProxyUser type="DYNAMIC" language="BEAN_SHELL">message.getFtpProxyUser()</ftpProxyUser>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <overwrite type="DYNAMIC" language="BEAN_SHELL">message.isOverWrite()</overwrite>
+      <passiveMode type="DYNAMIC" language="BEAN_SHELL">message.isFTPPassive()</passiveMode>
+      <password type="DYNAMIC" language="BEAN_SHELL">message.getFtpPassword()</password>
+      <pathFileToTransfer type="DYNAMIC" language="BEAN_SHELL">message.getOutputFile()</pathFileToTransfer>
+      <resource type="REFERENCE">statefullSession</resource>
+      <serverName type="DYNAMIC" language="BEAN_SHELL">message.getFtpServer()</serverName>
+      <timeout type="FIXED">60000</timeout>
+      <user type="REFERENCE">user</user>
+      <userId type="DYNAMIC" language="BEAN_SHELL">message.getFtpUser()</userId>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" I="java.lang.Object" T="com.lynxspa.entities.plannings.SPPlanningProcess" id="HibernateStandardRead" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardRead">
+    <n:params>
+      <entityClass type="FIXED">com.lynxspa.entities.plannings.SPPlanningProcess</entityClass>
+      <entityIdField type="FIXED"></entityIdField>
+      <notes type="FIXED"></notes>
+      <numResults type="FIXED">10</numResults>
+      <parameters type="FIXED">
+        <values>
+          <value type="DYNAMIC" language="BEAN_SHELL">message.getId()</value>
+          <value type="FIXED">false</value>
+        </values>
+      </parameters>
+      <query type="FIXED">from SPPlanningProcess where id=:par0 and auditor.deleted=:par1</query>
+      <readMode type="FIXED">CURSOR</readMode>
+      <readOnly type="FIXED">false</readOnly>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.entities.plannings.SPPlanningProcess" id="IteratorNode" type="com.lynxit.fpm.nodes.internal.IteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="MapPersecuritiesMap" mapping-definition-file="src/com/lynxspa/coac/plannings/maps/mapPlannings.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="FTP GET"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.entities.plannings.SPPlanningProcess" id="PatchedIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="MapPersecuritiesMap"/>
+  </n:business-node>
+</fpm:business-process>

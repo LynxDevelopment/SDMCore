@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statelessSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="tempPathFile" type="java.io.File" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="java.lang.Object" id="input" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.plannings.beans.ControlPlanningsBean" id="ControlExecutionPlanning" type="com.lynxspa.coac.plannings.nodes.ControlExecutionPlanning">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">statefullSession</resource>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ForkNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.coac.plannings.beans.ControlPlanningsBean" id="ForkNode" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="SwitchNode"/>
+    <n:exit-to label="two" name="two" toProcess="Update Plannings" inputName="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" I="java.lang.Object" T="com.lynxspa.entities.plannings.SPPlanningProcess" id="HibernateStandardRead" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardRead">
+    <n:params>
+      <entityClass type="FIXED">com.lynxspa.entities.plannings.SPPlanningProcess</entityClass>
+      <entityIdField type="FIXED"></entityIdField>
+      <notes type="FIXED"></notes>
+      <numResults type="FIXED">50</numResults>
+      <parameters type="FIXED">
+        <values>
+          <value type="FIXED">false</value>
+        </values>
+      </parameters>
+      <query type="FIXED">from SPPlanningProcess where auditor.deleted=:par0</query>
+      <readMode type="FIXED">CURSOR</readMode>
+      <readOnly type="FIXED">true</readOnly>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="PatchedIteratorNode"/>
+    <n:listens-to id="input"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.entities.plannings.SPPlanningProcess" id="IteratorNode" type="com.lynxit.fpm.nodes.internal.IteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogPlanningException" type="com.lynxspa.coac.plannings.logs.LogPlanningException">
+    <n:params>
+      <arguments type="FIXED"></arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statelessSession</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">PLANNING_EXCEPTION</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="MappingNode" mapping-definition-file="src/com/lynxspa/coac/plannings/maps/mapControlPlannings.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ControlExecutionPlanning"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" OUT="com.lynxspa.entities.plannings.SPPlanningProcess" id="PatchedIteratorNode" type="com.lynxspa.fpm.nodes.patch.PatchedIteratorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="MappingNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/plannings/nodes/planningProcess.fpmswitch" id="SwitchNode" type="com.lynxit.fpm.nodes.internal.SwitchNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="executeShell" name="executeShell" toProcess="ExecuteShellProcess" inputName="input"/>
+    <n:exit-to label="ftpPut" name="ftpPut" toProcess="FtpPutProcess" inputName="input"/>
+    <n:exit-to label="ftpGet" name="ftpGet" toProcess="FtpGetProcess" inputName="input"/>
+    <n:exit-to label="default" name="default" toProcess="GenerateFileProcess" inputName="input"/>
+    <n:exit-to label="exception" name="exception" toNode="LogPlanningException"/>
+  </n:business-node>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/plannings/executeshellprocess/businesprocess/executeShell.fpmprocess" excludeFromBuild="" id="ExecuteShellProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/plannings/ftpprocess/businessprocess/ftpGet.fpmprocess" excludeFromBuild="" id="FtpGetProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <statelessSession type="REFERENCE">statelessSession</statelessSession>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/plannings/ftpprocess/businessprocess/ftpPut.fpmprocess" excludeFromBuild="" id="FtpPutProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <statelessSession type="REFERENCE">statelessSession</statelessSession>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/plannings/generatefileprocess/businessprocess/generateFile.fpmprocess" excludeFromBuild="" id="GenerateFileProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <statelessSession type="REFERENCE">statelessSession</statelessSession>
+      <tempPathFiles type="REFERENCE">tempPathFile</tempPathFiles>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:subprocess>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/plannings/businessprocess/updatePlannings.fpmprocess" excludeFromBuild="" id="Update Plannings" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <statefullSession type="REFERENCE">statefullSession</statefullSession>
+      <statelessSession type="REFERENCE">statelessSession</statelessSession>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:subprocess>
+</fpm:business-process>

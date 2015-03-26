@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="deleteLogsCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="deleteLogsCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="eventsHistorificationCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="eventsHistorificationCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="historificationCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="historificationCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securityPortfolioHistorificationCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securityPortfolioHistorificationCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events>
+      <fpm:event id="Delete Logs Event">
+        <fpm:producer id="Delete Logs Event" type="com.lynxspa.fpm.events.StandardEventProducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <cronExpression type="REFERENCE">deleteLogsCronn</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="Events Historification Event">
+        <fpm:producer id="Events Historification Event" type="com.lynxspa.fpm.events.StandardEventProducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <cronExpression type="REFERENCE">eventsHistorificationCron</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="MessageHistorification event">
+        <fpm:producer id="MessageHistorification event" type="com.lynxspa.fpm.events.StandardEventProducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <cronExpression type="REFERENCE">historificationCron</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+      <fpm:event id="SecurityPortfolio Historification Event">
+        <fpm:producer id="SecurityPortfolio Historification Event" type="com.lynxspa.fpm.events.StandardEventProducer">
+          <fpm:params>
+            <allowMultiThreading type="FIXED">false</allowMultiThreading>
+            <cronExpression type="REFERENCE">securityPortfolioHistorificationCronn</cronExpression>
+            <notes type="FIXED"></notes>
+          </fpm:params>
+        </fpm:producer>
+      </fpm:event>
+    </fpm:events>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource type="REFERENCE">HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications/>
+    <fpm:business-processes>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/historics/logs/businessprocess/deletingLogs.fpmprocess" excludeFromBuild="" id="DeletingLogsProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <logsCommitSize type="REFERENCE">deleteLogsCommitSize</logsCommitSize>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">DELETELOGS</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to producer="Delete Logs Event"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/businessprocess/ExceptionHandler.fpmprocess" excludeFromBuild="" id="ErrorHandler" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">HISTORIFICATIONHANDLER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to process="Message Historication Process" event-name="exc"/>
+          <fpm:listens-to process="SecurityPortfolio Historification Process" event-name="exc"/>
+          <fpm:listens-to process="EventsHistorificationProcess" event-name="exc"/>
+          <fpm:listens-to process="DeletingLogsProcess" event-name="exc"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/historics/events/businessprocess/eventsHistorification.fpmprocess" excludeFromBuild="" id="EventsHistorificationProcess" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <eventsHistorificationCommitSize type="REFERENCE">historificationCommitSize</eventsHistorificationCommitSize>
+          <eventsHistorificationCron type="REFERENCE">historificationCron</eventsHistorificationCron>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">EVENTSHISTORIFIER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to producer="Events Historification Event"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/historics/messages/businessprocess/historification.fpmprocess" excludeFromBuild="" id="Message Historication Process" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <historificationCommitSize type="REFERENCE">historificationCommitSize</historificationCommitSize>
+          <historificationCron type="REFERENCE">historificationCron</historificationCron>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">MESSAGESHISTORIFIER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to producer="MessageHistorification event"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+      <fpm:business-process definition-file="src/com/lynxspa/coac/historics/securityportfolio/businessprocess/securituPortfolioHistorification.fpmprocess" excludeFromBuild="" id="SecurityPortfolio Historification Process" type="com.lynxit.fpm.BusinessProcess">
+        <fpm:params>
+          <historificationCommitSize type="REFERENCE">securityPortfolioHistorificationCommitSize</historificationCommitSize>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <user type="FIXED">SECURITYPORTFOLIOHISTORIFIER</user>
+          <sessionFactory>HibernateResource</sessionFactory>
+          <statelessSessionFactory>HibernateStatelessResource</statelessSessionFactory>
+        </fpm:params>
+        <fpm:event-listener name="input">
+          <fpm:listens-to producer="SecurityPortfolio Historification Event"/>
+        </fpm:event-listener>
+      </fpm:business-process>
+    </fpm:business-processes>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

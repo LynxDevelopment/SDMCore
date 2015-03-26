@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<switch:fpm-switch-config xmlns:switch="http://www.lynxit.com/fpm/config/switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config fpm-switch-config.xsd">
+  <switch:type>com.lynxspa.coac.normalizer.adapters.NormalizableUpdateAdapter</switch:type>
+  <switch:enableDefault>true</switch:enableDefault>
+  <switch:language>JAVA</switch:language>
+  <switch:exits>
+    <switch:exit id="MASTERRECORD">
+      <switch:condition>return ((message.getPreviousEventCollected().getEventGroup()!=null)\n\t\t&amp;&amp;(message.getPreviousEventCollected().getEventGroup().getMasterEvent()!=null)\n\t\t&amp;&amp;(message.getPreviousEventCollected().getEventGroup().getMasterEvent().getId()==message.getPreviousEventCollected().getId())\n\t\t&amp;&amp;(\"NAUT\".equals(message.getPreviousEventCollected().getEventGroup().getOperationStatus().getState().getId().getCode())));</switch:condition>
+      <switch:description></switch:description>
+    </switch:exit>
+    <switch:exit id="AUTHORIZED">
+      <switch:condition>return ((message.getPreviousEventCollected().getEventGroup()!=null)\n\t\t&amp;&amp;(message.getPreviousEventCollected().getEventGroup().getMasterEvent()!=null)\n\t\t&amp;&amp;(message.getPreviousEventCollected().getEventGroup().getMasterEvent().getId()==message.getPreviousEventCollected().getId())\n\t\t&amp;&amp;(\"AUTH\".equals(message.getPreviousEventCollected().getEventGroup().getOperationStatus().getState().getId().getCode())));</switch:condition>
+      <switch:description></switch:description>
+    </switch:exit>
+    <switch:exit id="SENDTOBACKOFFICE">
+      <switch:condition>return ((message.getPreviousEventCollected().getEventGroup()!=null)\n\t\t&amp;&amp;(message.getPreviousEventCollected().getEventGroup().getMasterEvent()!=null)\n\t\t&amp;&amp;(message.getPreviousEventCollected().getEventGroup().getMasterEvent().getId()==message.getPreviousEventCollected().getId())\n\t\t&amp;&amp;(\n\t\t\t(\"SBKO\".equals(message.getPreviousEventCollected().getEventGroup().getOperationStatus().getState().getId().getCode()))\n\t\t\t||(\"TBKU\".equals(message.getPreviousEventCollected().getEventGroup().getOperationStatus().getState().getId().getCode()))\n\t\t\t||(\"TBKC\".equals(message.getPreviousEventCollected().getEventGroup().getOperationStatus().getState().getId().getCode()))\n\t\t));</switch:condition>
+      <switch:description></switch:description>
+    </switch:exit>
+  </switch:exits>
+</switch:fpm-switch-config>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="38" y="228" width="32" height="32"/>
+  <business-node id="ForkNode" x="377" y="104" width="130" height="100"/>
+  <business-node id="ForkNode1" x="150" y="217" width="130" height="100"/>
+  <business-node id="ForkNode11" x="372" y="416" width="130" height="100"/>
+  <business-node id="ForkNode111" x="602" y="356" width="130" height="100"/>
+  <business-node id="ForkNode112" x="607" y="535" width="130" height="100"/>
+  <business-node id="LoadClientHoldings" x="811" y="638" width="130" height="100"/>
+  <business-node id="LoadCustomers" x="579" y="197" width="138" height="100"/>
+  <business-node id="LoadManagers" x="577" y="35" width="144" height="100"/>
+  <business-node id="LoadMarkets" x="801" y="274" width="130" height="100"/>
+  <business-node id="LoadProviderAccounts" x="811" y="525" width="130" height="100"/>
+  <business-node id="LoadSecurities" x="802" y="401" width="130" height="100"/>
+  <connection id="/business process/ForkNode1/one/business process/ForkNode/in"/>
+  <connection id="/business process/ForkNode/one/business process/LoadManagers/in"/>
+  <connection id="/business process/ForkNode/two/business process/LoadCustomers/in"/>
+  <connection id="/business process/input/business process/ForkNode1/in"/>
+  <connection id="/business process/ForkNode1/two/business process/ForkNode11/in"/>
+  <connection id="/business process/ForkNode11/one/business process/ForkNode111/in"/>
+  <connection id="/business process/ForkNode11/two/business process/ForkNode112/in"/>
+  <connection id="/business process/ForkNode111/one/business process/LoadMarkets/in"/>
+  <connection id="/business process/ForkNode111/two/business process/LoadSecurities/in"/>
+  <connection id="/business process/ForkNode112/one/business process/LoadProviderAccounts/in"/>
+  <connection id="/business process/ForkNode112/two/business process/LoadClientHoldings/in"/>
+</fpm-process-layout>

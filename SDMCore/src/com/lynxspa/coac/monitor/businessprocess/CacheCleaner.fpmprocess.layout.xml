@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="input" x="43" y="160" width="32" height="32"/>
+  <business-node id="ClearCache" x="519" y="150" width="130" height="100"/>
+  <business-node id="GetClearCacheFlag" x="160" y="150" width="130" height="100"/>
+  <business-node id="LogCoacException" x="335" y="279" width="130" height="100"/>
+  <business-node id="MustBeCleaned" x="335" y="150" width="130" height="100"/>
+  <business-node id="ReportCacheClean" x="690" y="150" width="130" height="100"/>
+  <connection id="/business process/MustBeCleaned/true/business process/ClearCache/in"/>
+  <connection id="/business process/ClearCache/out/business process/ReportCacheClean/in"/>
+  <connection id="/business process/input/business process/GetClearCacheFlag/in"/>
+  <connection id="/business process/GetClearCacheFlag/out/business process/MustBeCleaned/in"/>
+  <connection id="/business process/GetClearCacheFlag/exception/business process/LogCoacException/exc"/>
+</fpm-process-layout>

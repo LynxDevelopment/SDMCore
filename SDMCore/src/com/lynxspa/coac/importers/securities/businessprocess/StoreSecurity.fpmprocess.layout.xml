@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="importedBean" x="32" y="171" width="32" height="32"/>
+  <business-node id="LogCoacException" x="363" y="359" width="130" height="100"/>
+  <business-node id="action decision" x="193" y="160" width="130" height="100"/>
+  <business-node id="delete" x="541" y="252" width="130" height="100"/>
+  <business-node id="save" x="399" y="102" width="130" height="100"/>
+  <connection id="/business process/action decision/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/importedBean/business process/action decision/in"/>
+  <connection id="/business process/action decision/insertOrUpdate/business process/save/in"/>
+  <connection id="/business process/action decision/delete/business process/delete/in"/>
+</fpm-process-layout>

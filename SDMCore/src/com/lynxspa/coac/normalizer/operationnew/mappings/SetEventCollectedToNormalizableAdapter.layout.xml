@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <node name="com.lynxspa.coac.normalizer.mappings.CoacNormalizerFunctions.getEventCollectedFromContext.out.eventCollected" x="480" y="36"/>
+  <source>
+    <expanded status="false" fqn="in"/>
+    <expanded status="false" fqn="in.eventCollected"/>
+    <expanded status="false" fqn="in.eventDetail"/>
+    <expanded status="false" fqn="in.eventDetailExtended"/>
+    <expanded status="false" fqn="in.message"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.eventCollected"/>
+    <expanded status="false" fqn="out.eventCollected.auditor"/>
+    <expanded status="false" fqn="out.eventCollected.complete"/>
+    <expanded status="false" fqn="out.eventCollected.eventDetail"/>
+    <expanded status="false" fqn="out.eventCollected.eventGroup"/>
+    <expanded status="false" fqn="out.eventCollected.eventProvider"/>
+    <expanded status="false" fqn="out.eventCollected.eventType"/>
+    <expanded status="false" fqn="out.eventCollected.executionDate"/>
+    <expanded status="false" fqn="out.eventCollected.expirationDate"/>
+    <expanded status="false" fqn="out.eventCollected.id"/>
+    <expanded status="false" fqn="out.eventCollected.operationStatus"/>
+    <expanded status="false" fqn="out.eventCollected.operationalDate"/>
+    <expanded status="false" fqn="out.eventCollected.providerCancelled"/>
+    <expanded status="false" fqn="out.eventCollected.providerUpdated"/>
+    <expanded status="false" fqn="out.eventCollected.security"/>
+    <expanded status="false" fqn="out.eventCollected.subscriptionDate"/>
+    <expanded status="false" fqn="out.eventCollected.version"/>
+    <expanded status="false" fqn="out.eventDetail"/>
+    <expanded status="false" fqn="out.eventDetail.auditor"/>
+    <expanded status="false" fqn="out.eventDetail.dynamicTable"/>
+    <expanded status="false" fqn="out.eventDetail.executionDate"/>
+    <expanded status="false" fqn="out.eventDetail.expirationDate"/>
+    <expanded status="false" fqn="out.eventDetail.extensions"/>
+    <expanded status="false" fqn="out.eventDetail.id"/>
+    <expanded status="false" fqn="out.eventDetail.operationalDate"/>
+    <expanded status="false" fqn="out.eventDetail.subscriptionDate"/>
+    <expanded status="false" fqn="out.eventDetail.version"/>
+    <expanded status="false" fqn="out.eventDetailExtended"/>
+    <expanded status="false" fqn="out.eventDetailExtended.$size"/>
+    <expanded status="false" fqn="out.eventDetailExtended.auditor"/>
+    <expanded status="false" fqn="out.eventDetailExtended.dynamicTable"/>
+    <expanded status="false" fqn="out.eventDetailExtended.extensionName"/>
+    <expanded status="false" fqn="out.eventDetailExtended.extensionNumber"/>
+    <expanded status="false" fqn="out.eventDetailExtended.id"/>
+    <expanded status="false" fqn="out.eventDetailExtended.mainDetail"/>
+    <expanded status="false" fqn="out.eventDetailExtended.narrative"/>
+    <expanded status="false" fqn="out.eventDetailExtended.version"/>
+    <expanded status="false" fqn="out.message"/>
+    <expanded status="false" fqn="out.message.account"/>
+    <expanded status="false" fqn="out.message.amount"/>
+    <expanded status="false" fqn="out.message.announceDate"/>
+    <expanded status="false" fqn="out.message.auditor"/>
+    <expanded status="false" fqn="out.message.effectiveDate"/>
+    <expanded status="false" fqn="out.message.eventMessageReference"/>
+    <expanded status="false" fqn="out.message.eventProvider"/>
+    <expanded status="false" fqn="out.message.eventReference"/>
+    <expanded status="false" fqn="out.message.eventType"/>
+    <expanded status="false" fqn="out.message.extension"/>
+    <expanded status="false" fqn="out.message.extensionReference"/>
+    <expanded status="false" fqn="out.message.fields"/>
+    <expanded status="false" fqn="out.message.id"/>
+    <expanded status="false" fqn="out.message.messageId"/>
+    <expanded status="false" fqn="out.message.messageType"/>
+    <expanded status="false" fqn="out.message.normalizedEvent"/>
+    <expanded status="false" fqn="out.message.normalizedEventType"/>
+    <expanded status="false" fqn="out.message.normalizedOperation"/>
+    <expanded status="false" fqn="out.message.normalizedSecurity"/>
+    <expanded status="false" fqn="out.message.operation"/>
+    <expanded status="false" fqn="out.message.operationStatus"/>
+    <expanded status="false" fqn="out.message.originId"/>
+    <expanded status="false" fqn="out.message.originName"/>
+    <expanded status="false" fqn="out.message.originPosition"/>
+    <expanded status="false" fqn="out.message.originType"/>
+    <expanded status="false" fqn="out.message.originalMessage"/>
+    <expanded status="false" fqn="out.message.previousEventMessageReference"/>
+    <expanded status="false" fqn="out.message.receiver"/>
+    <expanded status="false" fqn="out.message.security"/>
+    <expanded status="false" fqn="out.message.securityName"/>
+    <expanded status="false" fqn="out.message.securityType"/>
+    <expanded status="false" fqn="out.message.sender"/>
+    <expanded status="false" fqn="out.message.version"/>
+  </target>
+</operations-layout>

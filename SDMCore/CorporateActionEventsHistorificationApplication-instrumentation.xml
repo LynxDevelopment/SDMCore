@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionEventsHistorificationApplication"> 
+    <event-producer id="event"/>  
+    <business-process id="EventsHistorificationProcess"> 
+      <node id="EventsHistorificationNode1"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

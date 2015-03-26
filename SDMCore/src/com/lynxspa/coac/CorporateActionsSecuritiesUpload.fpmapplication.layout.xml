@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="Bloomberg Base" x="36" y="-14" width="130" height="100"/>
+  <event-producer id="Bloomberg Differences" x="60" y="91" width="130" height="100"/>
+  <event-producer id="Bloomberg Fondos" x="639" y="15" width="130" height="100"/>
+  <event-producer id="Bloomberg Fondos Diff" x="827" y="15" width="130" height="100"/>
+  <event-producer id="Bloomberg RF Diff" x="237" y="268" width="130" height="100"/>
+  <event-producer id="Bloomberg RV No Europea" x="237" y="15" width="130" height="100"/>
+  <event-producer id="Bloomberg RVNE Diff" x="459" y="15" width="130" height="100"/>
+  <event-producer id="Bloomberg Renta Fija" x="237" y="144" width="130" height="100"/>
+  <event-producer id="Customer" x="60" y="465" width="130" height="100"/>
+  <event-producer id="Funds Base" x="60" y="338" width="130" height="100"/>
+  <event-producer id="Funds Differences" x="237" y="381" width="130" height="100"/>
+  <event-producer id="Ofival Base" x="60" y="220" width="130" height="100"/>
+  <resource id="HibernateResource" x="544" y="348" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="546" y="466" width="130" height="100"/>
+  <business-process id="ErrorHandler" x="1088" y="322" width="154" height="108"/>
+  <business-process id="SecurityUploadProcess" x="686" y="200" width="301" height="108"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+  <connection id="/application/SecurityUploadProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/SecurityUploadProcess/sessionFactory"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/SecurityUploadProcess/statelessSessionFactory"/>
+  <connection id="/application/Ofival Base/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg Base/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg Differences/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Funds Base/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Funds Differences/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg RV No Europea/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg Fondos/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg Renta Fija/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg RVNE Diff/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg Fondos Diff/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Bloomberg RF Diff/events/application/SecurityUploadProcess/fileCreated"/>
+  <connection id="/application/Customer/events/application/SecurityUploadProcess/fileCreated"/>
+</fpm-application-layout>

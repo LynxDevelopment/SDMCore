@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="input" x="16" y="278" width="32" height="32"/>
+  <business-node id="Add EventCollected to Message" x="2341" y="198" width="130" height="100"/>
+  <business-node id="CAEventToQuestionMap" x="2272" y="404" width="130" height="100"/>
+  <business-node id="Commit" x="3269" y="198" width="130" height="100"/>
+  <business-node id="CommitNotNormalizable" x="1198" y="470" width="130" height="100"/>
+  <business-node id="ForkNode1" x="2066" y="198" width="130" height="100"/>
+  <business-node id="ForkNode11" x="2661" y="404" width="130" height="100"/>
+  <business-node id="GenerateDefaultAnswer" x="2847" y="492" width="130" height="100"/>
+  <business-node id="GenerateQuestionsEventProcessor" x="2476" y="404" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="153" y="268" width="130" height="100"/>
+  <business-node id="LogCoacException" x="354" y="424" width="130" height="100"/>
+  <business-node id="Message to Normalizable" x="966" y="177" width="130" height="100"/>
+  <business-node id="OperationDecisionSwitch" x="1347" y="135" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="551" y="139" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode1" x="2842" y="344" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode11" x="3016" y="492" width="130" height="100"/>
+  <business-node id="Read" x="353" y="269" width="130" height="100"/>
+  <business-node id="Rollback" x="1117" y="348" width="130" height="100"/>
+  <business-node id="Save" x="3080" y="344" width="130" height="100"/>
+  <business-node id="To NORMALIZED" x="2503" y="198" width="130" height="100"/>
+  <business-node id="To NORMFAIL" x="966" y="596" width="130" height="100"/>
+  <business-node id="To NOTNORMALIZABLE" x="966" y="470" width="130" height="100"/>
+  <business-node id="UpdateMessage" x="2694" y="198" width="130" height="100"/>
+  <business-node id="is Normalizable" x="752" y="268" width="130" height="100"/>
+  <subprocess id="CancelProcess" x="1725" y="250" width="246" height="100"/>
+  <subprocess id="NewProcess" x="1725" y="-4" width="234" height="100"/>
+  <subprocess id="RepeatProcess" x="1725" y="376" width="253" height="100"/>
+  <subprocess id="UpdateProcess" x="1725" y="122" width="234" height="100"/>
+  <connection id="/business process/ForkNode1/one/business process/Add EventCollected to Message/in"/>
+  <connection id="/business process/Add EventCollected to Message/out/business process/To NORMALIZED/in"/>
+  <connection id="/business process/ForkNode1/two/business process/CAEventToQuestionMap/in"/>
+  <connection id="/business process/CAEventToQuestionMap/out/business process/GenerateQuestionsEventProcessor/in"/>
+  <connection id="/business process/Save/out/business process/Commit/in"/>
+  <connection id="/business process/UpdateMessage/out/business process/Commit/in"/>
+  <connection id="/business process/To NOTNORMALIZABLE/out/business process/CommitNotNormalizable/in"/>
+  <connection id="/business process/CancelProcess/normalizableOutputBean/business process/ForkNode1/in"/>
+  <connection id="/business process/NewProcess/normalizableOutputBean/business process/ForkNode1/in"/>
+  <connection id="/business process/RepeatProcess/normalizableOutputBean/business process/ForkNode1/in"/>
+  <connection id="/business process/UpdateProcess/normalizableOutputBean/business process/ForkNode1/in"/>
+  <connection id="/business process/GenerateQuestionsEventProcessor/out/business process/ForkNode11/in"/>
+  <connection id="/business process/ForkNode11/one/business process/PatchedIteratorNode1/in"/>
+  <connection id="/business process/ForkNode11/two/business process/GenerateDefaultAnswer/in"/>
+  <connection id="/business process/GenerateDefaultAnswer/out/business process/PatchedIteratorNode11/in"/>
+  <connection id="/business process/input/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/Read/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/is Normalizable/normalizable/business process/Message to Normalizable/in"/>
+  <connection id="/business process/Message to Normalizable/out/business process/OperationDecisionSwitch/in"/>
+  <connection id="/business process/Message to Normalizable/exception/business process/Rollback/exc"/>
+  <connection id="/business process/OperationDecisionSwitch/new/business process/NewProcess/normalizableBean"/>
+  <connection id="/business process/OperationDecisionSwitch/update/business process/UpdateProcess/normalizableBean"/>
+  <connection id="/business process/OperationDecisionSwitch/cancel/business process/CancelProcess/normalizableBean"/>
+  <connection id="/business process/OperationDecisionSwitch/repeat/business process/RepeatProcess/normalizableBean"/>
+  <connection id="/business process/Read/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/is Normalizable/in"/>
+  <connection id="/business process/PatchedIteratorNode1/out/business process/Save/in"/>
+  <connection id="/business process/PatchedIteratorNode11/out/business process/Save/in"/>
+  <connection id="/business process/To NORMALIZED/out/business process/UpdateMessage/in"/>
+  <connection id="/business process/is Normalizable/exception/business process/To NORMFAIL/exc"/>
+  <connection id="/business process/is Normalizable/notNormalizable/business process/To NOTNORMALIZABLE/in"/>
+</fpm-process-layout>

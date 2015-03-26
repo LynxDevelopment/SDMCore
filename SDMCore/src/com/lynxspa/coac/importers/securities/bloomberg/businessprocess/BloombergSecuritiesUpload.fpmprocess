@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="commitSize" type="Integer" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+    <description>param2</description>
+  </param-definition>
+  <param-definition name="locale" type="String" dynamic="true" required="true">
+    <description>param3</description>
+  </param-definition>
+  <param-definition name="securitiesUploadForceMarketInsert" type="java.lang.Boolean" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="sessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param4</description>
+  </param-definition>
+  <param-definition name="statelessSessionFactory" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param5</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param6</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.fileevents.FileEvent" id="SecuritiesBloombergFileCreated" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/importers/securities/bloomberg/switches/ActionDecision.fpmswitch" id="ActionToDo" type="com.lynxit.fpm.nodes.internal.SwitchNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="insert" name="insert" toNode="InsertSecurityBean"/>
+    <n:exit-to label="delete" name="delete" toNode="DeleteSecurityBean"/>
+    <n:exit-to label="default" name="default" toNode="LogSecuritiesBloombergParserNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Commit" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardCommit">
+    <n:params>
+      <commitEvery type="REFERENCE">commitSize</commitEvery>
+      <dataSource type="REFERENCE">statelessSessionFactory</dataSource>
+      <notes type="FIXED"></notes>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="DeleteSecurityBean" mapping-definition-file="src/com/lynxspa/coac/importers/securities/bloomberg/mappings/BloombergSecurityBeanToSecurityBean.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="set delete"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.sdm.importers.securities.beans.SecurityBean" id="ForkNode" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toProcess="StoreSecurityProcess" inputName="importedBean"/>
+    <n:exit-to label="two" name="two" toNode="Commit"/>
+    <n:exit-to label="exception" name="exception" toNode="Rollback"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.fileevents.FileEvent" id="Format Validation" type="com.lynxspa.coac.nodes.FormatValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">sessionFactory</resource>
+      <rrequiredFormat type="FIXED">BLOOMBERG</rrequiredFormat>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="OpenFile"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="InsertSecurityBean" mapping-definition-file="src/com/lynxspa/coac/importers/securities/bloomberg/mappings/BloombergSecurityBeanToSecurityBean.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Set insertOrUpdate"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxit.fpm.events.fileevents.FileEvent" id="LiveCycle Validation" type="com.lynxspa.coac.nodes.LiveCycleValidatorNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <requiredLiveCycle type="FIXED">PRENORMALIZE_IMPORT</requiredLiveCycle>
+      <resource type="REFERENCE">sessionFactory</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Format Validation"/>
+    <n:listens-to id="SecuritiesBloombergFileCreated"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="LogCoacException" type="com.lynxspa.coac.nodes.logs.LogCoacException">
+    <n:params>
+      <arguments type="FIXED">
+        <values>
+          <value type="FIXED">"Bloomberg"</value>
+          <value type="DYNAMIC" language="BEAN_SHELL">process.getContextAttribute("fileName")</value>
+        </values>
+      </arguments>
+      <commitInNewTransaction type="FIXED">true</commitInNewTransaction>
+      <dataSource type="REFERENCE">statelessSessionFactory</dataSource>
+      <locale type="REFERENCE">locale</locale>
+      <log type="FIXED">SECURITY_IMPORT_FAIL</log>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">false</stopExceptionHandling>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" T="com.lynxspa.coac.importers.securities.bloomberg.beans.BloombergSecurityBean" id="LogSecuritiesBloombergParserNode" type="com.lynxspa.coac.importers.securities.bloomberg.nodes.LogSecuritiesBloombergParserNode">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">sessionFactory</resource>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="OpenFile" type="com.lynxit.fpm.nodes.file.SingleFileEventReaderNode">
+    <n:params>
+      <commitAction type="FIXED">RENAME</commitAction>
+      <committedFileSuffix type="FIXED">done</committedFileSuffix>
+      <committedFilesDirectory type="FIXED">done</committedFilesDirectory>
+      <createDestinationFolders type="FIXED">false</createDestinationFolders>
+      <notes type="FIXED"></notes>
+      <rollbackAction type="FIXED">RENAME</rollbackAction>
+      <rollbackedFileSuffix type="FIXED">error</rollbackedFileSuffix>
+      <rollbackedFilesDirectory type="FIXED">error</rollbackedFilesDirectory>
+      <temporaryFileSuffix type="FIXED">tmp</temporaryFileSuffix>
+      <timeoutOnFileLock type="REFERENCE">inputTimeout</timeoutOnFileLock>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Parse File"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Parse File" type="com.lynxspa.coac.importers.securities.bloomberg.nodes.SecuritiesBloombergParserNode">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <resource type="REFERENCE">sessionFactory</resource>
+      <resourceStateless type="REFERENCE">statelessSessionFactory</resourceStateless>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ActionToDo"/>
+    <n:exit-to label="exception" name="exception" toNode="LogCoacException"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Rollback" type="com.lynxspa.fpm.nodes.hibernate.ExceptionRollbackNode">
+    <n:params>
+      <dataSource type="REFERENCE">statelessSessionFactory</dataSource>
+      <notes type="FIXED"></notes>
+      <stopExceptionHandling type="FIXED">true</stopExceptionHandling>
+    </n:params>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Set insertOrUpdate" mapping-definition-file="src/com/lynxspa/coac/importers/securities/mappings/SecurityBeanSetActionInsertUpdate.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ForkNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="set delete" mapping-definition-file="src/com/lynxspa/coac/importers/securities/mappings/SecurityBeanSetActionDelete.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ForkNode"/>
+  </n:business-node>
+  <n:subprocess xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/importers/securities/businessprocess/StoreSecurity.fpmprocess" excludeFromBuild="" id="StoreSecurityProcess" type="com.lynxit.fpm.BusinessProcess">
+    <n:params>
+      <locale type="REFERENCE">locale</locale>
+      <notes type="FIXED"></notes>
+      <searchMode type="FIXED">PROVIDERID</searchMode>
+      <securitiesUploadForceMarketInsert type="REFERENCE">securitiesUploadForceMarketInsert</securitiesUploadForceMarketInsert>
+      <sessionFactory type="REFERENCE">statelessSessionFactory</sessionFactory>
+      <stateFullSession type="REFERENCE">sessionFactory</stateFullSession>
+      <user type="REFERENCE">user</user>
+    </n:params>
+  </n:subprocess>
+</fpm:business-process>

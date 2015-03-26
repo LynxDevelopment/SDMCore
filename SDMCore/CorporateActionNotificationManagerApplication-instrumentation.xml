@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionNotificationManagerApplication"> 
+    <event-producer id="StandardEventProducer"/>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process>  
+    <business-process id="SendNotificationManagersProcess"> 
+      <node id="SendNotificationEvent"/>  
+      <node id="PatchedIteratorNode"/>  
+      <node id="LogCoacException"/>  
+      <node id="setCalendarEvent"/>  
+      <node id="MappingNode"/>  
+      <node id="GenerateMessageBody"/>  
+      <node id="Read"/>  
+      <node id="HibernateStandardRead"/>  
+      <node id="GetManagersEvent"/>  
+      <node id="ManagerExistsFilter"/>  
+      <node id="EventGroupChangeStateExceptionNode"/>  
+      <node id="EventGroupChangeStateNode"/>  
+      <node id="UpdateMessage"/>  
+      <node id="Commit"/>  
+      <node id="ForkNode"/>  
+      <node id="Update"/>  
+      <node id="SwitchNode"/>  
+      <node id="LogCoacDebug"/>  
+      <node id="ToEvent"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

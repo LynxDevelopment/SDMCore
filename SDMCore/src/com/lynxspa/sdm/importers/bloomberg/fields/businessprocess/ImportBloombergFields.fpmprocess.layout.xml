@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="BloombergFileCreated" x="81" y="77" width="32" height="32"/>
+  <business-node id="SDMFieldsBloombergImporter" x="322" y="67" width="243" height="100"/>
+  <connection id="/business process/BloombergFileCreated/business process/SDMFieldsBloombergImporter/in"/>
+</fpm-process-layout>

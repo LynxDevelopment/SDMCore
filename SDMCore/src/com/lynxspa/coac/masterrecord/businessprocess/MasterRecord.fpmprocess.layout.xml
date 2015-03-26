@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="input" x="122" y="180" width="32" height="32"/>
+  <business-node id="Commit" x="1418" y="169" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="227" y="169" width="130" height="100"/>
+  <business-node id="LogCoacException" x="428" y="315" width="130" height="100"/>
+  <business-node id="MasterRecordChangeStateNode" x="1029" y="169" width="130" height="100"/>
+  <business-node id="PatchedIteratorNode" x="628" y="47" width="130" height="100"/>
+  <business-node id="Read" x="425" y="169" width="130" height="100"/>
+  <business-node id="Rollback" x="1027" y="315" width="130" height="100"/>
+  <business-node id="SelectMR" x="827" y="169" width="130" height="100"/>
+  <business-node id="ToManualMasterRecord" x="827" y="315" width="130" height="100"/>
+  <business-node id="Update" x="1227" y="169" width="130" height="100"/>
+  <connection id="/business process/Update/out/business process/Commit/in"/>
+  <connection id="/business process/input/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/Read/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/exception/business process/LogCoacException/exc"/>
+  <connection id="/business process/SelectMR/out/business process/MasterRecordChangeStateNode/in"/>
+  <connection id="/business process/MasterRecordChangeStateNode/out/business process/Update/in"/>
+  <connection id="/business process/Read/out/business process/PatchedIteratorNode/in"/>
+  <connection id="/business process/PatchedIteratorNode/out/business process/SelectMR/in"/>
+  <connection id="/business process/PatchedIteratorNode/exception/business process/ToManualMasterRecord/exc"/>
+  <connection id="/business process/SelectMR/exception/business process/Rollback/exc"/>
+</fpm-process-layout>

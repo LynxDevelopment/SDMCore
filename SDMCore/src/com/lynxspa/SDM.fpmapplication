@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:fpm-application-config xmlns:fpm="http://www.lynxit.com/fpm/config" xml:space="preserve">
+  <fpm:application-domain id="application" notes="">
+    <param-definition name="authorizationCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="authorizationSelectSize" type="java.lang.Integer" dynamic="false" required="true">
+      <description>param2</description>
+    </param-definition>
+    <param-definition name="customersLoadCron" type="String" dynamic="false" required="false">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="deleteLogsCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="deleteLogsCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="entityDeadLineDays" type="java.lang.Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="evenDuration" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="eventsHistorificationCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="eventsHistorificationCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="historificationCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="historificationCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="hourToBeginEven" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergDebtDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergFieldsCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergFieldsDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergFieldsPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergFundsDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCorporatesPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergPerSecPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergRVNoEDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergSecuritiesCronn" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergSecuritiesDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputBloombergSecuritiesPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputIberclearCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputIberclearCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputIberclearDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputIberclearErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputIberclearPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputInversisCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputInversisCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputInversisDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputInversisErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputInversisPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputOfivalCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputOfivalCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputOfivalDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputOfivalErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputOfivalPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputSwiftCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputSwiftCron" type="String" dynamic="false" required="true">
+      <description>inputSwiftCron</description>
+    </param-definition>
+    <param-definition name="inputSwiftDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>inputSwiftDirectory</description>
+    </param-definition>
+    <param-definition name="inputSwiftErrorDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="inputSwiftPattern" type="String" dynamic="false" required="true">
+      <description>inputSwiftPattern</description>
+    </param-definition>
+    <param-definition name="inputTimeout" type="Integer" dynamic="false" required="true">
+      <description>inputTimeout</description>
+    </param-definition>
+    <param-definition name="livetimeHistorifiedCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="locale" type="String" dynamic="false" required="true">
+      <description>locale</description>
+    </param-definition>
+    <param-definition name="masterRecordCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="masterRecordSelectSize" type="java.lang.Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="matchingCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="matchingSelectSize" type="java.lang.Integer" dynamic="false" required="true">
+      <description>param2</description>
+    </param-definition>
+    <param-definition name="monitorCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="normalizeCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="normalizeSelectSize" type="java.lang.Integer" dynamic="false" required="true">
+      <description>param2</description>
+    </param-definition>
+    <param-definition name="notificationManagerEventCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="notificationManagerMaxResults" type="java.lang.Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="planningCronnExpression" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="prenormalizeCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="prenormalizeSelectSize" type="java.lang.Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="previosHoursForAlarm" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="processMessageCron" type="String" dynamic="false" required="true">
+      <description>processMessageCron</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadBloombergPatternDif" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param3</description>
+    </param-definition>
+    <param-definition name="securitiesUploadCustomerPattern" type="String" dynamic="false" required="true">
+      <description>param2</description>
+    </param-definition>
+    <param-definition name="securitiesUploadForceMarketInsert" type="Boolean" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadFundsPatternDif" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalInputDirectory" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securitiesUploadOfivalPattern" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securityPortfolioHistorificationCommitSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="securityPortfolioHistorificationCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="sendBackOfficeCron" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="sendBackOfficeDestinationFolder" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="sendBackOfficeSelectSize" type="Integer" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpFrom" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpHost" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpPassword" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpPort" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="smtpUser" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="tempPathFiles" type="java.io.File" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <param-definition name="timeZone" type="String" dynamic="false" required="true">
+      <description>param1</description>
+    </param-definition>
+    <fpm:events/>
+    <fpm:resources>
+      <fpm:resource id="HibernateResource" type="com.lynxit.fpm.resources.hibernate.HibernateResource">
+        <fpm:params>
+          <configFilePath type="FIXED">hibernate.cfg.xml</configFilePath>
+          <notes type="FIXED"></notes>
+          <useAnnotation type="FIXED">true</useAnnotation>
+        </fpm:params>
+      </fpm:resource>
+      <fpm:resource id="HibernateStatelessResource" type="com.lynxspa.fpm.resources.HibernateStatelessResource">
+        <fpm:params>
+          <notes type="FIXED"></notes>
+          <resource>HibernateResource</resource>
+        </fpm:params>
+      </fpm:resource>
+    </fpm:resources>
+    <fpm:inputs/>
+    <fpm:outputs/>
+    <fpm:sub-applications>
+      <fpm:sub-application definition-file="src/com/lynxspa/coac/CorporateActions.fpmapplication" id="CorporateActionsApplication" type="com.lynxit.fpm.ApplicationDomain">
+        <fpm:params>
+          <authorizationCron type="REFERENCE">authorizationCron</authorizationCron>
+          <authorizationSelectSize type="REFERENCE">authorizationSelectSize</authorizationSelectSize>
+          <customersLoadCron type="REFERENCE">customersLoadCron</customersLoadCron>
+          <deleteLogsCommitSize type="REFERENCE">deleteLogsCommitSize</deleteLogsCommitSize>
+          <deleteLogsCronn type="REFERENCE">deleteLogsCronn</deleteLogsCronn>
+          <entityDeadLineDays type="REFERENCE">entityDeadLineDays</entityDeadLineDays>
+          <evenDuration type="REFERENCE">evenDuration</evenDuration>
+          <eventsHistorificationCommitSize type="REFERENCE">eventsHistorificationCommitSize</eventsHistorificationCommitSize>
+          <eventsHistorificationCron type="REFERENCE">eventsHistorificationCron</eventsHistorificationCron>
+          <historificationCommitSize type="REFERENCE">historificationCommitSize</historificationCommitSize>
+          <historificationCron type="REFERENCE">historificationCron</historificationCron>
+          <hourToBeginEven type="REFERENCE">hourToBeginEven</hourToBeginEven>
+          <inputBloombergCommitSize type="REFERENCE">inputBloombergCommitSize</inputBloombergCommitSize>
+          <inputBloombergCron type="REFERENCE">inputBloombergCron</inputBloombergCron>
+          <inputBloombergDebtDirectory type="REFERENCE">inputBloombergDebtDirectory</inputBloombergDebtDirectory>
+          <inputBloombergDirectory type="REFERENCE">inputBloombergDirectory</inputBloombergDirectory>
+          <inputBloombergErrorDirectory type="REFERENCE">inputBloombergErrorDirectory</inputBloombergErrorDirectory>
+          <inputBloombergFundsDirectory type="REFERENCE">inputBloombergFundsDirectory</inputBloombergFundsDirectory>
+          <inputBloombergPattern type="REFERENCE">inputBloombergPattern</inputBloombergPattern>
+          <inputBloombergPerSecCommitSize type="REFERENCE">inputBloombergPerSecCommitSize</inputBloombergPerSecCommitSize>
+          <inputBloombergPerSecCorporatesCommitSize type="REFERENCE">inputBloombergPerSecCorporatesCommitSize</inputBloombergPerSecCorporatesCommitSize>
+          <inputBloombergPerSecCorporatesCron type="REFERENCE">inputBloombergPerSecCorporatesCron</inputBloombergPerSecCorporatesCron>
+          <inputBloombergPerSecCorporatesDirectory type="REFERENCE">inputBloombergPerSecCorporatesDirectory</inputBloombergPerSecCorporatesDirectory>
+          <inputBloombergPerSecCorporatesErrorDirectory type="REFERENCE">inputBloombergPerSecCorporatesErrorDirectory</inputBloombergPerSecCorporatesErrorDirectory>
+          <inputBloombergPerSecCorporatesPattern type="REFERENCE">inputBloombergPerSecPattern</inputBloombergPerSecCorporatesPattern>
+          <inputBloombergPerSecCron type="REFERENCE">inputBloombergPerSecCron</inputBloombergPerSecCron>
+          <inputBloombergPerSecDirectory type="REFERENCE">inputBloombergPerSecDirectory</inputBloombergPerSecDirectory>
+          <inputBloombergPerSecErrorDirectory type="REFERENCE">inputBloombergPerSecErrorDirectory</inputBloombergPerSecErrorDirectory>
+          <inputBloombergPerSecPattern type="REFERENCE">inputBloombergPerSecPattern</inputBloombergPerSecPattern>
+          <inputBloombergRVNoEDirectory type="REFERENCE">inputBloombergRVNoEDirectory</inputBloombergRVNoEDirectory>
+          <inputIberclearCommitSize type="REFERENCE">inputIberclearCommitSize</inputIberclearCommitSize>
+          <inputIberclearCron type="REFERENCE">inputIberclearCron</inputIberclearCron>
+          <inputIberclearDirectory type="REFERENCE">inputIberclearDirectory</inputIberclearDirectory>
+          <inputIberclearErrorDirectory type="REFERENCE">inputIberclearErrorDirectory</inputIberclearErrorDirectory>
+          <inputIberclearPattern type="REFERENCE">inputIberclearPattern</inputIberclearPattern>
+          <inputInversisCommitSize type="REFERENCE">inputInversisCommitSize</inputInversisCommitSize>
+          <inputInversisCron type="REFERENCE">inputInversisCron</inputInversisCron>
+          <inputInversisDirectory type="REFERENCE">inputInversisDirectory</inputInversisDirectory>
+          <inputInversisErrorDirectory type="REFERENCE">inputInversisErrorDirectory</inputInversisErrorDirectory>
+          <inputInversisPattern type="REFERENCE">inputInversisPattern</inputInversisPattern>
+          <inputOfivalCommitSize type="REFERENCE">inputOfivalCommitSize</inputOfivalCommitSize>
+          <inputOfivalCron type="REFERENCE">inputOfivalCron</inputOfivalCron>
+          <inputOfivalDirectory type="REFERENCE">inputOfivalDirectory</inputOfivalDirectory>
+          <inputOfivalErrorDirectory type="REFERENCE">inputOfivalErrorDirectory</inputOfivalErrorDirectory>
+          <inputOfivalPattern type="REFERENCE">inputOfivalPattern</inputOfivalPattern>
+          <inputSwiftCommitSize type="REFERENCE">inputSwiftCommitSize</inputSwiftCommitSize>
+          <inputSwiftCron type="REFERENCE">inputSwiftCron</inputSwiftCron>
+          <inputSwiftDirectory type="REFERENCE">inputSwiftDirectory</inputSwiftDirectory>
+          <inputSwiftErrorDirectory type="REFERENCE">inputSwiftErrorDirectory</inputSwiftErrorDirectory>
+          <inputSwiftPattern type="REFERENCE">inputSwiftPattern</inputSwiftPattern>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <livetimeHistorifiedCron type="REFERENCE">livetimeHistorifiedCron</livetimeHistorifiedCron>
+          <locale type="REFERENCE">locale</locale>
+          <masterRecordCron type="REFERENCE">masterRecordCron</masterRecordCron>
+          <masterRecordSelectSize type="REFERENCE">masterRecordSelectSize</masterRecordSelectSize>
+          <matchingCron type="REFERENCE">matchingCron</matchingCron>
+          <matchingSelectSize type="REFERENCE">matchingSelectSize</matchingSelectSize>
+          <monitorCron type="REFERENCE">monitorCron</monitorCron>
+          <normalizeCron type="REFERENCE">normalizeCron</normalizeCron>
+          <normalizeSelectSize type="REFERENCE">normalizeSelectSize</normalizeSelectSize>
+          <notes type="FIXED"></notes>
+          <notificationManagerEventCron type="REFERENCE">notificationManagerEventCron</notificationManagerEventCron>
+          <notificationManagerMaxResults type="REFERENCE">notificationManagerMaxResults</notificationManagerMaxResults>
+          <planningCronnExpression type="REFERENCE">planningCronnExpression</planningCronnExpression>
+          <prenormalizeCron type="REFERENCE">prenormalizeCron</prenormalizeCron>
+          <prenormalizeSelectSize type="REFERENCE">prenormalizeSelectSize</prenormalizeSelectSize>
+          <previosHoursForAlarm type="REFERENCE">previosHoursForAlarm</previosHoursForAlarm>
+          <processMessageCron type="REFERENCE">processMessageCron</processMessageCron>
+          <securitiesUploadBloombergCommitSize type="REFERENCE">securitiesUploadBloombergCommitSize</securitiesUploadBloombergCommitSize>
+          <securitiesUploadBloombergCron type="REFERENCE">securitiesUploadBloombergCron</securitiesUploadBloombergCron>
+          <securitiesUploadBloombergInputDirectory type="REFERENCE">securitiesUploadBloombergInputDirectory</securitiesUploadBloombergInputDirectory>
+          <securitiesUploadBloombergPattern type="REFERENCE">securitiesUploadBloombergPattern</securitiesUploadBloombergPattern>
+          <securitiesUploadBloombergPatternDif type="REFERENCE">securitiesUploadBloombergPatternDif</securitiesUploadBloombergPatternDif>
+          <securitiesUploadCustomerCommitSize type="REFERENCE">securitiesUploadCustomerCommitSize</securitiesUploadCustomerCommitSize>
+          <securitiesUploadCustomerCron type="REFERENCE">securitiesUploadCustomerCron</securitiesUploadCustomerCron>
+          <securitiesUploadCustomerInputDirectory type="REFERENCE">securitiesUploadCustomerInputDirectory</securitiesUploadCustomerInputDirectory>
+          <securitiesUploadCustomerPattern type="REFERENCE">securitiesUploadCustomerPattern</securitiesUploadCustomerPattern>
+          <securitiesUploadForceMarketInsert type="REFERENCE">securitiesUploadForceMarketInsert</securitiesUploadForceMarketInsert>
+          <securitiesUploadFundsCommitSize type="REFERENCE">securitiesUploadFundsCommitSize</securitiesUploadFundsCommitSize>
+          <securitiesUploadFundsCron type="REFERENCE">securitiesUploadFundsCron</securitiesUploadFundsCron>
+          <securitiesUploadFundsInputDirectory type="REFERENCE">securitiesUploadFundsInputDirectory</securitiesUploadFundsInputDirectory>
+          <securitiesUploadFundsPattern type="REFERENCE">securitiesUploadFundsPattern</securitiesUploadFundsPattern>
+          <securitiesUploadFundsPatternDif type="REFERENCE">securitiesUploadFundsPatternDif</securitiesUploadFundsPatternDif>
+          <securitiesUploadOfivalCommitSize type="REFERENCE">securitiesUploadOfivalCommitSize</securitiesUploadOfivalCommitSize>
+          <securitiesUploadOfivalCron type="REFERENCE">securitiesUploadOfivalCron</securitiesUploadOfivalCron>
+          <securitiesUploadOfivalInputDirectory type="REFERENCE">securitiesUploadOfivalInputDirectory</securitiesUploadOfivalInputDirectory>
+          <securitiesUploadOfivalPattern type="REFERENCE">securitiesUploadOfivalPattern</securitiesUploadOfivalPattern>
+          <securityPortfolioHistorificationCommitSize type="REFERENCE">securityPortfolioHistorificationCommitSize</securityPortfolioHistorificationCommitSize>
+          <securityPortfolioHistorificationCron type="REFERENCE">securityPortfolioHistorificationCron</securityPortfolioHistorificationCron>
+          <sendBackOfficeCron type="REFERENCE">sendBackOfficeCron</sendBackOfficeCron>
+          <sendBackOfficeDestinationFolder type="REFERENCE">sendBackOfficeDestinationFolder</sendBackOfficeDestinationFolder>
+          <sendBackOfficeSelectSize type="REFERENCE">sendBackOfficeSelectSize</sendBackOfficeSelectSize>
+          <smtpFrom type="REFERENCE">smtpFrom</smtpFrom>
+          <smtpHost type="REFERENCE">smtpHost</smtpHost>
+          <smtpPassword type="REFERENCE">smtpPassword</smtpPassword>
+          <smtpPort type="REFERENCE">smtpPort</smtpPort>
+          <smtpUser type="REFERENCE">smtpUser</smtpUser>
+          <tempPathFiles type="REFERENCE">tempPathFiles</tempPathFiles>
+          <timeZone type="REFERENCE">timeZone</timeZone>
+          <hibernateResource>HibernateResource</hibernateResource>
+          <hibernateStatelessResource>HibernateStatelessResource</hibernateStatelessResource>
+        </fpm:params>
+      </fpm:sub-application>
+      <fpm:sub-application definition-file="src/com/lynxspa/sdm/SDM.fpmapplication" id="SDMApplication" type="com.lynxit.fpm.ApplicationDomain">
+        <fpm:params>
+          <inputBloombergFieldsCronn type="REFERENCE">inputBloombergFieldsCronn</inputBloombergFieldsCronn>
+          <inputBloombergFieldsDirectory type="REFERENCE">inputBloombergFieldsDirectory</inputBloombergFieldsDirectory>
+          <inputBloombergFieldsPattern type="REFERENCE">inputBloombergFieldsPattern</inputBloombergFieldsPattern>
+          <inputBloombergSecuritiesCronn type="REFERENCE">inputBloombergSecuritiesCronn</inputBloombergSecuritiesCronn>
+          <inputBloombergSecuritiesDirectory type="REFERENCE">inputBloombergSecuritiesDirectory</inputBloombergSecuritiesDirectory>
+          <inputBloombergSecuritiesPattern type="REFERENCE">inputBloombergSecuritiesPattern</inputBloombergSecuritiesPattern>
+          <inputTimeout type="REFERENCE">inputTimeout</inputTimeout>
+          <locale type="REFERENCE">locale</locale>
+          <notes type="FIXED"></notes>
+          <hibernateResource>HibernateResource</hibernateResource>
+          <hibernateStatelessResource>HibernateStatelessResource</hibernateStatelessResource>
+        </fpm:params>
+      </fpm:sub-application>
+    </fpm:sub-applications>
+    <fpm:business-processes/>
+  </fpm:application-domain>
+</fpm:fpm-application-config>

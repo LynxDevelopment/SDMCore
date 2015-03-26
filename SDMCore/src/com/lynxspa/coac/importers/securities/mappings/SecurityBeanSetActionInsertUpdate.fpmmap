@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.sdm.importers.securities.beans.SecurityBean" outputBean="com.lynxspa.sdm.importers.securities.beans.SecurityBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <inputField name="in" cardinal="0"/>
+  <field name="action" type="com.lynxspa.sdm.importers.securities.beans.SecurityBean$ActionsToDo">
+    <constant value="INSERT_OR_UPDATE" type="com.lynxspa.sdm.importers.securities.beans.SecurityBean$ActionsToDo" cardinal="0"/>
+  </field>
+</mn:mapping-element>

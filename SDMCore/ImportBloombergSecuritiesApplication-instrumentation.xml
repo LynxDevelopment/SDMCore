@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="ImportBloombergSecuritiesApplication"> 
+    <event-producer id="BloombergFileCreated"/>  
+    <business-process id="ImportBloombergSecuritiesProcess1"> 
+      <node id="SDMSecuritiesBloombergImporter"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

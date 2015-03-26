@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="InputEvent" x="99" y="74" width="32" height="32"/>
+  <business-node id="MoverNode" x="321" y="67" width="130" height="100"/>
+  <connection id="/business process/InputEvent/business process/MoverNode/in"/>
+</fpm-process-layout>

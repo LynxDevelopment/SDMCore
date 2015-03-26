@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="InversisFileCreated" x="28" y="40" width="32" height="32"/>
+  <business-node id="Commit" x="1705" y="28" width="130" height="100"/>
+  <business-node id="DuplicateImportsFilter" x="1230" y="29" width="130" height="100"/>
+  <business-node id="ExceptionRollbackNode" x="1726" y="169" width="130" height="100"/>
+  <business-node id="FormatValidatorNode" x="374" y="29" width="130" height="100"/>
+  <business-node id="ImportFilter" x="895" y="29" width="130" height="100"/>
+  <business-node id="InversisParserNode" x="723" y="29" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="188" y="29" width="130" height="100"/>
+  <business-node id="Log Inversis Import exception" x="889" y="157" width="130" height="100"/>
+  <business-node id="MappingNode" x="1063" y="29" width="130" height="100"/>
+  <business-node id="OpenFile" x="546" y="29" width="130" height="100"/>
+  <subprocess id="SaveImportedMessageProcess" x="1395" y="29" width="130" height="100"/>
+  <connection id="/business process/SaveImportedMessageProcess/importedMessage/business process/Commit/in"/>
+  <connection id="/business process/MappingNode/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/DuplicateImportsFilter/out/business process/SaveImportedMessageProcess/importedMessage"/>
+  <connection id="/business process/SaveImportedMessageProcess/exc/business process/ExceptionRollbackNode/exc"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/FormatValidatorNode/in"/>
+  <connection id="/business process/FormatValidatorNode/out/business process/OpenFile/in"/>
+  <connection id="/business process/InversisParserNode/out/business process/ImportFilter/in"/>
+  <connection id="/business process/ImportFilter/out/business process/MappingNode/in"/>
+  <connection id="/business process/OpenFile/out/business process/InversisParserNode/in"/>
+  <connection id="/business process/InversisParserNode/exception/business process/Log Inversis Import exception/exc"/>
+  <connection id="/business process/InversisFileCreated/business process/LiveCycleValidatorNode/in"/>
+</fpm-process-layout>

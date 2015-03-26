@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <input id="SwiftFileCreated" x="-152" y="62" width="32" height="32"/>
+  <business-node id="Commit" x="2237" y="118" width="130" height="100"/>
+  <business-node id="DuplicateImportsFilter" x="1727" y="118" width="130" height="100"/>
+  <business-node id="ExceptionRollbackNode" x="2237" y="248" width="130" height="100"/>
+  <business-node id="FilterMessages" x="837" y="54" width="130" height="100"/>
+  <business-node id="FormatValidatorNode" x="220" y="54" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="-8" y="54" width="130" height="100"/>
+  <business-node id="Log Swift Import exception" x="838" y="193" width="130" height="100"/>
+  <business-node id="OpenFile" x="425" y="54" width="130" height="100"/>
+  <business-node id="Preprocess564" x="1486" y="-104" width="130" height="8"/>
+  <business-node id="Preprocess565" x="1486" y="-18" width="130" height="12"/>
+  <business-node id="Preprocess566" x="1486" y="68" width="130" height="8"/>
+  <business-node id="Preprocess567" x="1486" y="153" width="130" height="12"/>
+  <business-node id="Preprocess568" x="1486" y="238" width="130" height="8"/>
+  <business-node id="PreprocessSwift" x="1023" y="54" width="130" height="100"/>
+  <business-node id="SwiftParserNode" x="628" y="54" width="130" height="100"/>
+  <business-node id="SwiftSwitchNode" x="1218" y="54" width="130" height="100"/>
+  <subprocess id="SaveImportedMessageProcess" x="1938" y="118" width="130" height="100"/>
+  <connection id="/business process/SaveImportedMessageProcess/importedMessage/business process/Commit/in"/>
+  <connection id="/business process/Preprocess564/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/Preprocess565/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/Preprocess566/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/Preprocess567/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/Preprocess568/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/SwiftSwitchNode/default/business process/DuplicateImportsFilter/in">
+    <bendpoint w1="242" h1="224" w2="-171" h2="260" weight="0.5"/>
+  </connection>
+  <connection id="/business process/DuplicateImportsFilter/out/business process/SaveImportedMessageProcess/importedMessage"/>
+  <connection id="/business process/SaveImportedMessageProcess/exc/business process/ExceptionRollbackNode/exc"/>
+  <connection id="/business process/SwiftParserNode/out/business process/FilterMessages/in"/>
+  <connection id="/business process/FilterMessages/out/business process/PreprocessSwift/in"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/FormatValidatorNode/in"/>
+  <connection id="/business process/FormatValidatorNode/out/business process/OpenFile/in"/>
+  <connection id="/business process/SwiftFileCreated/business process/LiveCycleValidatorNode/in"/>
+  <connection id="/business process/SwiftParserNode/exception/business process/Log Swift Import exception/exc"/>
+  <connection id="/business process/OpenFile/out/business process/SwiftParserNode/in"/>
+  <connection id="/business process/SwiftSwitchNode/mT564/business process/Preprocess564/in"/>
+  <connection id="/business process/SwiftSwitchNode/mT565/business process/Preprocess565/in"/>
+  <connection id="/business process/SwiftSwitchNode/mT566/business process/Preprocess566/in"/>
+  <connection id="/business process/SwiftSwitchNode/mT567/business process/Preprocess567/in"/>
+  <connection id="/business process/SwiftSwitchNode/mT568/business process/Preprocess568/in"/>
+  <connection id="/business process/PreprocessSwift/out/business process/SwiftSwitchNode/in"/>
+</fpm-process-layout>

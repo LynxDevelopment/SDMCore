@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations-layout>
+  <source>
+    <expanded status="false" fqn="in"/>
+  </source>
+  <target>
+    <expanded status="true" fqn="out"/>
+    <expanded status="false" fqn="out.action"/>
+    <expanded status="false" fqn="out.format"/>
+    <expanded status="false" fqn="out.originName"/>
+    <expanded status="false" fqn="out.originPosition"/>
+    <expanded status="false" fqn="out.security"/>
+  </target>
+</operations-layout>

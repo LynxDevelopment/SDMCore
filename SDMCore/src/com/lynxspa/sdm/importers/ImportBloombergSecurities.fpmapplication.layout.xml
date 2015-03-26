@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="SHORTEST_PATH">
+  <event-producer id="BloombergFileCreated" x="104" y="30" width="130" height="100"/>
+  <resource id="HibernateResource" x="184" y="424" width="130" height="100"/>
+  <resource id="HibernateStatelessResource" x="488" y="290" width="130" height="100"/>
+  <business-process id="ImportBloombergSecuritiesProcess1" x="397" y="79" width="254" height="102"/>
+  <connection id="/application/HibernateResource/resource/application/ImportBloombergSecuritiesProcess1/session"/>
+  <connection id="/application/HibernateStatelessResource/resource/application/ImportBloombergSecuritiesProcess1/sessionStateless"/>
+  <connection id="/application/BloombergFileCreated/events/application/ImportBloombergSecuritiesProcess1/bloombergFileCreated"/>
+  <connection id="/application/HibernateResource/resource/application/HibernateStatelessResource/resource"/>
+</fpm-application-layout>

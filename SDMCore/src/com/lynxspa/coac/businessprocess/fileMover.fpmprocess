@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <fpm:input MESSAGE_TYPE="com.lynxit.fpm.events.scheduler.ScheduledEvent" id="InputEvent" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="MoverNode" type="com.lynxspa.fpm.nodes.MoverNode">
+    <n:params>
+      <fromDirectory type="FIXED">input/swift/examples</fromDirectory>
+      <notes type="FIXED"></notes>
+      <toDirectory type="FIXED">input/swift</toDirectory>
+    </n:params>
+    <n:listens-to id="InputEvent"/>
+  </n:business-node>
+</fpm:business-process>

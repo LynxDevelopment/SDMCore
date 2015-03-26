@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<fpm-process-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <input id="IberclearFileCreated" x="18" y="38" width="32" height="32"/>
+  <business-node id="Commit" x="1636" y="27" width="130" height="100"/>
+  <business-node id="DuplicateImportsFilter" x="1223" y="27" width="130" height="100"/>
+  <business-node id="ExceptionRollbackNode" x="1603" y="165" width="130" height="100"/>
+  <business-node id="FormatValidatorNode" x="377" y="27" width="130" height="100"/>
+  <business-node id="IberclearParserNode" x="727" y="27" width="130" height="100"/>
+  <business-node id="ImportFilter" x="892" y="27" width="130" height="100"/>
+  <business-node id="LiveCycleValidatorNode" x="192" y="27" width="130" height="100"/>
+  <business-node id="Log Iberclear Import exception" x="893" y="164" width="130" height="100"/>
+  <business-node id="MappingNode" x="1059" y="27" width="130" height="100"/>
+  <business-node id="OpenFile" x="553" y="27" width="130" height="100"/>
+  <subprocess id="SaveImportedMessageProcess" x="1405" y="27" width="130" height="100"/>
+  <connection id="/business process/SaveImportedMessageProcess/importedMessage/business process/Commit/in"/>
+  <connection id="/business process/MappingNode/out/business process/DuplicateImportsFilter/in"/>
+  <connection id="/business process/DuplicateImportsFilter/out/business process/SaveImportedMessageProcess/importedMessage"/>
+  <connection id="/business process/SaveImportedMessageProcess/exc/business process/ExceptionRollbackNode/exc"/>
+  <connection id="/business process/LiveCycleValidatorNode/out/business process/FormatValidatorNode/in"/>
+  <connection id="/business process/FormatValidatorNode/out/business process/OpenFile/in"/>
+  <connection id="/business process/OpenFile/out/business process/IberclearParserNode/in"/>
+  <connection id="/business process/IberclearParserNode/out/business process/ImportFilter/in"/>
+  <connection id="/business process/IberclearParserNode/exception/business process/Log Iberclear Import exception/exc"/>
+  <connection id="/business process/ImportFilter/out/business process/MappingNode/in"/>
+  <connection id="/business process/IberclearFileCreated/business process/LiveCycleValidatorNode/in"/>
+</fpm-process-layout>

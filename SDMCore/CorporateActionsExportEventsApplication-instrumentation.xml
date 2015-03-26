@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsExportEventsApplication"> 
+    <event-producer id="StandardEventProducer"/>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process>  
+    <business-process id="ExportEventsProcess"> 
+      <node id="PatchedIteratorNode"/>  
+      <node id="LogCoacException"/>  
+      <node id="SENT_BO_KO"/>  
+      <node id="Commit"/>  
+      <node id="Update"/>  
+      <node id="SENT_BO_OK"/>  
+      <node id="LiveCycleValidatorNode"/>  
+      <node id="Read"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

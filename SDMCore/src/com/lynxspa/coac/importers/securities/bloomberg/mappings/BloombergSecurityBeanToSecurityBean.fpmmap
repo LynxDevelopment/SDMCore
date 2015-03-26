@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="Cp1252"?>
+
+<mn:mapping-element xmlns:mn="http://www.lynxit.com/fpm/config/mapping" inputBean="com.lynxspa.coac.importers.securities.bloomberg.beans.BloombergSecurityBean" outputBean="com.lynxspa.sdm.importers.securities.beans.SecurityBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.lynxit.com/fpm/config/mapping mapping-node.xsd">
+  <leftMaps/>
+  <rightMaps/>
+  <leftCollections/>
+  <rightCollections/>
+  <field name="action" type="com.lynxspa.sdm.importers.securities.beans.SecurityBean$ActionsToDo">
+    <constant value="INSERT_OR_UPDATE" type="com.lynxspa.sdm.importers.securities.beans.SecurityBean$ActionsToDo" cardinal="0"/>
+  </field>
+  <field name="format" type="java.lang.String">
+    <constant value="BLOOMBERG" type="java.lang.String" cardinal="0"/>
+  </field>
+  <field name="originName" type="java.lang.String">
+    <inputField name="in.file" cardinal="0"/>
+  </field>
+  <field name="originPosition" type="java.lang.Integer">
+    <inputField name="in.position" cardinal="0"/>
+  </field>
+  <field name="security" type="com.lynxspa.entities.securities.SPSecurity">
+    <field name="country" type="java.lang.String">
+      <inputField name="in.country" cardinal="0"/>
+    </field>
+    <field name="currency" type="java.lang.String">
+      <inputField name="in.crncy" cardinal="0"/>
+    </field>
+    <field name="cusip" type="java.lang.String">
+      <inputField name="in.idCusip" cardinal="0"/>
+    </field>
+    <field name="indGroup" type="java.lang.String">
+      <inputField name="in.industryGroup" cardinal="0"/>
+    </field>
+    <field name="indSector" type="java.lang.String">
+      <inputField name="in.industrySector" cardinal="0"/>
+    </field>
+    <field name="indSubGroup" type="java.lang.String">
+      <inputField name="in.industrySubGroup" cardinal="0"/>
+    </field>
+    <field name="infoProviderId1" type="java.lang.String">
+      <inputField name="in.bloombergId" cardinal="0"/>
+    </field>
+    <field name="isin" type="java.lang.String">
+      <inputField name="in.idIsin" cardinal="0"/>
+    </field>
+    <field name="market" type="com.lynxspa.entities.securities.markets.SPMarket">
+      <field name="mic" type="java.lang.String">
+        <inputField name="in.idPrimaryExchange" cardinal="0"/>
+      </field>
+      <field name="name" type="java.lang.String">
+        <inputField name="in.namePrimaryExchange" cardinal="0"/>
+      </field>
+      <field name="ticker" type="java.lang.String">
+        <inputField name="in.idPrimaryExchange" cardinal="0"/>
+      </field>
+    </field>
+    <field name="name" type="java.lang.String">
+      <inputField name="in.name" cardinal="0"/>
+    </field>
+    <field name="relIndex" type="java.lang.String">
+      <inputField name="in.relIndex" cardinal="0"/>
+    </field>
+    <field name="secFinancialAssets" type="com.lynxspa.entities.securities.financialassets.SPSecurityFinancialAssets">
+      <inputField name="in.financialAsset" cardinal="0"/>
+    </field>
+    <field name="securityDetail" type="com.lynxspa.entities.securities.details.SPSecurityDetail">
+      <field name="dynamicTable" type="java.lang.String">
+        <inputField name="in.optionalValues" cardinal="0"/>
+      </field>
+    </field>
+    <field name="securityType" type="java.lang.String">
+      <inputField name="in.securityType" cardinal="0"/>
+    </field>
+    <field name="sedol" type="java.lang.String">
+      <inputField name="in.idSedol1" cardinal="0"/>
+    </field>
+    <field name="ticker" type="java.lang.String">
+      <function name="com.lynxit.fpm.functionlibraries.StringFunctions.concat" code="33231">
+        <inputField name="in.ticker" cardinal="0"/>
+        <inputField name="in.exchName" cardinal="1"/>
+      </function>
+    </field>
+  </field>
+</mn:mapping-element>

@@ -1,0 +1,52 @@
+{1:F21CASBADADAXXX6494811057}{4:{177:0704251534}{451:0}}{1:F01CASBADADAXXX6494811057}{2:O5641526070425CRESCHZZA80A27391022940704251526N}{3:{108:101000660409}}{4:
+:16R:GENL
+:20C::CORP//VH00000000378271
+:20C::SEME//F520070425-01695
+:23G:NEWM
+:22F::CAEV//DRIP
+:22F::CAMV//CHOS
+:98C::PREP//20070425152545
+:25D::PROC//PREC
+:16S:GENL
+:16R:USECU
+:35B:ISIN GB0007980591
+SHS BP
+:16R:FIA
+:12A::CLAS//SHS
+:11A::DENO//USD
+:16S:FIA
+:16R:ACCTINFO
+:97A::SAFE//0835-0796413-65-004
+:93B::ELIG//UNIT/6922,
+:16S:ACCTINFO
+:16S:USECU
+:16R:CADETL
+:98A::XDTE//20070509
+:98B::RDDT//OPEN
+:98A::RDTE//20070511
+:16S:CADETL
+:16R:CAOPTN
+:13A::CAON//001
+:22F::CAOP//CASH
+:17B::DFLT//N
+:92F::NETT//GBP0,05151
+:16R:CASHMOVE
+:22H::CRDB//CRED
+:98A::PAYD//20070604
+:16S:CASHMOVE
+:16S:CAOPTN
+:16R:CAOPTN
+:13A::CAON//002
+:22F::CAOP//SECU
+:22F::DISF//RDDN
+:17B::DFLT//N
+:92K::ADEX//OPEN
+:16R:SECMOVE
+:22H::CRDB//CRED
+:35B:ISIN GB0007980591
+SHS BP PLC
+:98A::PAYD//20070604
+:98B::AVAL//OPEN
+:16S:SECMOVE
+:16S:CAOPTN
+-}{5:{MAC:A8838C14}{CHK:7A77058BEA0B}}{S:{SAC:}{COP:S}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

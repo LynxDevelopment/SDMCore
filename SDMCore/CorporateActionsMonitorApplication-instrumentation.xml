@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsMonitorApplication"> 
+    <event-producer id="ScheduledEventProducer"/>  
+    <business-process id="CacheCleanerProcess"> 
+      <node id="ClearCache"/>  
+      <node id="ReportCacheClean"/>  
+      <node id="LogCoacException"/>  
+      <node id="GetClearCacheFlag"/>  
+      <node id="MustBeCleaned"/> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>

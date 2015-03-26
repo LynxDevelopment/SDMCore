@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-application-layout iconsDisplayMode="LARGE" showGrid="true" routerType="MANHATTAN">
+  <event-producer id="ScheduledEventProducer" x="23" y="138" width="130" height="100"/>
+  <resource id="HibernateResource" x="23" y="293" width="130" height="100"/>
+  <business-process id="CacheCleanerProcess" x="251" y="137" width="201" height="108"/>
+  <business-process id="ErrorHandler" x="537" y="159" width="197" height="108"/>
+  <connection id="/application/HibernateResource/resource/application/CacheCleanerProcess/statefullSession"/>
+  <connection id="/application/ScheduledEventProducer/events/application/CacheCleanerProcess/input"/>
+  <connection id="/application/CacheCleanerProcess/exc/application/ErrorHandler/input"/>
+  <connection id="/application/HibernateResource/resource/application/ErrorHandler/sessionFactory"/>
+</fpm-application-layout>

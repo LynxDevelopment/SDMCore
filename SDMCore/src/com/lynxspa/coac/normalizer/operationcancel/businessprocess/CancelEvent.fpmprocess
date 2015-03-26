@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<fpm:business-process xmlns:fpm="http://www.lynxit.com/fpm/config" id="business process" notes="">
+  <param-definition name="locale" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="statefullSession" type="com.lynxit.fpm.resources.Resource" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <param-definition name="user" type="String" dynamic="false" required="true">
+    <description>param1</description>
+  </param-definition>
+  <fpm:input MESSAGE_TYPE="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" id="normalizableBean" type="com.lynxit.fpm.BusinessProcessInput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:input>
+  <fpm:output MESSAGE_TYPE="com.lynxspa.coac.normalizer.adapters.NormalizableAdapter" id="normalizableOutputBean" type="com.lynxit.fpm.BusinessProcessOutput">
+    <fpm:params>
+      <notes type="FIXED"></notes>
+    </fpm:params>
+  </fpm:output>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Cancel Event" mapping-definition-file="src/com/lynxspa/coac/normalizer/operationcancel/mappings/CancelCAEventCollected.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Update"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="FindPreviousEvent" type="com.lynxspa.coac.normalizer.nodes.FindPreviousEventNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+      <onNotFoundFail type="FIXED">true</onNotFoundFail>
+      <resource type="REFERENCE">statefullSession</resource>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="ForkNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.coac.normalizer.adapters.NormalizableUpdateAdapter" id="ForkNode" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="ForkNode1"/>
+    <n:exit-to label="two" name="two" toNode="normalizableOutputBean"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" IN="com.lynxspa.coac.normalizer.adapters.NormalizableUpdateAdapter" id="ForkNode1" type="com.lynxit.fpm.nodes.internal.ForkNode">
+    <n:params>
+      <cloneMessage type="FIXED">false</cloneMessage>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="one" name="one" toNode="Cancel Event"/>
+    <n:exit-to label="two" name="two" toNode="SwitchNode"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Get Authorized Group" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/GetEventGroup.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="To RollbackAuthorization"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Get MR Group" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/GetEventGroup.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="To RollbackMasterRecord"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Get Sent Event" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/GetEventGroup.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="To RepeatSendAsCancel"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Promote to Updater" mapping-definition-file="src/com/lynxspa/coac/normalizer/mappings/PromoteToNormalizationUpdaterAdapter.fpmmap" type="com.lynxit.fpm.nodes.internal.MappingNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="FindPreviousEvent"/>
+    <n:listens-to id="normalizableBean"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" definition-file="src/com/lynxspa/coac/normalizer/operationcancel/nodes/EventGroupCancelationEffects.fpmswitch" id="SwitchNode" type="com.lynxit.fpm.nodes.internal.SwitchNode">
+    <n:params>
+      <notes type="FIXED"></notes>
+    </n:params>
+    <n:exit-to label="mASTERRECORD" name="mASTERRECORD" toNode="Get MR Group"/>
+    <n:exit-to label="aUTHORIZED" name="aUTHORIZED" toNode="Get Authorized Group"/>
+    <n:exit-to label="sENDTOBACKOFFICE" name="sENDTOBACKOFFICE" toNode="Get Sent Event"/>
+    <n:output-connector name="default" ignore-unconnected="true"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="To RepeatSendAsCancel" type="com.lynxspa.coac.nodes.workflow.EventGroupChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">true</activeMessageTransition>
+      <createLog type="FIXED">true</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <message type="FIXED">CANCELATION_OVER_SENTEVENT</message>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">TBKC</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Update"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="To RollbackAuthorization" type="com.lynxspa.coac.nodes.workflow.EventGroupChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">true</activeMessageTransition>
+      <createLog type="FIXED">true</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <message type="FIXED">CANCELATION_OVER_AUTHORIZED</message>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">PMRS</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Update"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="To RollbackMasterRecord" type="com.lynxspa.coac.nodes.workflow.EventGroupChangeStateNode">
+    <n:params>
+      <activeMessageTransition type="FIXED">true</activeMessageTransition>
+      <createLog type="FIXED">true</createLog>
+      <locale type="REFERENCE">locale</locale>
+      <message type="FIXED">CANCELATION_OVER_MASTERRECORD</message>
+      <messageParameters type="FIXED"></messageParameters>
+      <notes type="FIXED"></notes>
+      <parameterNames type="FIXED"></parameterNames>
+      <parameterValues type="FIXED"></parameterValues>
+      <resource type="REFERENCE">statefullSession</resource>
+      <state type="FIXED">PMRS</state>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:exit-to label="out" name="out" toNode="Update"/>
+  </n:business-node>
+  <n:business-node xmlns:n="http://www.lynxit.com/fpm/config/nodes" id="Update" type="com.lynxspa.fpm.nodes.hibernate.HibernateStandardUpdate">
+    <n:params>
+      <dataSource type="REFERENCE">statefullSession</dataSource>
+      <flush type="FIXED">true</flush>
+      <notes type="FIXED"></notes>
+      <user type="REFERENCE">user</user>
+    </n:params>
+    <n:output-connector name="out" ignore-unconnected="true"/>
+  </n:business-node>
+</fpm:business-process>

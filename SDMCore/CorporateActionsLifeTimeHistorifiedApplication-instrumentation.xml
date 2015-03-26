@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fpm-instrumentation> 
+  <application-domain id="CorporateActionsLifeTimeHistorifiedApplication"> 
+    <event-producer id="event"/>  
+    <business-process id="LiveTimeEventsHistorifiedProcess"> 
+      <node id="LivetimeEventsHistorifiedNode"/> 
+    </business-process>  
+    <business-process id="LiveTimeMessagesHistorifiedProcess"> 
+      <node id="LiveTimeMessagesHistorifiedNode"/> 
+    </business-process>  
+    <business-process id="ErrorHandler"> 
+      <node id="LogCoacErrorHandler"/> 
+    </business-process> 
+  </application-domain> 
+</fpm-instrumentation>
