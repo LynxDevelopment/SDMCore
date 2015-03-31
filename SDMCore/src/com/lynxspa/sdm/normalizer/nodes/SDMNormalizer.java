@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.StatelessSession;
 
 import com.lynspa.sdm.jobs.bloomberg.load.fields.ImportBlooomberFieldsJob;
+import com.lynspa.sdm.jobs.normalization.BeanShellStaticDataNormalizeProcessor;
 import com.lynxit.fpm.admin.config.NodeBeautifier;
 import com.lynxit.fpm.admin.config.annotations.ConfigParam;
 import com.lynxit.fpm.admin.config.annotations.ValueMode;
@@ -39,11 +40,20 @@ public class SDMNormalizer<T> extends InternalNodeSupport<T>{
 		StatelessSession statelessSession=null;
 		session=resource.getNewInstance();
 		statelessSession = session.getSessionFactory().openStatelessSession();
-		System.out.println("Llego...");
+		//System.out.println("Llego...");
 		/*
 		final ImportBlooomberFieldsJob importFields = new ImportBlooomberFieldsJob();
 		importFields.importBloombergFields(session, statelessSession, ((FileCreatedEvent)_message).getFile(), this.user, this.locale);
 		*/
+		
+		//Probando normalizaciones
+		BeanShellStaticDataNormalizeProcessor normalizer = new BeanShellStaticDataNormalizeProcessor();
+		try {
+			normalizer.normalize(session, statelessSession, this.user, this.locale);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

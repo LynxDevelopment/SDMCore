@@ -19,7 +19,7 @@
         <fpm:producer id="StandardEventProducer" type="com.lynxspa.fpm.events.StandardEventProducer">
           <fpm:params>
             <allowMultiThreading type="FIXED">false</allowMultiThreading>
-            <cronExpression type="FIXED">0/30 * * * * ?</cronExpression>
+            <cronExpression type="FIXED">0/60 * * * * ?</cronExpression>
             <notes type="FIXED"></notes>
           </fpm:params>
         </fpm:producer>
