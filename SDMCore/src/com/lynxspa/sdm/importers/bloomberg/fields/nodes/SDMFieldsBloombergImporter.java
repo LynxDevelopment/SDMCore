@@ -3,7 +3,7 @@ package com.lynxspa.sdm.importers.bloomberg.fields.nodes;
 import org.hibernate.Session;
 import org.hibernate.StatelessSession;
 
-import com.lynspa.sdm.jobs.bloomberg.load.fields.ImportBlooomberFieldsJob;
+import com.lynspa.sdm.jobs.bloomberg.load.fields.ImportBloombergFieldsJob;
 import com.lynxit.fpm.admin.config.NodeBeautifier;
 import com.lynxit.fpm.admin.config.annotations.ConfigParam;
 import com.lynxit.fpm.admin.config.annotations.ValueMode;
@@ -39,7 +39,7 @@ public class SDMFieldsBloombergImporter<T> extends InternalNodeSupport<T>{
 		StatelessSession statelessSession=null;
 		session=resource.getNewInstance();
 		statelessSession = session.getSessionFactory().openStatelessSession();
-		final ImportBlooomberFieldsJob importFields = new ImportBlooomberFieldsJob();
+		final ImportBloombergFieldsJob importFields = new ImportBloombergFieldsJob();
 		importFields.importBloombergFields(session, statelessSession, ((FileCreatedEvent)_message).getFile(), this.user, this.locale);
 		
 	}

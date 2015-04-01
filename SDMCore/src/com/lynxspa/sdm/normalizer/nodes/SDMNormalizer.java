@@ -3,12 +3,10 @@ package com.lynxspa.sdm.normalizer.nodes;
 import org.hibernate.Session;
 import org.hibernate.StatelessSession;
 
-import com.lynspa.sdm.jobs.bloomberg.load.fields.ImportBlooomberFieldsJob;
 import com.lynspa.sdm.jobs.normalization.BeanShellStaticDataNormalizeProcessor;
 import com.lynxit.fpm.admin.config.NodeBeautifier;
 import com.lynxit.fpm.admin.config.annotations.ConfigParam;
 import com.lynxit.fpm.admin.config.annotations.ValueMode;
-import com.lynxit.fpm.events.fileevents.FileCreatedEvent;
 import com.lynxit.fpm.nodes.support.InternalNodeSupport;
 import com.lynxit.fpm.resources.Resource;
 

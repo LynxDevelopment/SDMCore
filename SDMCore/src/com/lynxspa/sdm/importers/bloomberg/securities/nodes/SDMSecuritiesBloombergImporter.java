@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.StatelessSession;
 import org.hibernate.context.ManagedSessionContext;
 
-import com.lynspa.sdm.jobs.bloomberg.load.securities.ImportBlooomberSecuritiesJob;
+import com.lynspa.sdm.jobs.bloomberg.load.securities.ImportBloomberSecuritiesJob;
 import com.lynxit.fpm.admin.config.NodeBeautifier;
 import com.lynxit.fpm.admin.config.annotations.ConfigParam;
 import com.lynxit.fpm.admin.config.annotations.ValueMode;
@@ -41,7 +41,7 @@ public class SDMSecuritiesBloombergImporter<T> extends InternalNodeSupport<T>{
 		StatelessSession statelessSession=null;
 		session=resource.getNewInstance();
 		statelessSession = session.getSessionFactory().openStatelessSession();
-		final ImportBlooomberSecuritiesJob importSecurities = new ImportBlooomberSecuritiesJob();
+		final ImportBloomberSecuritiesJob importSecurities = new ImportBloomberSecuritiesJob();
 		importSecurities.importBloombergSecurities(session, statelessSession, ((FileCreatedEvent)_message).getFile(), this.user, this.locale);
 		
 	}
